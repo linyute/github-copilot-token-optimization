@@ -1,5 +1,5 @@
-site_name: Token Optimization Guide
-site_description: Practical guide to reducing GitHub Copilot token spend without losing quality.
+site_name: Token 優化指南
+site_description: 實用指南，在保持品質的前提下降低 GitHub Copilot 的 token 使用量。
 theme:
   name: material
   palette:
@@ -28,20 +28,20 @@ markdown_extensions:
 extra_css:
   - stylesheets/extra.css
 nav:
-  - Home: index.md
-  - Part 1:
-      - Why Tokens Matter: 01-why-tokens-matter.md
-  - Part 2:
-      - Prompt Compression: 02-prompt-compression.md
-      - Language Comparison: 03-language-comparison.md
-      - Context Management: 04-context-management.md
-      - Output Control: 05-output-control.md
-      - Workflow Optimization: 06-workflow-optimization.md
-      - Always-On Context Problem: 07-agents-md-problem.md
-      - MCP & Tool Costs: 08-mcp-tool-costs.md
-  - Part 3:
-      - Comparisons & Data: 09-comparisons-data.md
-  - Part 4:
-      - Practical Setup: 10-practical-setup.md
-      - Model Selection & Pricing: 11-models-and-pricing.md
-      - Enterprise Governance: 12-enterprise-governance.md
+  - 首頁: index.md
+  - 第 1 部分:
+      - 為什麼 Token 很重要: 01-why-tokens-matter.md
+  - 第 2 部分:
+      - 提示詞壓縮: 02-prompt-compression.md
+      - 自然語言選擇: 03-language-comparison.md
+      - 上下文管理: 04-context-management.md
+      - 輸出控制: 05-output-control.md
+      - 工作流優化: 06-workflow-optimization.md
+      - 始終開啟的上下文問題: 07-agents-md-problem.md
+      - MCP 和工具成本: 08-mcp-tool-costs.md
+  - 第 3 部分:
+      - 對比與數據: 09-comparisons-data.md
+  - 第 4 部分:
+      - 實踐設置: 10-practical-setup.md
+      - 模型選擇與定價: 11-models-and-pricing.md
+      - 企業治理: 12-enterprise-governance.md
