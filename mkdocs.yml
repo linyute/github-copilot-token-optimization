@@ -1,0 +1,47 @@
+site_name: Token Optimization Guide
+site_description: Practical guide to reducing GitHub Copilot token spend without losing quality.
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: blue grey
+      accent: teal
+  features:
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+plugins:
+  - search
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+extra_css:
+  - stylesheets/extra.css
+nav:
+  - Home: index.md
+  - Part 1:
+      - Why Tokens Matter: 01-why-tokens-matter.md
+  - Part 2:
+      - Prompt Compression: 02-prompt-compression.md
+      - Language Comparison: 03-language-comparison.md
+      - Context Management: 04-context-management.md
+      - Output Control: 05-output-control.md
+      - Workflow Optimization: 06-workflow-optimization.md
+      - Always-On Context Problem: 07-agents-md-problem.md
+      - MCP & Tool Costs: 08-mcp-tool-costs.md
+  - Part 3:
+      - Comparisons & Data: 09-comparisons-data.md
+  - Part 4:
+      - Practical Setup: 10-practical-setup.md
+      - Model Selection & Pricing: 11-models-and-pricing.md
+      - Enterprise Governance: 12-enterprise-governance.md
