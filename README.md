@@ -8,11 +8,13 @@
 
 ---
 
-## 快速入門 — 現在可以做的 12 件事
+## 快速入門 — 現在可以做的 14 件事
 
 > **2026 年 6 月 1 日 — 用量計費 (Usage-Based Billing, UBB) 已上線。** GitHub Copilot 現在根據實際 Token（輸入 + 輸出 + 快取）計費，這些 Token 從匯集的 AI 額度（Business 方案每席位 30 美元，Enterprise 方案每席位 70 美元）中提取，而不是根據請求次數計費。本指南中的每項技術都直接轉化為額度節省 — 而且對快取友善的習慣比以往任何時候都更重要。有關客戶護欄，請參閱 [企業治理 (Enterprise Governance)](docs/12-enterprise-governance.md)，有關模型成本指導，請參閱 [模型選擇與定價 (Model Selection & Pricing)](docs/11-models-and-pricing.md)。
 
 > **輸出 Token 的成本遠高於輸入 Token。** 這是本指南中最重要的定價事實。Anthropic 的公開定價使這種不對稱性變得具體（每百萬 Token 輸入/輸出：Haiku 1 美元/5 美元，Sonnet 3 美元/15 美元，Opus 5 美元/25 美元）。Copilot 確切的每模型 UBB 定價表尚未公開，但 UBB 仍然使冗長的輸出成本成倍增加。大多數輸入 Token 來自檔案內容、歷史紀錄和工具結構定義 (schemas) — 而不是來自你輸入的內容。你輸入的提示詞僅佔總輸入的一小部分。從輸出控制開始，然後解決結構性輸入的獲益。
+
+![Token 成本結構：輸入 Token 包含隱藏的上下文，輸出 Token 是可見的答案，穩定的快取 Token 更便宜。](docs/assets/diagrams/token-cost-anatomy.svg)
 
 沒有時間閱讀完整指南？今天就執行這些操作以削減你的 Token 使用量：
 
@@ -26,17 +28,20 @@
 | 6 | **使用 `applyTo:` 路徑範圍限制上下文** — 將一個大型指令檔案分割成多個小的範圍指令檔案，僅在相關時載入 | 減少始終開啟的輸入/上下文 | 15 分鐘 |
 | 7 | **在提示詞中保持精確** — 使用 "Add null check to `getUser()`"，而不是 "Can you please look at this and maybe add some error handling?" 注意：你輸入的提示詞僅佔總輸入的一小部分；精確度對於品質的影響大於對原始 Token 節省的影響 | 提高任務針對性 | 0 分鐘 |
 | 8 | **根據目標模型重新調整提示詞** — 提供者的提示引導會根據模型/版本而變化。將官方指南 URL 貼入 Copilot，並要求它為你實際使用的模型調整 `.github/copilot-instructions.md`、Agent 個人檔案或應用程式提示 | 減少重做 | 每個模型變更 10 分鐘 |
-| 9 | **稽核你的 MCP 伺服器與注入的工具** — 停用未使用的 MCP 伺服器與會新增技能/工具的 VS Code 擴充功能；對於重複性工作流程，使用純淨的程式碼設定檔或專注的自訂 Agent。每個 MCP 工具在每個 Agent 步驟中約耗費 100-500 Token | 移除工具/結構定義的額外開銷 | 5-10 分鐘 |
+| 9 | **審核您的 MCP 伺服器和注入工具** — 停用未使用的 MCP 伺服器和新增技能/工具的 VS Code 擴充功能；使用乾淨的程式碼設定檔或針對重複工作流程的自訂代理程式。每個 MCP 工具每次代理步驟大約消耗 100-500 個 Token。如果之後 shell 輸出仍然很大，請評估一個輸出過濾器，例如 [RTK](https://github.com/rtk-ai/rtk) 或 [`snip`](https://github.com/edouard-claude/snip) | 移除工具/模式開銷和冗餘命令輸出 | 5-10 分鐘 |
 | 10 | **在 AI 工作前將豐富檔案轉換為 Markdown** — `.docx`、`.pdf`、`.pptx`、`.xlsx`、HTML、圖片、音訊、影片和 ZIP 檔案帶有格式稅。[Marc Bara 的文章](https://medium.com/@marc.bara.iniesta/your-docx-is-wasting-33-of-your-ai-budget-86a3d229d042)顯示了成本；在聊天、Agent 或 RAG 攝取之前使用 [Microsoft MarkItDown](https://github.com/microsoft/markitdown) | 減少雜亂的輸入上下文 | 5 分鐘 |
 | 11 | **每週執行 `/chronicle cost tips` 與 `/chronicle improve`** (**僅限 Copilot CLI**，實驗性) — 這些斜線指令在互動式 Copilot CLI 工作階段（而非 VS Code）中運作，不是一般的 Copilot Chat 功能。`cost tips` 分析你的 Token 支出並建議減少方式；`improve` 尋找 CLI 工作階段歷史紀錄中反覆出現的混淆，並產生自訂指令修正，讓同樣的誤解意圖不再永久消耗 Token | 減少重複重做與直接 Token 支出 | 每次執行 2 分鐘 |
 | 12 | **針對長工具鏈嘗試 CodeAct** (**僅限 Copilot CLI**，選用外部外掛程式) — [`copilot-codeact-plugin`](https://github.com/jsturtevant/copilot-codeact-plugin) 將多步驟工具鏈摺疊成一個沙盒執行，這可以減少系統提示詞、先前訊息和工具定義的重複重播 | 減少工具迴圈重播 | 10-15 分鐘 |
-| 13 | **先規劃，然後在新的工作階段中執行** — 使用規劃模式 (CLI) 或提問模式 (VS Code) 與強大的模型達成方法共識，將規劃儲存到 `plan.md` 或 issue 中，然後在乾淨的工作階段中根據該規劃執行 — 通常使用較便宜的模型。第一次就達成正確的結果可避免 Agent 朝錯誤方向編碼的昂貴重做。請參閱 [先規劃，後執行 §2.5.9](docs/06-workflow-optimization.md#259-plan-first-then-execute-and-route-the-phases) | 避免錯誤方向的重做；較便宜的執行路徑 | 0 分鐘 (只需安排工作順序) |
+| 13 | **先規劃，然後在新會話中執行** — 使用計劃模式（CLI）或詢問模式（VS Code）與強模型協商方案，將計劃保存到 `plan.md` 或問題中，然後在乾淨的會話中執行該計劃，通常使用更高效的模型。一次獲得正確結果可以避免代理程式碼方向錯誤而導致的昂貴返工。請參閱[先計劃，後執行 §2.5.9](docs/06-workflow-optimization.md#259-plan-first-then-execute-and-route-the-phases) 和[每個 Token 的結果](docs/13-outcome-per-token.md) 分鐘 |
+| 14 | **使用 Graphify 建立持久化程式碼庫圖**（可選，VS Code + Copilot CLI）— [`graphify`](https://github.com/Graphify-Labs/graphify) 使用 tree-sitter AST 對程式碼庫進行一次映射，並將結果寫入 `graphify-out/graph.json`；最適合大型程式碼庫，因為在這些程式碼庫中，方向讀取是代理程式輸入的主要部分。安裝：`uv tool install graphifyy` | 減少重複的檔案讀取輸入 | 5-10 分鐘 |
 
 **是從企業或客戶治理的角度而不是個人設定的角度來看待這件事嗎？** 請參閱 [企業治理 (Enterprise Governance)](docs/12-enterprise-governance.md)。該章節涵蓋了 AI 額度預算、每使用者緊縮、模型存取政策、組織指令以及獨立組織權衡。
 
 *上述數值僅針對各列中所述的機制，不可累加，也不代表總帳單減少量。*
 
-輸出控制 (#1, #2) 立即生效並產生複利效果 — 設定一次，每次呼叫都能節省。結構性輸入控制 (#3, #6) 在每次互動中產生複利效果。模型路由 (#4, #5) 在計費層級降低成本。針對特定模型的提示調校 (#8) 透過提高首次產出的品質來減少浪費。MCP 稽核 (#9) 在每個 Agent 任務中消除數千個隱藏的 Token。Markdown 轉換 (#10) 在模型看到檔案之前去除 DOCX/PDF/HTML 的版面配置雜訊。
+輸出控制（#1、#2）立竿見影且效果顯著－只需設定一次，即可在每次呼叫中生效。結構化輸入控制（#3、#6）在每次交互作用中都能產生累積效應。模型路由（#4、#5）降低了計費層的成本。模型特定的提示調整（#8）透過提高首次處理品質來減少浪費。 MCP 審計（#9）消除了每個代理任務中數千個隱藏的標記；RTK/snip 式輸出過濾器解決了冗長 shell 結果帶來的額外成本。 Markdown 轉換（#10）在模型接觸到 DOCX/PDF/HTML 佈局之前就將其移除。基於圖表的導航（#14）預先載入一次程式碼庫方向，然後在代理會話中重複使用。
+
+![先制定計劃，再降低執行成本：使用強大的計劃模型，保存計劃，然後在成本更低的新管道執行，並驗證驗收標準。](docs/assets/diagrams/plan-execute-cheaply.svg)
 
 ---
 
@@ -78,7 +83,7 @@
 
 #### [2.7 MCP 與工具成本 (MCP & Tool Costs)](docs/08-mcp-tool-costs.md)
 
-隱藏的 Token 稅：每個 MCP 工具在每個 Agent 步驟中成本為 100-500 Token。15 台伺服器 × 15 個步驟 = 26.5 萬 Token 的開銷。包含稽核指南。
+隱藏的 Token 稅：每個 MCP 工具在每個 Agent 步驟中成本為 100-500 Token。15 台伺服器 × 15 個步驟 = 26.5 萬 Token 的開銷。這涵蓋了 MCP 審計、Copilot 框架基線、RTK、snip、最小上下文工具以及相關的輸出/上下文壓縮工具。
 
 ---
 
@@ -114,6 +119,14 @@
 
 ---
 
+### 第 4.4 部分：每個 Token 的結果
+
+專門介紹從最小化 Token 到每個 Token 的價值的轉變：先制定計劃再執行、提示技能進階、模型路由、基準注意事項，以及在使用量計費下的日常模型選擇。
+
+→ **[閱讀第 4.4 部分](docs/13-outcome-per-token.md)**
+
+---
+
 需要術語表、快速術語、工具或核心外部連結嗎？請前往 [指南首頁](docs/index.md)。
 
 ---
@@ -128,8 +141,9 @@
 4. **稽核 MCP 伺服器與注入的工具** — 停用未使用的伺服器/擴充功能，或使用純淨的程式碼設定檔/自訂 Agent，以在每個 Agent 任務中節省 5K-190K Token
 5. **自動模型選擇** — 預設導向較低成本的模型，並在合格用量上提供付費方案折扣，無需額外努力。
 6. **先將豐富檔案轉換為 Markdown** — 避免在聊天、Agent 和 RAG 工作流程中為 Word/PDF/HTML 的版面配置雜訊付費。
-7. **根據目標模型重新調整提示詞** — 更好的首次產出可減少重複的釐清過程。
-8. **精確的提示詞** — 佔使用者提示詞輸入 Token 的 20-40%；對於品質的影響大於對原始節省的影響。
+7. **建立持久程式碼庫圖譜** — 在大型儲存庫中使用 Graphify，讓代理程式查詢 `graph.json`，而非每次工作階段都重新讀取結構檔案
+8. **根據目標模型調整提示詞** — 提升首次輸出品質，減少重複澄清輪次
+9. **精確提示詞** — 佔使用者提示詞輸入 Token 的 20-40%；對品質的影響大於原始 Token 節省
 
 ---
 

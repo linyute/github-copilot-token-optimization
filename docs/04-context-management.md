@@ -101,6 +101,8 @@ Copilot 會自動包含來自你工作區的上下文 —— 開啟的文件、�
 
 當來源是 Word 文件、PDF、PowerPoint、電子表格、圖像、音頻文件或導出的 HTML 時，如果可以避免，請不要將豐富格式直接粘貼到 AI 工作流中。先將其轉換為乾淨的 Markdown，然後發送 Markdown。
 
+![格式稅管道：豐富的格式會造成佈局混亂，MarkItDown 將它們規範化為乾淨的 Markdown，而豐富的交付格式僅在最後產生。](assets/diagrams/format-tax-pipeline.svg)
+
 Marc Bara 在 [《你的 .docx 浪費了你 33% 的 AI 預算》](https://medium.com/@marc.bara.iniesta/your-docx-is-wasting-33-of-your-ai-budget-86a3d229d042) 中稱之為**格式稅 (format tax)**：Word、PDF 和 HTML 攜帶字體數據、XML、頁面定位元數據、佈局偽影、嵌入對象和標籤湯，模型必須處理這些內容，但很少需要它們。該文章引用了一個具體範例，從 PDF 中提取的 10 頁報告使用了大約 12,400 個 Token，而同樣內容作為乾淨的 Markdown 僅使用了大約 8,350 個 Token —— 在資訊相同的情況下減少了 33%。HTML 導出可能更糟，因為語義內容被包裹在長標籤、類名、ID 和佈局支架中。
 
 規則：將 Markdown 作為 AI 互動的**工作格式**，並將 Word/PDF/PowerPoint 視為交付格式。在 Markdown 中進行草擬、審查、總結、分塊和檢索。僅在客戶、監管機構或內部流程需要該產出物時，才在最後生成 `.docx` 或 `.pdf`。
@@ -129,6 +131,8 @@ pip install 'markitdown[pdf,docx,pptx,xlsx]'
 大多數上下文文件在**每一次**互動中都會被加載。即使該文件無關緊要，你也必須支付這筆稅 —— 你的 React 組件問題不需要你的資料庫遷移指南。
 
 修復方法：首選**條件上下文**而非始終開啟的上下文。
+
+![上下文載入邊界：保持始終開啟的核心功能精簡，將特定路徑的指導移至範圍指令，並按需載入技能。](assets/diagrams/context-loading-boundaries.svg)
 
 ### 在自定義指令中使用 `applyTo:` 路徑
 
@@ -171,6 +175,8 @@ API conventions:
 在長對話中，這通常是最大的單一成本槓桿。當你的大部分輸入都是快取命中的輸入時，有效輸入成本會大幅下降（通常被引用為快取輸入最高可享約 90% 的折扣，具體取決於供應商/模型/介面計費規則）。
 
 你可以利用這一點。兩個實用的模式：
+
+![快取穩定性：穩定的執行緒會重複使用相同的模型、MCP 集和代理設定檔；快取失效的執行緒會在會話期間切換控制，應該改用新的切換。](assets/diagrams/cache-stability.svg)
 
 **1. 頂部放置穩定指令，底部放置變動工作。** 快取上下文僅在對話前綴穩定時才有效。不要在每次提示之間重新洗牌你的 `copilot-instructions.md` 或輪換開啟的文件 —— 保持穩定層穩定，僅讓最近的消息發生變化。
 
@@ -250,6 +256,51 @@ v          v             v
 - 當你注意到質量下降時（模型被舊上下文混淆）
 
 **如何保持連續性：** 在新提示詞中總結關鍵決定。"繼續進行驗證重構 —— 我們選擇了 JWT 而非會話。現在實現刷新 Token。"
+
+## 2.3.7 持久化圖譜（Persistent Graphs）—— 取代每次對話的文件讀取
+
+每次對話讀取整個程式碼庫的模式是一種隱藏的輸入成本：每個新的代理（agent）對話都從頭開始，重新讀取相同的結構文件以理解匯入、呼叫路徑和元件配置。在大型儲存庫中，導向性讀取可能會在代理進行一次有用的編輯之前消耗數千個 Token。
+
+[Graphify](https://github.com/Graphify-Labs/graphify) 提供了與提示詞壓縮不同的成本解決方式。它使用 tree-sitter AST 解析一次儲存庫，寫入持久的 `graphify-out/graph.json`，讓代理可以查詢該圖譜，而不是反覆讀取源文件來了解結構。
+
+![持久化圖譜導航：Graphify 建立一次共享圖譜，隨後代理查詢路徑和說明，而非反覆讀取大量文件。](assets/diagrams/graphify-navigation.svg)
+
+```bash
+uv tool install graphifyy
+
+# 在儲存庫中建立或更新圖譜
+graphify .
+
+# 查詢特定結構，取代廣泛的文件讀取
+graphify query "where is auth middleware?"
+graphify explain "UserService"
+graphify path "Router" "Database"
+```
+
+核心輸出：
+
+```text
+graphify-out/
+├── graph.json       供代理查詢的圖譜
+├── graph.html       互動式視覺探索器
+└── GRAPH_REPORT.md  人類可讀的社群、關鍵節點及建議問題
+```
+
+**最適合使用的時機：**
+
+- 大型程式碼庫，代理通常會透過讀取 5-10 個文件來進行導向
+- 對同一個儲存庫的重複代理對話
+- 跨檔案問題，查詢路徑/答案的成本低於廣泛的文件讀取
+- 開發者或代理之間可以共用同一份圖譜建立的團隊
+
+**適合跳過的時機：** 小型儲存庫，代理只需讀取兩個文件即可完成任務。若沒有重複的導向成本可供分攤，一次性建立圖譜反而會成為額外負擔。
+
+**注意事項：**
+
+- 程式碼提取對於 AST 解析過程是本地且確定性的；針對文件、PDF、影像或多媒體的可選語義/深度提取可能使用配置的 AI 後端。
+- 大型重構後圖譜可能會過時。適度時請重建圖譜或使用 Graphify 的更新/監控/鉤子流程。
+- `GRAPH_REPORT.md` 為生成輸出。將其視為地圖，而非事實來源。
+- Graphify 可與 RTK 或 snip 互補。Graphify 減少重複的程式碼庫導向輸入；Shell 輸出過濾器則壓縮冗長的命令結果。
 
 ---
 

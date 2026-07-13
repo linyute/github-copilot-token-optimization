@@ -25,7 +25,8 @@
 6. 停用您不使用的 MCP 伺服器。
 7. 在進行 AI 工作前，將 DOCX/PDF/Office/media 輸入轉換為 Markdown；可從 [MarkItDown](https://github.com/microsoft/markitdown) 開始。
 8. 審計長時間運作的代理工作階段及反覆的來回溝通。
-9. 安裝 [RTK](https://github.com/rtk-ai/rtk) — 一個 CLI 代理，可在輸出到達代理之前過濾 `git`、測試執行器、`grep` 及其他 100 多種 Shell 命令。只需一次安裝，即可在代理和程式碼代理工作階段中節省 60-90% 的工具呼叫結果 Token。
+9. 安裝一個 shell 輸出過濾器：[RTK](https://github.com/rtk-ai/rtk) 或 [`snip`](https://github.com/edouard-claude/snip)。這些 CLI 代理會在命令輸出到達代理程式之前，過濾 `git`、測試執行器、`grep`、建構工具和其他命令的輸出。每個命令路徑僅使用一層過濾器；預設情況下不要堆疊多個過濾器。
+10. 使用 [Graphify](https://github.com/Graphify-Labs/graphify) 建立持久的程式碼庫圖譜——透過 tree-sitter AST 映射一次程式碼，寫入 `graphify-out/graph.json`，然後讓代理程式查詢圖譜而非每次會話重新讀取專案檔案。安裝方式：`uv tool install graphifyy`。
 
 ## 按主題閱讀
 
@@ -46,6 +47,7 @@
 - [實踐設置](10-practical-setup.md)
 - [模型選擇與定價](11-models-and-pricing.md)
 - [企業治理](12-enterprise-governance.md)
+- [每個 Token 的產出](13-outcome-per-token.md)
 
 ## 快速術語
 
@@ -66,6 +68,9 @@
 - [LLMLingua](https://github.com/microsoft/LLMLingua)
 - [Caveman 專案](https://github.com/JuliusBrussee/caveman)
 - [RTK — Rust Token Killer](https://github.com/rtk-ai/rtk)
+- [snip](https://github.com/edouard-claude/snip) — YAML 擴充的 Shell 輸出過濾器，適用於 Copilot CLI 及其他代理程式
+- [minimal-context-tools](https://github.com/SebastienDegodez/copilot-instructions/tree/main/plugins/minimal-context-tools) — 適用於低上下文 CLI 搜尋與查詢模式的技能包
+- [Graphify](https://github.com/Graphify-Labs/graphify) — 建立程式碼庫的持久知識圖譜；代理程式查詢 `graphify-out/graph.json` 而非重新讀取檔案。支援 GitHub Copilot、VS Code 工作流程及其他助手。PyPI 套件：`graphifyy`
 - [Microsoft MarkItDown](https://github.com/microsoft/markitdown) —— 將 PDF、Office 文件、圖像、音頻、HTML、ZIP 內容、YouTube URL、EPUB 等轉換為 Markdown，供 LLM 工作流使用
 - [Marc Bara: "Your .docx Is Wasting 33% of Your AI Budget"](https://medium.com/@marc.bara.iniesta/your-docx-is-wasting-33-of-your-ai-budget-86a3d229d042)
 - [Dina Berry: "How I Cut Token Usage from 52% to 13%"](https://dfberry.github.io/2026-05-06-tuning-up-copilot-context) —— 來自 Copilot CLI 生產環境設置的真實測量數據 (Microsoft/GitHub 內容貢獻者)

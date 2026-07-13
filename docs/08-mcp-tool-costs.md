@@ -8,6 +8,8 @@
 
 大多數上下文浪費都隱藏在你從未檢查過的事物中。在調整 MCP 伺服器或指令文件之前，請檢查上下文窗口中到底有什麼。
 
+![MCP 與工具堆疊：分別修正可減少架構成本、輪次計數、Shell 輸出、重複的導向讀取以及可見性差距。](assets/diagrams/mcp-tooling-stack.svg)
+
 **Copilot CLI：** 在會話中運行 `/context` 以獲取真實的細分：
 
 ```text
@@ -164,11 +166,14 @@ Buffer:        40.4k (20%)
 6. **對於偶爾使用的功能，使用技能 (skills) 而非 MCP** —— 無論是否使用，MCP 工具架構在每步都會載入。技能僅在預先載入標題和描述；完整內容按需提取。如果一個功能在不到一半的會話中使用，技能的上下文開銷更低。參見 [實踐設置 §4.2](10-practical-setup.md#mcp-vs-技能渴望式載入-vs-延遲式上下文載入) 以獲取完整對比
 7. **可選，僅限 Copilot CLI：針對長工具鏈嘗試 CodeAct** —— 外部插件 [`copilot-codeact-plugin`](https://github.com/jsturtevant/copilot-codeact-plugin) 將許多小型工具跳轉合併為一次沙盒執行。這不會縮小任何伺服器的架構，但可以減少在 CLI 密集型任務中重複播放完整工具目錄的頻率
 8. **針對重複的編碼工作流程使用專注的自定義代理** —— 自定義代理可以攜帶精簡的工具列表和穩定的指令，因此相同的編碼工作流程會以相同的活動介面開始，而不是預設聊天目前顯示的任何內容。在你的 Copilot 介面支援代理/設定檔中的模型選擇時，也在那裡固定預期的模型。
-9. **使用 RTK 在源頭壓縮工具輸出** —— [RTK (Rust Token Killer)](https://github.com/rtk-ai/rtk) 是一個 CLI 代理，它在 Shell 命令的*結果*到達代理之前對其進行過濾。已確認在 macOS/Linux 上的 VS Code Copilot 中配合逐個儲存庫的設置運作良好。將 Windows 視為實驗性質，並在廣泛推廣前進行驗證。減少量是真實存在的，但因命令和專案輸出量而異。參見 §2.7.7
+9. **在源頭使用 RTK 或 snip 壓縮工具輸出** —— [RTK (Rust Token Killer)](https://github.com/rtk-ai/rtk) 和 [`snip`](https://github.com/edouard-claude/snip) 是 CLI 代理，可在 Shell 命令的*結果*到達代理之前對其進行過濾。減少量是真實存在的，但取決於命令、專案輸出量和掛鉤 (hook) 的可靠性。參見 §2.7.7 和 §2.7.8
+10. **在添加更多工具之前使用最小上下文技能 (minimal-context skills)** —— [`minimal-context-tools`](https://github.com/SebastienDegodez/copilot-instructions/tree/main/plugins/minimal-context-tools) 為 `rg`、`fd`、`jq`、`yq`、`ast-grep` 和相關 CLI 封裝了技能。這種模式成本低廉，因為它引導代理在產生任何大型輸出之前執行精確的一次性命令。當 Shell 輸出仍然吵雜時，請將其與 RTK/snip 配合使用。
 
 ## 2.7.7 在源頭壓縮工具輸出：RTK
 
 MCP 架構開銷是*在工作開始前*的成本。分別地，代理運行的每個 Shell 命令都會產生輸出，這些輸出成為下一步的輸入 Token。在大型 PR 上失敗的 `cargo test` 或 `git diff` 可能會返回 10,000–25,000 個原始文本 Token —— 通過的測試行、未更改的 diff 上下文、構建噪音 —— 代理會完整地閱讀這些內容。
+
+Copilot 已經具備了架構層級的節省機制：提示詞快取 (prompt caching)、延遲工具架構載入、WebSocket 傳輸、上下文壓縮以及大型輸出上限。這些功能無法取代輸出過濾器。VS Code 的終端機工具使用硬性的頭/尾風格輸出限制；Copilot CLI 也會警告模型限制輸出，並使用 `head`、`tail`、`grep` 或 `awk` 進行過濾。這是有用的安全網行為，而非語義解析。RTK 和 snip 的作用更早：它們在架構必須截斷輸出之前，將冗長的命令輸出轉換為較小的領域特定摘要。
 
 [**RTK (Rust Token Killer)**](https://github.com/rtk-ai/rtk) 是一個位於 Shell 和代理之間的 CLI 代理。它運行原始命令，捕獲輸出，應用針對特定命令的過濾器（移除噪音、僅保留失敗的測試、去重日誌行、對文件列表進行分組），並返回壓縮後的結果。代理看到的輸出更小，而其行為保持不變。
 
@@ -204,32 +209,100 @@ curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/instal
 
 **Windows 注意事項：** RTK 目前在類 Unix 的 Shell 路徑上表現最強。在 Windows 上，Shell hook 行為和路徑處理可能會變得脆弱，特別是在 PowerShell、Git Bash、WSL 和 VS Code agent 執行之間。請將其視為試驗性質，而非預設建議：請在您的團隊使用的確切存儲庫和 Shell 上進行測試；如果設置導致命令失敗或產生雜訊，請跳過它。
 
-**為 VS Code Copilot 設置 —— 按存儲庫：**
+**為 Copilot 設置：**
 
-對於 VS Code Copilot，RTK 會安裝一個範圍限定於當前存儲庫的 PreToolUse 鉤子。在每個你想要啟用 RTK 的存儲庫中運行一次此命令：
+RTK 會安裝 PreToolUse hook 與提示說明。專案範圍的設定會寫入 `.github/`；較新的 RTK 版本也記錄了全域 Copilot 安裝路徑 `~/.copilot/` / `$COPILOT_HOME`。由於 hook 合約的變更速度快於靜態文件， rollout 前請先在你的 Copilot 環境中驗證。
 
 ```bash
 cd your-repo
 rtk init --copilot
-# 重啟 VS Code
+
+# 若你的 RTK 版本支援，可選的全域 Copilot 設定：
+rtk init -g --copilot
 ```
 
-這是按存儲庫設置的 —— 沒有單個全局安裝可以涵蓋所有 VS Code 工作區。一旦在存儲庫中啟用，該鉤子是透明的：你的終端機命令保持不變；只有代理的 Bash 工具調用會被攔截。
+啟用後，hook 是透明的：你的終端機命令不受影響；僅攔截 agent 的 Bash tool calls。如果你的環境無法可靠支援全域 Copilot hook 路徑，請保留每專案設定，並為每個團隊工作區記錄該設定。
 
-**其他 AI 工具（提供全局安裝）：**
+**其他 AI 工具（支援全域安裝）：**
 
 ```bash
-rtk init -g                   # Claude Code (全局)
-rtk init -g --gemini          # Gemini CLI (全局)
-rtk init -g --agent cursor    # Cursor (專案級)
-rtk init --agent cline        # Cline / Roo Code (專案級)
+rtk init -g                   # Claude Code（全域）
+rtk init -g --gemini          # Gemini CLI（全域）
+rtk init -g --agent cursor    # Cursor（專案層級）
+rtk init --agent cline        # Cline / Roo Code（專案層級）
 ```
 
-**範圍：** 該鉤子攔截代理髮出的 **Bash 工具調用**。VS Code Copilot 的內置工具（`Read`、`Grep`、`Glob`）不通過 Bash，因此不受影響。當你特別想要 RTK 過濾時，請使用對等的 Shell 命令（`cat`、`rg`、`find`）。
+**作用範圍：** hook 攔截的是 agent 發出的 **Bash tool calls**。VS Code Copilot 的內建工具（`Read`、`Grep`、`Glob`）不經過 Bash，因此不受影響。若你特別需要 RTK 過濾，請使用 shell 等效命令（`cat`、`rg`、`find`）。
 
-**與 MCP 減少配合使用：** 架構審計 (§2.7.4–2.7.6) 減少了每步重新載入的定義成本。RTK 減少了每個工具調用*返回*的內容。兩者解決了 Token 預算的不同部分，並協同工作。
+**與 MCP 縮減搭配使用：** Schema 審計（§2.7.4–2.7.6）削減每次步驟重新載入的定義成本。RTK 則削減每次 tool call *回傳的內容*。兩者針對 token 預算的不同部分，協同運作。
 
-## 2.7.8 案例研究：縮減大型插件的範圍 —— Azure MCP
+## 2.7.8 RTK 替代方案：snip
+
+[`snip`](https://github.com/edouard-claude/snip) 解決了與 RTK 相同類型的问题：Shell 命令仍然正常運行，但代理接收的是過濾後的結果，而不是原始且雜訊較多的輸出。主要差異在於可擴展性。RTK 提供編譯好的 Rust 指令檔註冊表；snip 使用宣告式的 YAML 過濾器，使用者和團隊可以在不修改 Go 程式碼的情況下進行添加。
+
+**當 snip 最具吸引力時：**
+
+- 你希望為專案特定的工具設定自定義過濾器
+- 你想透過 `snip gain` 查看本地的節省統計數據
+- 你偏好使用 YAML 過濾器貢獻而非編譯好的指令規則
+- 你需要 Copilot CLI 的 hook 支援，並且能夠驗證環境中的 hook 路徑
+
+**安裝：**
+
+```bash
+brew install edouard-claude/tap/snip
+# 或
+go install github.com/edouard-claude/snip/cmd/snip@latest
+```
+
+**Copilot 設定：**
+
+```bash
+snip init --agent copilot
+```
+
+撰寫本文時，snip 的 Copilot 路徑會為 Copilot CLI 寫入一個 `preToolUse` hook。VS Code Copilot 的代理 hook 仍在快速變動中，因此除非你的團隊已驗證確切的版本和工作區設定，否則請將 VS Code 設定視為測試性質。
+
+**過濾器模型：**
+
+```yaml
+name: "git-log"
+match:
+  command: "git"
+  subcommand: "log"
+pipeline:
+  - action: "head"
+    n: 20
+```
+
+Snip 支援多種管線操作，包括保留或移除符合條件的行、頭/尾截斷、ANSI 字元去除、JSON 提取、正則表達式提取、分組、去重、聚合以及模板。專案層級的過濾器需要信任批准，這是團隊的正確預設值：輸出過濾器會影響模型所見的內容，因此應像工具配置一樣進行審查。
+
+**RTK 與 snip 比較：**
+
+| 選擇 | 適用情境 |
+|------|----------|
+| RTK | 你希望使用單一 Rust 二進制檔案、廣泛的代理支援以及編譯好的預設值 |
+| snip | 你希望使用 YAML 過濾器、本地統計數據以及更簡單的專案/團隊客製化 |
+
+預設情況下，不要在同一個指令路徑上同時疊加 RTK 和 snip。針對每個代理介面選擇一種輸出過濾器層級，然後進行測量。疊加使用可能會導致輸出被雙重截斷，並增加除錯難度。
+
+## 2.7.9 周邊生態系：其他應納入心智模型的項目
+
+並非所有的 Token 工具都是 RTK/snip 的直接替代品。請將這些類別分開看待：
+
+| 工具 | 類別 | 用途 | 注意事項 |
+|------|------|------|----------|
+| [`snip-ai/snip`](https://github.com/snip-ai/snip) | 專注於 Claude Code 的輸出過濾器 | 使用 AST 感知代碼處理來優化 Read/Bash/Grep/Glob | 與 `edouard-claude/snip` 是不同的專案；尚未驗證 Copilot 路徑 |
+| [Redcon / ContextBudget](https://github.com/natiixnt/ContextBudget) | 上下文打包 + 指令壓縮 | 希望擁有指令壓縮器加上 CI 品質檢查的團隊工作流程 | 部署前應審查授權與產品邊界 |
+| [Headroom](https://github.com/headroomlabs-ai/headroom) | 全棧壓縮包裝 | 更廣泛的文件、指令、記憶體和 MCP 壓縮實驗 | 在記錄為標準設定前，請驗證 `headroom wrap copilot` |
+| [Tokalator](https://github.com/vfaraji89/tokalator) | VS Code Token 可見性 | 預算儀表板、模型/上下文視窗感知、指令文件掃描 | 僅供監控；不具備壓縮功能 |
+| [token-optimizer](https://github.com/alexgreensh/token-optimizer) | 上下文審計/狀態工具 | 審計過時的記憶體、配置、壓縮損失和模型路由 | 採用 PolyForm Noncommercial 授權 |
+| [Caveman](https://github.com/JuliusBrussee/caveman) | 模型輸出壓縮 | 更短的助手回應和簡潔風格包 | 不會減少 Shell 指令輸入；提示詞開銷值得注意 |
+| [ACON](https://github.com/microsoft/acon) | 研究框架 | 長週期上下文壓縮的學術基礎 | 非即插即用的開發者工具 |
+
+實用的堆疊策略是：保持 Copilot 的基礎架構穩定，減少始終載入的 MCP/Schema 開銷，引導代理使用精確的指令，然後在指令輸出仍然龐大時使用一種語義輸出過濾器。
+
+## 2.7.10 案例研究：縮減大型插件的範圍 —— Azure MCP
 
 單個插件可能會主導你的 `System/Tools` 預算。Dina Berry（Microsoft/GitHub 內容貢獻者）使用 `/context` 審計了她的 Copilot CLI 設置，發現 Azure MCP 插件預設會載入 **約 27K 個 Token/消息** —— 超過她所有其他 MCP 伺服器的總和。
 

@@ -61,6 +61,8 @@ L42: 🔴 bug: user can be null here. Add null guard before .email access.
 
 **詢問模式 (Ask Mode)** 只有單次調用。一個問題，一個答案。
 
+![Copilot 模式決策樹：使用 Ask 提出問題，使用 Edit 進行單一檔案更改，使用 Agent 進行清晰的多檔案工作，並在執行前澄清模糊的工作。](assets/diagrams/mode-decision-tree.svg)
+
 | 任務 | 正確模式 | 為什麼 |
 |------|-----------|-----|
 | "這個函數是做什麼的？" | Ask | 單次回答。無需使用工具 |
@@ -95,11 +97,11 @@ L42: 🔴 bug: user can be null here. Add null guard before .email access.
 
 保持此主張有界：本指南**並未**對 CodeAct 本身進行基準測試。該插件的 README 報告稱在其自己的基準提示（包括加載 MCP 的情況）中 Token 使用量較低，但那是插件報告的任務數據，而非普遍的節省基準。
 
-### 互補方案：使用 RTK 進行工具輸出壓縮
+### 補充：使用 RTK 或 snip 壓縮工具輸出
 
-CodeAct 減少了工具調用的「次數」。[**RTK (Rust Token Killer)**](https://github.com/rtk-ai/rtk) 則減少了每次工具調用結果的「大小」。它們解決了同一個問題的不同面向，並且可以結合使用。
+CodeAct 減少的是工具呼叫的*次數*。[**RTK（Rust Token Killer）**](https://github.com/rtk-ai/rtk) 和 [`snip`](https://github.com/edouard-claude/snip) 則減少每個 Shell 工具結果的*大小*。它們解決同一問題的不同面向，可以搭配使用。
 
-RTK 是一個 CLI 代理，它會攔截 `git`、`cargo test`、`grep`、`ls` 以及其他 100 多種開發指令，並在輸出到達代理之前進行壓縮——每次指令可節省 60–90% 的 Token。與 CodeAct 不同，RTK 不限於 Copilot CLI；只要 shell hook 可靠，它可以在各種 Copilot 介面中提供幫助。請將 Windows 設定視為試點，而非預設部署。有關設定和完整指令列表，請參閱 [MCP 與工具成本 §2.7.7](08-mcp-tool-costs.md#277-compress-tool-output-at-the-source-rtk)。
+這些工具會攔截 `git`、測試執行器、`grep`、`ls` 和其他開發命令，在輸出傳送至代理之前進行壓縮——對於冗長的命令輸出，通常可節省 60–90% 的 Token。與 CodeAct 不同，這不僅限於 Copilot CLI；只要 Shell Hook 運作穩定，任何地方都能受益。Windows 和預覽版 Hook 路徑應視為試點，而非預設部署。設定請參閱 [MCP 與工具成本 §2.7.7](08-mcp-tool-costs.md#277-compress-tool-output-at-the-source-rtk) 和 [§2.7.8](08-mcp-tool-costs.md#278-rtk-alternative-snip)。
 
 ## 2.5.4 預設使用自動模型選擇 (Auto Model Selection)
 
@@ -291,6 +293,8 @@ code --install-extension ai-engineer-coach-*.vsix
 
 **兩階段模式：**
 
+![先規劃，後低成本執行：使用強大的模型進行規劃，保存計劃，然後在較便宜的新環境中執行並驗證驗收標準。](assets/diagrams/plan-execute-cheaply.svg)
+
 1. **先在規劃模式（或 Ask 模式）中進行規劃。** 在編寫任何代碼*之前*，使用 Copilot CLI 的規劃模式（或 VS Code 的 Ask 模式）思考方法 —— 要改動的文件、更改順序、邊緣情況、驗收標準。規劃是廉價的：它主要是推理，沒有大型 Diff，沒有重複的工具循環。這正是強大模型發揮價值的地方，因為一個好的計劃可以防止下游昂貴的重做。
 2. **保存計劃，然後執行。** 將商定的計劃寫入文件（例如 `plan.md`）或追蹤的 Issue 中，然後啟動一個**全新的對話**，並根據該保存的計劃提示執行。乾淨的對話可以保持可快取的字首穩定（參見 [快取 §2.3.5](04-context-management.md#235-caching-store-and-reuse-context-within-prompts)），並避免在每次執行輪次中將整個規劃對話作為輸入 Token 拖入。
 
@@ -301,6 +305,39 @@ code --install-extension ai-engineer-coach-*.vsix
 - **乾淨的執行上下文。** 從保存的計劃開始執行，而不是從一個漫長的「先規劃後構建」的超長對話開始，可以保持歷史記錄簡短且對快取友好 —— 每輪的輸入成本保持在低位。
 
 **經驗法則：** 用強大的模型進行規劃，用便宜的模型進行執行，並在兩者之間將計劃保存在磁碟上。這樣可以用更少的總 Token 達成結果，*而且*通常質量更高，因為計劃在編寫任何代碼之前就已經過審查。
+
+如需更完整的「每 Token 產出」框架、技能分類、基準測試注意事項，以及目前的模型路由矩陣，請參閱 [Outcome per Token](13-outcome-per-token.md)。
+
+## 2.5.10 在 Copilot 基礎之上疊加工具層
+
+Copilot CLI 和 VS Code Copilot 已經優化了代理迴圈（agent loop）的部分環節。在加入外部工具之前，應先將此視為基準：
+
+![MCP 與工具堆疊：縮小 MCP 範圍，使用 CodeAct 處理長工具鏈，用 RTK 或 snip 過濾命令輸出，並用 Graphify 進行重複的導覽。](assets/diagrams/mcp-tooling-stack.svg)
+
+- **提示詞/快取層（Prompt/cache layer）：** 保持 `{model, active MCP set, active agent/profile}` 穩定，以便快取的字首能重複使用。
+- **工具架構層（Tool-schema layer）：** 優先使用內建工具和範圍受限的 MCP；Copilot 可以延遲或路由部分工具定義，但額外的伺服器與擴充功能仍會增加複雜度。
+- **傳輸/工作階段層（Transport/session layer）：** WebSocket 重用與自動壓縮有助於長時間運行的代理，但壓縮會摘要代理已經看過的內容。
+- **終端機輸出層（Terminal-output layer）：** 內建的截斷只是安全網，並非語意過濾器。
+
+僅為它們實際改善的層級加入第三方工具：
+
+| 層級 | 工具 | 減少什麼 |
+|-------|---------|-----------------|
+| 工作階段回合數 | CodeAct | 減少 Copilot CLI 中許多小工具呼叫的重複重播 |
+| 命令輸出 | RTK 或 snip | 冗長的 `git`、test、grep、build 和基礎設施命令輸出 |
+| 命令選擇 | minimal-context-tools | 廣泛的文件讀取與迭代搜尋，引導至 `rg`、`fd`、`jq`、`ast-grep` |
+| 程式碼庫導覽 | Graphify | 跨工作階段重複進行結構性文件讀取 |
+| 可見度/審計 | Tokalator, token-optimizer | 否則會遺漏的浪費；本身並非壓縮工具 |
+
+**規則：** 每個層級只用一種工具。將 CodeAct 與 RTK 或 snip 結合是合理的，因為前者減少回合數，後者減少輸出大小。在同一個命令路徑上同時運行 RTK 和 snip 通常沒有幫助——它可能會導致輸出被雙重截斷，使錯誤更難檢查。
+
+調整工作階段時，請依照以下順序：
+
+1. 一次選定 Copilot 通道：模型、模式、啟用的 MCP/工具集，以及 agent/profile。
+2. 停用未使用的 MCP 伺服器與擴充功能提供的工具。
+3. 使用技能或專注的 agent 指示詞，使工具呼叫更精確。
+4. 如果命令輸出仍然很大，則加入一個 shell 輸出過濾器。
+5. 切換通道時啟動全新工作階段，而不是修改冗長的對話線程。
 
 ---
 
