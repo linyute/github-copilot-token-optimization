@@ -56,8 +56,8 @@ BPE 分詞器主要是在英文數據上訓練的。英文文本獲得最佳壓�
 | 模式 | 文本 | ~Token |
 |------|------|---------|
 | 英文 (全原始人式) | "Pool reuse open DB conn. Skip handshake → fast." | ~12 |
-| 文言文 (全) | "池reuse conn。skip handshake → fast。" | ~15 |
-| 文言文 (極限) | "池reuse conn。skip→fast。" | ~12 |
+| 文言文 (全) | "池 reuse conn。skip handshake → fast。" | ~15 |
+| 文言文 (極限) | "池 reuse conn。skip→fast。" | ~12 |
 
 在最好的情況下，極限文言文模式與精簡英文持平。在最壞的情況下，它的成本更高。而且模型對英文的理解更好，因為其訓練數據以英文為主。
 
