@@ -4,8 +4,8 @@
 
 [從第 1 部分開始](01-why-tokens-matter.md){ .md-button .md-button--primary }
 [跳至實作設定](10-practical-setup.md){ .md-button }
-<a class="md-button" href="https://olivomarco.github.io/github-copilot-token-optimization/slides/briefing.html">精簡實務人員簡報</a>
-<a class="md-button" href="https://olivomarco.github.io/github-copilot-token-optimization/slides/index.html">完整 8 小時工作坊</a>
+<a class="md-button" href="https://linyute.github.io/github-copilot-token-optimization/slides/briefing.html">精簡實務人員簡報</a>
+<a class="md-button" href="https://linyute.github.io/github-copilot-token-optimization/slides/index.html">完整 8 小時工作坊</a>
 
 ## 本文涵蓋內容
 
@@ -49,7 +49,7 @@
 ### 比較
 
 - [比較與資料](09-comparisons-data.md)
-- [每個 Token 的成果](13-outcome-per-token.md)
+- [每個 Token 成果](13-outcome-per-token.md)
 
 ### 實作
 
