@@ -327,7 +327,7 @@ Copilot CLI 和 VS Code Copilot 已經優化了代理迴圈（agent loop）的�
 | 命令輸出 | RTK 或 snip | 冗長的 `git`、test、grep、build 和基礎設施命令輸出 |
 | 命令選擇 | minimal-context-tools | 廣泛的文件讀取與迭代搜尋，引導至 `rg`、`fd`、`jq`、`ast-grep` |
 | 程式碼庫導覽 | Graphify | 跨工作階段重複進行結構性文件讀取 |
-| 可見度/審計 | Tokalator, token-optimizer | 否則會遺漏的浪費；本身並非壓縮工具 |
+| 可見性/稽核 | [Tokentop](https://github.com/tokentopapp/tokentop), Tokalator, token-optimizer | Tokentop 提供即時本機會話、模型、Token、成本與燃燒速率的可見性；監控本身不會進行壓縮 |
 
 **規則：** 每個層級只用一種工具。將 CodeAct 與 RTK 或 snip 結合是合理的，因為前者減少回合數，後者減少輸出大小。在同一個命令路徑上同時運行 RTK 和 snip 通常沒有幫助——它可能會導致輸出被雙重截斷，使錯誤更難檢查。
 

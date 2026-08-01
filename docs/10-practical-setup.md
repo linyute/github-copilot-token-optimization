@@ -79,22 +79,22 @@ GitHub Copilot pricing depends on model choice and billing mode. Pick the model 
 |------------|:------------------:|---------|
 | 輕量級 (GPT-4.1 mini, Haiku) | 最低 | 自動完成、簡單語法、查詢式問題 |
 | 標準級 (GPT-4.1, Sonnet) | 中等 | 大多數程式設計工作 — 實作、重構、修正 |
-| 高努力度級 (Claude Opus, o 系列推理) | 最高 | 架構、深度推理、新穎問題分解 |
+| 高強度級 (Claude Opus, o 系列推理) | 最高 | 架構、深度推理、新穎問題分解 |
 | **Auto** | 預設為 low | 預設：Copilot 從支援的 Auto 池中選擇，並在符合條件時套用付費方案折扣 |
 
-**預設為 Auto。** Auto 是最佳的通用基準，因為它能減少挑選疲勞，並且在符合條件的付費方案使用中，會套用 GitHub 所說明的折扣。將 Auto 視為預設通道，而不是自動升級到所有高努力度模型。如果您需要優質的高努力度模型，請手動釘選。參閱 [模型選擇與定價](11-models-and-pricing.md)。
+**預設為 Auto。** Auto 是最佳的通用基準，因為它能減少挑選疲勞，並且在符合條件的付費方案使用中，會套用 GitHub 所說明的折扣。將 Auto 視為預設通道，而不是自動升級到所有高強度模型。如果您需要優質的高強度模型，請手動釘選。參閱 [模型選擇與定價](11-models-and-pricing.md)。
 
-**絕不要在「X 的語法是什麼」這類問題上浪費高努力度模型** — 您為最便宜模型就能正確回答的問題支付了更高的 Token 費率。
+**絕不要在「X 的語法是什麼」這類問題上浪費高強度模型** — 您為最便宜模型就能正確回答的問題支付了更高的 Token 費率。
 
 ### 長對話工作階段的快取保護規則
 
 為長對話執行緒選擇通道後，請保持其穩定：
 
 ```text
-{ model, active MCP set, active agent/profile }
+{ 模型, 推理強度, 載入的技能, 啟用的 MCP/工具集, 代理人/個人檔案 }
 ```
 
-除非必要，否則請勿在昂貴的對話途中變更這些控制項。對話途中切換通常會使快取的字首失效，並移除您已建立的快取輸入折扣。
+不要在昂貴的對話中途更改這些控制，除非必要。模型、推理強度、技能或工具的變更可能會使快取的前綴失效，導致其上下文再次以標準輸入費率計費。
 
 如果必須切換，請改做以下步驟：
 
@@ -138,17 +138,17 @@ Copilot 的 **Auto** 模式會根據即時系統健全狀況與模型效能，�
 
 **預設為 Auto。僅在需要時覆寫。** 對於團隊來說，這是一個高槓桿的預設設定，因為它能將日常預設保持在較低成本的通道。除非您有特定原因要釘選模型，否則請使用 Auto — 例如，您*知道*工作很瑣碎（強制作為最便宜的層級），或者您*知道*它需要深度推理（手動釘選到優質模型）。如需確切權衡，請參閱 [模型選擇與定價](11-models-and-pricing.md)。
 
-#### 反模式：所有事都用高努力度模型
+#### 反模式：所有事都用高強度模型
 
-一個昂貴的習慣：在每次互動中都預設使用 Opus 或其他高努力度模型。人們這樣做是因為「更好的模型 = 更好的結果」。對於大多數日常程式設計工作，額外的模型成本很難證明其合理性。
+一個昂貴的習慣：在每次互動中都預設使用 Opus 或其他高強度模型。人們這樣做是因為「更好的模型 = 更好的結果」。對於大多數日常程式設計工作，額外的模型成本很難證明其合理性。
 
-保留高努力度模型以發揮其真正的優勢：新穎的推理、架構判斷，以及 1-2% 的品質差異足以證明 3-5 倍成本增加合理的工作。
+保留高強度模型以發揮其真正的優勢：新穎的推理、架構判斷，以及 1-2% 的品質差異足以證明 3-5 倍成本增加合理的工作。
 
-#### 推理努力度：另一個槓桿
+#### 推理強度：另一個槓桿
 
-除了模型選擇之外，在具備推理模型的系列上還存在第二個成本調整盤：**思考努力度**（或稱**推理努力度**）。這控制了模型在回應前花費多少 token 進行思考 — 同時影響文字、工具呼叫與延伸思考。
+除了模型選擇之外，在具備推理模型的系列上還存在第二個成本調整盤：**思考強度**（或稱**推理強度**）。這控制了模型在回應前花費多少 token 進行思考 — 同時影響文字、工具呼叫與延伸思考。
 
-| 努力度層級 | 行為 | Anthropic 建議用途 |
+| 強度層級 | 行為 | Anthropic 建議用途 |
 |:------------:|----------|----------------------------|
 | `max` | 對 token 支出不加限制 | 最深度的推理、徹底的分析 |
 | `high`（預設） | 總是深入思考 | 複雜推理、困難的程式設計、代理工作 |
@@ -159,17 +159,17 @@ Copilot 的 **Auto** 模式會根據即時系統健全狀況與模型效能，�
 
 Anthropic 文件的關鍵事實：
 
-- **努力度影響一切**，而不僅僅是思考 token。較低的努力度 = 較短的文字回應、較少的工具呼叫、採取行動前較少的序言。這是一個比 `budget_tokens` 更廣泛的槓桿。
+- **強度影響一切**，而不僅僅是思考 token。較低的強度 = 較短的文字回應、較少的工具呼叫、採取行動前較少的序言。這是一個比 `budget_tokens` 更廣泛的槓桿。
 - **Anthropic 建議 `medium` 作為 Sonnet 4.6 的預設值**，而非 `high`。他們的官方文件明確指出，medium 是「大多數應用程式（包括代理程式設計）的速度、成本與效能的最佳平衡」。
-- **在許多支援推理的模型系列中公開於 Copilot。** 在 VS Code 中，思考努力度會出現在支援的推理模型（如 Claude Sonnet/Opus 推理變體與 GPT 推理模型）。非推理模型（如 GPT-4.1 與 GPT-4o）則不會顯示該控制項。在 Copilot CLI 中，某些模型也支援在設定中調整 `reasoning_effort`。
-- **無需啟用延伸思考即可運作。** 您不需要開啟單獨的可見思考模式即可受益 — 努力度會控制整體的 token 支出。
-- **無已發表的基準測試。** Anthropic 提供了定性指南（上表），但尚未發表關於品質與努力度權衡的具體數據。這是供應商建議，而非獨立基準測試。
+- **在許多支援推理的模型系列中公開於 Copilot。** 在 VS Code 中，思考強度會出現在支援的推理模型（如 Claude Sonnet/Opus 推理變體與 GPT 推理模型）。非推理模型（如 GPT-4.1 與 GPT-4o）則不會顯示該控制項。在 Copilot CLI 中，某些模型也支援在設定中調整 `reasoning_effort`。
+- **無需啟用延伸思考即可運作。** 您不需要開啟單獨的可見思考模式即可受益 — 強度會控制整體的 token 支出。
+- **無已發表的基準測試。** Anthropic 提供了定性指南（上表），但尚未發表關於品質與強度權衡的具體數據。這是供應商建議，而非獨立基準測試。
 
-**Copilot 確實在許多具備推理能力的模型上公開了此功能。** 在 VS Code 中，於模型挑選器中選擇一個推理模型，開啟其思考努力度子選單，然後選擇層級。這適用於以推理為導向的模型系列，包括 Claude Sonnet/Opus 推理模型以及支援的 GPT 推理模型；非推理模型（如 GPT-4.1 與 GPT-4o）則不顯示此子選單。在 Copilot CLI 中，某些模型也允許在設定中設定 `reasoning_effort`，GitHub 的文件以 `gpt-5.3-codex` 作為範例。同樣的槓桿也可以直接在 Claude API 及相關工具中使用。在同等程式設計工作下，`medium` 努力度的 Sonnet 與 `high` 努力度的 Opus 相比，仍可能代表 3-5 倍以上的總成本差異。
+**Copilot 確實在許多具備推理能力的模型上公開了此功能。** 在 VS Code 中，於模型挑選器中選擇一個推理模型，開啟其思考強度子選單，然後選擇層級。這適用於以推理為導向的模型系列，包括 Claude Sonnet/Opus 推理模型以及支援的 GPT 推理模型；非推理模型（如 GPT-4.1 與 GPT-4o）則不顯示此子選單。在 Copilot CLI 中，某些模型也允許在設定中設定 `reasoning_effort`，GitHub 的文件以 `gpt-5.3-codex` 作為範例。同樣的槓桿也可以直接在 Claude API 及相關工具中使用。在同等程式設計工作下，`medium` 強度的 Sonnet 與 `high` 強度的 Opus 相比，仍可能代表 3-5 倍以上的總成本差異。
 
 ### 步驟 6：為您實際使用的模型重新調整指令
 
-當您變更模型時，請勿assume舊的提示詞疊代仍是最佳的。供應商提示詞指南是版本專屬的，且經常解釋行為變更：冗長度、工具積極度、結構偏好、推理努力度以及停止條件。
+當您變更模型時，請勿assume舊的提示詞疊代仍是最佳的。供應商提示詞指南是版本專屬的，且經常解釋行為變更：冗長度、工具積極度、結構偏好、推理強度以及停止條件。
 
 快速工作流程：
 
@@ -347,9 +347,44 @@ RTK 會在當前儲存庫中安裝一個 PreToolUse 勾點。較新的 RTK 建�
 
 與 `copilot-setup-steps.yml` (§4.3.2) 以及精確的 issue 描述 (§4.3.3) 結合使用，以獲得最大的工作階段效率。完整設定、指令清單及其他 AI 工具支援：[MCP 與工具成本 §2.7.7](08-mcp-tool-costs.md#277-compress-tool-output-at-the-source-rtk)。
 
-### 4.3.7 使用 Graphify 建構持久的知識圖譜
+### 4.3.7 使用 snip 壓縮 Shell 指令輸出
 
-RTK 壓縮 shell 指令傳回的內容。[Graphify](https://github.com/Graphify-Labs/graphify) 解決了不同的成本：代理在採取行動前為了理解結構而讀取專案檔案所花費的 token。
+[`snip`](https://github.com/edouard-claude/snip) 是針對 Copilot 導向之 shell 輸出壓縮，RTK 最接近的實用替代方案。它正常執行指令，透過宣告式 YAML 管道過濾輸出，並可以使用 `snip gain` 追蹤本地端節省的費用。
+
+安裝：
+
+```bash
+brew install edouard-claude/tap/snip
+# 或：
+go install github.com/edouard-claude/snip/cmd/snip@latest
+```
+
+設定 Copilot CLI：
+
+```bash
+snip init --agent copilot
+```
+
+當您需要專案專屬或團隊維護的過濾器而不想重新編譯工具時，請使用 snip。過濾器可以比對指令/子指令並套用如 `head`、`tail`、`keep_lines`、`remove_lines`、`json_extract`、`regex_extract`、`group_by`、`dedup` 或 `aggregate` 等動作。
+
+範例過濾器形狀：
+
+```yaml
+name: "my-test-summary"
+match:
+  command: "my-test-runner"
+pipeline:
+  - action: "keep_lines"
+    pattern: "FAIL|ERROR|expected|actual"
+  - action: "head"
+    n: 80
+```
+
+**團隊推廣：** 從一個儲存庫與一個 shell 介面開始。驗證失敗的測試、diff 與建構錯誤是否仍保留足夠的詳細資訊，以便代理修正問題。預設情況下，不要在同一個指令路徑上啟用 RTK 與 snip；選擇一種過濾器層並進行評估。
+
+### 4.3.8 使用 Graphify 建構持久的知識圖譜
+
+RTK 和 snip 壓縮 shell 指令傳回的內容。[Graphify](https://github.com/Graphify-Labs/graphify) 解決了不同的成本：代理在採取行動前為了理解結構而讀取專案檔案所花費的 token。
 
 安裝一次：
 
@@ -385,59 +420,24 @@ graphify explain "QueueWorker"
 
 注意：程式碼解析對於 AST 階段是本地端的。針對文件、PDF、圖片或影片的選用性語意/深度擷取可能會使用已設定的 AI 後端。在專有程式碼庫上啟用額外功能之前，請先審查該邊界。
 
-### 4.3.8 使用 snip 壓縮 Shell 指令輸出
-
-[`snip`](https://github.com/edouard-claude/snip) 是針對 Copilot 導向之 shell 輸出壓縮，RTK 最接近的實用替代方案。它正常執行指令，透過宣告式 YAML 管道過濾輸出，並可以使用 `snip gain` 追蹤本地端節省的費用。
-
-安裝：
-
-```bash
-brew install edouard-claude/tap/snip
-# 或：
-go install github.com/edouard-claude/snip/cmd/snip@latest
-```
-
-設定 Copilot CLI：
-
-```bash
-snip init --agent copilot
-```
-
-當您需要專案專屬或團隊維護的過濾器而不想重新編譯工具時，請使用 snip。過濾器可以比對指令/子指令並套用如 `head`、`tail`、`keep_lines`、`remove_lines`、`json_extract`、`regex_extract`、`group_by`、`dedup` 或 `aggregate` 等動作。
-
-範例過濾器形狀：
-
-```yaml
-name: "my-test-summary"
-match:
-  command: "my-test-runner"
-pipeline:
-  - action: "keep_lines"
-    pattern: "FAIL|ERROR|expected|actual"
-  - action: "head"
-    n: 80
-```
-
-**團隊推廣：** 從一個儲存庫與一個 shell 介面開始。驗證失敗的測試、diff 與建構錯誤是否仍保留足夠的詳細資訊，以便代理修正問題。預設情況下，不要在同一個指令路徑上啟用 RTK 與 snip；選擇一種過濾器層並進行評估。
-
 ### 4.3.9 使用工作階段套件檢查表
 
 此處的「套件」並非單獨的安裝項目。它是代理工作階段周圍的穩定控制組：
 
 ```text
-模型 + 模式 + 代理/設定檔 + 作用中 MCP/工具 + 輸出過濾器 + 儲存庫指令
+模型 + 推理強度 + 模式 + 代理/設定檔 + 已載入技能 + 啟用中的 MCP/工具 + 輸出篩選器 + 儲存庫指示
 ```
 
-在長時間執行代理之前，請先設定一次並保持穩定。在工作階段途中變更它們會使快取的字首失效，並使代理在新的工具集下攜帶過時的上下文資訊。
+在長時間的代理執行之前，設定一次這些參數並保持穩定。在執行中途變更模型、推理強度、已載入技能或其他控制項，可能會使快取前綴失效，並讓代理在新的設定下攜帶過時的上下文。
 
-使用此檢查表：
+使用此檢查清單：
 
-1. 挑選模式：Ask/Edit/Agent/Coding Agent。
-2. 挑選模型通道或 Auto。
-3. 停用未使用的 MCP 伺服器與擴充功能提供的工具。
-4. 如果需要，挑選一個指令輸出過濾器：RTK 或 snip。
-5. 如果重複的程式碼庫定向佔據主導地位，請使用 Graphify。
-6. 如果需要變更通道，請啟動全新工作階段。
+1. 選擇模式：Ask/Edit/Agent/Coding Agent。
+2. 選擇模型路徑或 Auto 以及推理強度。
+3. 停用未使用的 MCP 伺服器、技能與擴充功能提供的工具。
+4. 如有需要，選擇一種命令輸出篩選器：RTK 或 snip。
+5. 若重複的程式碼庫定向佔據主要工作，請使用 Graphify。
+6. 若需要變更模型、強度、技能或控制項，請開始一個全新的工作階段。
 
 ## 4.4 建立習慣
 
@@ -455,7 +455,7 @@ pipeline:
 - 稽核您的編輯器中習慣開啟哪些檔案 — 關閉您沒有在處理的檔案（開啟的頁籤會自動提供上下文資訊）
 - 稽核 VS Code 設定檔與擴充功能 — 除非當前儲存庫需要，否則停用注入 AI skills、代理、MCP 伺服器或工具的擴充功能
 - (商務/企業) 為新的敏感路徑審查儲存庫/組織的**內容排除**設定
-- 檢查您的模型使用情況 — 您是否在 Auto 會路由到較便宜層級的工作上釘選了高努力度模型？
+- 檢查您的模型使用情況 — 您是否在 Auto 會路由到較便宜層級的工作上釘選了高強度模型？
 - In Copilot CLI, watch the bottom-right **AIC** counter. Divide by 100 for the approximate dollar value, then ask whether the output saved more time or cost than it consumed. If spend is high for weak output, treat that as feedback on prompt scope, context size, tool count, or model choice
 - 在進一步擴大優質存取權限之前，先審查預算、使用者層級限制以及模型原則
 - 當預設模型變更時，根據該供應商當前的提示詞指南重新調整提示詞/指令
@@ -594,4 +594,4 @@ CLI 指令是可組合、可檢查、可重新執行且可進行版本控制的�
 
 ---
 
-**下一步：** [企業治理 →](12-enterprise-governance.md)
+**下一步：** [模型選擇與定價 →](11-models-and-pricing.md)

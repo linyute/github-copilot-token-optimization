@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - docs/**
+      - slides/**
       - mkdocs.yml
       - requirements-docs.txt
       - .github/workflows/deploy-pages.yml
@@ -41,7 +42,11 @@ jobs:
         run: python -m pip install --upgrade pip && pip install -r requirements-docs.txt
 
       - name: Build site
-        run: mkdocs build --strict --site-dir site
+        run: |
+          mkdocs build --strict --site-dir site
+          cp -R slides site/slides
+          mkdir -p site/docs
+          cp -R docs/assets site/docs/assets
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
