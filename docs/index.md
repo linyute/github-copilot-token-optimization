@@ -21,7 +21,7 @@
 
 1. 預設限制輸出：`Code only, no explanation.` 以及 `No explanations unless asked.`
 2. 保持 `.github/copilot-instructions.md` 簡短且具體。
-3. 在長時間工作階段中保護快取：保持 `{model, reasoning effort, loaded skills, active MCP/tool set, agent/profile}` 穩定；若必須變更其中一項，請帶著簡短的交接摘要開啟新的聊天。
+3. 在長時間工作階段中保護快取：保持 `{ 模型, 推理強度, 己載入的技能, 啟用的 MCP/工具 集合, 啟用的代理/設定檔 }` 穩定；若必須變更其中一項，請帶著簡短的交接摘要開啟新的聊天。
 4. 對不需要工具的簡單問題使用 Ask 模式。
 5. 根據目標模型的官方指南重新調整提示詞和說明。
 6. 停用未使用的 MCP 伺服器。

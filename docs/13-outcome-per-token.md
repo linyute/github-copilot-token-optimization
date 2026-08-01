@@ -357,7 +357,7 @@ GitHub 的官方教學將工作分為三個模型通道。[^optimize-ai]
 - Agent 支架 (scaffold)
 - 工具存取權限
 - 檢索策略
-- 推理付出 (reasoning effort)
+- 推理強度 (reasoning effort)
 - 快取定價假設
 - 任務語言混合
 - 基準測試版本

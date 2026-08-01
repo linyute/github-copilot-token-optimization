@@ -28,7 +28,7 @@
 | 1 | **要求僅輸出程式碼的回應** — 在 `copilot-instructions.md` 中新增 `Code only, no explanation.`。最高單位 Token ROI：輸出成本比輸入貴 5 倍，且這能永久減少每個程式碼任務 40-70% 的輸出 | 縮減回應長度 | 0 分鐘 |
 | 2 | **預設限制輸出格式** — 在 `copilot-instructions.md` 中新增 `Bullets over paragraphs. No explanations unless asked.` | 保持答案精簡 | 0 分鐘 |
 | 3 | **縮減您的常駐 context** — 壓縮 `copilot-instructions.md` 並且修剪 `AGENTS.md` 至僅包含地雷區。這兩個檔案中的每個 Token 都會在每次互動（以及每個 Agent 步驟）中被計費。刪除無用填料，刪除 Agent 透過閱讀程式碼即可發現的任何內容，刪除 LLM 生成的 `/init` 樣板 | 減少常駐輸入/context | 15 分鐘 |
-| 4 | **預設為 Auto 模型選擇 + 保護快取的穩定性** — 使用 Auto 作為基準，因為它會從支援的 Auto 池中進行選擇，並提供付費方案折扣。在昂貴的長對話串中，保持模型、推理努力度、已載入的技能、MCP/工具集以及 agent/設定檔穩定。變更其中任何一項都可能丟棄快取前綴，因此請攜帶簡短的交接摘要開啟新的聊天。請參閱 [模型選擇與計價](docs/11-models-and-pricing.md) | 降低符合條件用量的計費費率並保留快取輸入折扣 | 0 分鐘 |
+| 4 | **預設為 Auto 模型選擇 + 保護快取的穩定性** — 使用 Auto 作為基準，因為它會從支援的 Auto 池中進行選擇，並提供付費方案折扣。在昂貴的長對話串中，保持模型、推理強度、已載入的技能、MCP/工具集以及 agent/設定檔穩定。變更其中任何一項都可能丟棄快取前綴，因此請攜帶簡短的交接摘要開啟新的聊天。請參閱 [模型選擇與計價](docs/11-models-and-pricing.md) | 降低符合條件用量的計費費率並保留快取輸入折扣 | 0 分鐘 |
 | 5 | **簡單問題使用 Ask 模式** — 將 Agent 模式保留給多步驟任務 | 避免 Agent 開銷 | 0 分鐘（只需選擇正確的模式） |
 | 6 | **使用 `applyTo:` 路徑限定 context 範圍** — 將一個大型說明檔案拆分為多個僅在相關時載入的小型限定範圍檔案 | 減少常駐輸入/context | 15 分鐘 |
 | 7 | **提示詞保持精準** — 使用 "Add null check to `getUser()`" 而非 "Can you please look at this and maybe add some error handling?" 注意：您輸入的提示詞僅佔總輸入的一小部分；精準度對品質的影響大於對原始 Token 的節省 | 提升任務標的精準度 | 0 分鐘 |

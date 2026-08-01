@@ -807,7 +807,7 @@ Code only. No explanation. Minimal diff.</code></pre>
             <div class="card lab">
               <h3>目標</h3>
               <p>預設防止釘選昂貴的模型。</p>
-              <p><strong>步驟：</strong>將工作對應到 Auto、內建/較低成本、標準、進階模型。如果可行，包含推論難易度 (reasoning-effort) 選擇。</p>
+              <p><strong>步驟：</strong>將工作對應到 Auto、內建/較低成本、標準、進階模型。如果可行，包含推理強度 (reasoning-effort) 選擇。</p>
               <p><strong>交付物：</strong>模型升級規則。</p>
             </div>
           </section>
@@ -1164,9 +1164,9 @@ steps:
           </section>
 
           <section>
-            <h2>推論難易度 (Reasoning effort)</h2>
+            <h2>推理強度 (Reasoning effort)</h2>
             <table>
-              <thead><tr><th>難易度</th><th>適用於</th></tr></thead>
+              <thead><tr><th>強度</th><th>適用於</th></tr></thead>
               <tbody>
                 <tr><td>低</td><td>高容量的簡單交談/分類</td></tr>
                 <tr><td>中</td><td>在支援的情況下，典型編碼與大量使用工具的工作</td></tr>
@@ -1386,7 +1386,7 @@ steps:
             <h2>基準測試注意事項</h2>
             <ul>
               <li>基準測試用來選擇候選方案；儲存庫工作用來選擇預設值。</li>
-              <li>測試架構、工具、檢索以及推論難易度會影響評分。</li>
+              <li>測試架構、工具、檢索以及推理強度會影響評分。</li>
               <li>將成果與成本一起比較，而非單看評分。</li>
               <li>標記來源：已驗證、方向性、軼事趣聞。</li>
             </ul>
@@ -1903,7 +1903,7 @@ steps:
         `,
         "Reasoning effort": `
           <p><strong>時間：</strong>5 分鐘。</p>
-          <p>在有顯示的地方，推論難易度是另一個成本度量。使用能滿足工作的最低難易度。困難的工作才需要高難易度。</p>
+          <p>在有顯示的地方，推理強度是另一個成本度量。使用能滿足工作的最低難易度。困難的工作才需要高難易度。</p>
         `,
         "Anti-patterns": `
           <p><strong>時間：</strong>4 分鐘。</p>
