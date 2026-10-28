@@ -1,280 +1,255 @@
-# 2.5 特定工作流優化
+# 2.5 各工作流程專屬的最佳化
 
 [← 返回指南](index.md)
 
 ---
 
-## 2.5.1 提交消息 (Commit Messages)
+## 2.5.1 提交訊息
 
-採用 Conventional Commits 格式。標題 ≤50 個字元。僅在 "為什麼 (why)" 不明顯時才編寫本文。
+使用 Conventional Commits，主旨不超過 50 個字元。當變更的原因不明顯時，請加上內文。
 
-**冗長提交 (~25 個 Token)：**
-
-```text
-feat: Added a new feature to allow users to reset their passwords through
-the settings page, which also sends a confirmation email
-```
-
-**精簡提交 (~10 個 Token)：**
+**冗長的提交（~25 個 token）：**
 
 ```text
-feat: add password reset via settings page
-
-Sends confirmation email on reset.
+feat: 新增一項功能，讓使用者可以透過設定頁面重設密碼，
+同時也會寄送確認電子郵件
 ```
 
-雖然單個提交節省的量看起來很少，但 Coding Agent 會讀取 Git 歷史作為上下文。整個存儲庫歷史中的精簡提交會產生複合效果。
-
-## 2.5.2 PR 審查 (PR Reviews)
-
-與其編寫長達一段的審查評論，不如使用單行格式：
-
-**冗長審查評論 (~40 個 Token)：**
+**精簡的提交（~10 個 token）：**
 
 ```text
-I noticed that on line 42, the user variable could potentially be null at this
-point in the code, which would cause a NullPointerException when you try to
-access the user's email property. You should add a null check before accessing
-this property to handle this edge case properly.
+feat: 透過設定頁面新增密碼重設功能
+
+重設時會寄送確認電子郵件。
 ```
 
-**精簡審查 (~12 個 Token)：**
+Coding Agent 會讀取 git 歷程記錄作為內容脈絡，因此簡潔的提交可以減少後續工作階段的輸入。
+
+## 2.5.2 PR 審查
+
+請使用單行格式，而不是長達一整段的審查留言：
+
+**冗長的審查留言（~40 個 token）：**
 
 ```text
-L42: 🔴 bug: user can be null here. Add null guard before .email access.
+我注意到在第 42 行，user 變數在程式碼的這個位置可能為 null，
+當你嘗試存取使用者的 email 屬性時，會導致 NullPointerException。
+你應該在存取這個屬性之前加入 null 檢查，
+以妥善處理這個邊界情況。
 ```
 
-**節省：~70%。** 相同的資訊，相同的可操作性。僅消耗一小部分 Token。
+**精簡的審查（~12 個 token）：**
 
-嚴重性前綴用 1-2 個 Token 編碼優先級：
+```text
+L42: 🔴 bug：此處 user 可能為 null。存取 .email 之前請加上 null 防護。
+```
 
-- 🔴 Bug / 安全問題 —— 必須修復
-- 🟡 建議 —— 應修復
-- 🔵 瑣碎事項 (Nit) —— 選項優化
-- ❓ 問題 —— 需要澄清
+**節省幅度：~70%。** 較短的留言仍然指出了錯誤、位置與修正方式。
 
-## 2.5.3 詢問模式 (Ask Mode) vs. 代理模式 (Agent Mode)
+嚴重性前綴以 1-2 個 token 編碼優先順序：
 
-這是本指南中槓桿較高的節省機會之一。
+- 🔴 錯誤／安全性問題 — 必須修正
+- 🟡 建議 — 應該修正
+- 🔵 細節挑剔 — 選擇性的改進
+- ❓ 問題 — 需要釐清
 
-**代理模式 (Agent Mode)** 在每個可見操作中可能會觸發 3-10 次內部模型調用。它讀取文件、制定計劃、執行、驗證。每一步都會消耗 Token。
+## 2.5.3 Ask 模式與 Agent 模式
 
-**詢問模式 (Ask Mode)** 只有單次調用。一個問題，一個答案。
+**Agent 模式**每個可見的動作可能觸發 3-10 次內部模型呼叫。它會讀取檔案、規劃、執行、驗證。每個步驟都會消耗 token。
 
-![Copilot 模式決策樹：使用 Ask 提出問題，使用 Edit 進行單一檔案更改，使用 Agent 進行清晰的多檔案工作，並在執行前澄清模糊的工作。](assets/diagrams/mode-decision-tree.svg)
+**Ask 模式**是單次呼叫。一個問題，一個答案。
 
-| 任務 | 正確模式 | 為什麼 |
+![Copilot 模式決策樹：問題使用 Ask，單一檔案的變更使用 Edit，明確的多檔案工作使用 Agent，模糊的工作則在執行前先釐清。](assets/diagrams/mode-decision-tree.svg)
+
+| 任務 | 適合的模式 | 原因 |
 |------|-----------|-----|
-| "這個函數是做什麼的？" | Ask | 單次回答。無需使用工具 |
-| "TypeScript 泛型的語法是什麼？" | Ask | 知識性問題 |
-| "重構此模組以使用依賴注入" | Agent | 跨文件更改，需要讀/寫代碼 |
-| "建立一個帶有測試和文件的 REST API" | Agent | 多步驟建立任務 |
-| "為什麼這個測試失敗了？" | Ask (通常) | 通常只需要你提供的錯誤資訊 + 上下文 |
+| 「這個函式做什麼？」 | Ask | 單次回答。不需要使用工具 |
+| 「TypeScript 泛型的語法是什麼？」 | Ask | 知識性問題 |
+| 「更新這些已知檔案中的驗證」 | Edit（若有提供） | 範圍明確、內容脈絡清楚的變更 |
+| 「重構這個模組以使用相依性注入」 | Agent | 多檔案變更，需要讀取／撰寫程式碼 |
+| 「建立一個附帶測試與文件的 REST API」 | Agent | 多步驟的建立任務 |
+| 「為什麼這個測試會失敗？」 | Ask（通常） | 通常只需要錯誤訊息，加上你提供的內容脈絡 |
 
-**節省：對於簡單問題，通過使用 Ask 而非 Agent，可節省 60-90%。**
+Ask 可以避免不必要的工具迴圈。差異取決於 Agent 實際會載入與執行的內容；每個問題並沒有固定的節省率。
 
 ### 進階 Copilot CLI 策略：CodeAct
 
-對於 **工具密集型 Copilot CLI 會話**，有一個有用的例外。[`copilot-codeact-plugin`](https://github.com/jsturtevant/copilot-codeact-plugin) 是一個可選的外部插件，它改變了執行形狀：代理不再是在多輪對話中「模型 -> 工具 -> 模型 -> 工具」，而是編寫一個 Python 程序，將工作鏈接在一起並在單次沙盒執行中運行。
+對於**大量使用工具的 Copilot CLI 工作階段**，選用的外部 [`copilot-codeact-plugin`](https://github.com/jsturtevant/copilot-codeact-plugin) 可以合併工具操作。代理程式不再於許多輪次中交替進行模型與工具呼叫，而是撰寫一段 Python 程式，並在一次沙箱化的執行中跑完整個序列。
 
-為什麼這可以節省 Token：
+為什麼這樣可以節省 token：
 
-- 更少的對話輪數意味著更少地重複播放系統提示詞、先前消息和內置工具定義。
-- 如果加載了 MCP 伺服器，它們的工具目錄被重複播放的次數也會減少，因此節省效果會複合。
-- 一個合併後的結果通常比敘述每個中間的 `grep` / `view` / `bash` 跳轉更短。
+- 輪次變少，代表系統提示詞、先前訊息與內建工具定義的重播次數也變少。
+- 如果載入了 MCP 伺服器，它們的工具目錄被重播的次數也會減少，因此節省效果可以疊加。
+- 一份整合後的結果，通常比逐一敘述每個中間的 `grep` / `view` / `bash` 步驟還要簡短。
 
 何時使用：
 
-- 否則需要經過多次小型工具調用的 CLI 密集型探索或審計任務
-- 載入了 MCP 且架構重複播放成本已經很高的會話
-- 可重複的分析任務，如 TODO 掃描、函數索引、覆蓋率檢查或交叉引用收集
+- 大量使用 CLI 的探索或稽核任務，否則會在許多小型工具呼叫之間來回
+- 已載入 MCP 的工作階段，其結構描述重播的成本本來就很高
+- 可重複的分析任務，例如 TODO 掃描、函式索引、涵蓋率檢查或交叉參照蒐集
 
 何時不使用：
 
-- 簡單的一步式 Ask 問題
-- 插件不適用的正常 IDE chat/edit 工作流
-- 不希望在工作流中使用外部插件的團隊
+- 簡單的單次 Ask 問題
+- 該外掛程式不適用的一般 IDE 聊天／編輯工作流程
+- 不想在工作流程中引入外部外掛程式的團隊
 
-保持此主張有界：本指南**並未**對 CodeAct 本身進行基準測試。該插件的 README 報告稱在其自己的基準提示（包括加載 MCP 的情況）中 Token 使用量較低，但那是插件報告的任務數據，而非普遍的節省基準。
+外掛程式的 README 回報了它自己的基準測試提示詞上的節省幅度，包括已載入 MCP 的情況。本指南並未獨立對 CodeAct 進行基準測試；這些結果並不能證明每項任務都能節省。
 
-### 補充：使用 RTK 或 snip 壓縮工具輸出
+### 互補方案：使用 RTK 或 snip 壓縮工具輸出
 
-CodeAct 減少的是工具呼叫的*次數*。[**RTK（Rust Token Killer）**](https://github.com/rtk-ai/rtk) 和 [`snip`](https://github.com/edouard-claude/snip) 則減少每個 Shell 工具結果的*大小*。它們解決同一問題的不同面向，可以搭配使用。
+CodeAct 減少的是工具呼叫的*次數*。[**RTK (Rust Token Killer)**](https://github.com/rtk-ai/rtk) 與 [`snip`](https://github.com/edouard-claude/snip) 減少的是每個 shell 工具結果的*大小*。它們處理的是同一個問題的不同面向，可以搭配使用。
 
-這些工具會攔截 `git`、測試執行器、`grep`、`ls` 和其他開發命令，在輸出傳送至代理之前進行壓縮——對於冗長的命令輸出，通常可節省 60–90% 的 Token。與 CodeAct 不同，這不僅限於 Copilot CLI；只要 Shell Hook 運作穩定，任何地方都能受益。Windows 和預覽版 Hook 路徑應視為試點，而非預設部署。設定請參閱 [MCP 與工具成本 §2.7.7](08-mcp-tool-costs.md#277-compress-tool-output-at-the-source-rtk) 和 [§2.7.8](08-mcp-tool-costs.md#278-rtk-alternative-snip)。
+這些工具會在 `git`、測試執行器、`grep`、`ls` 與其他命令的結果抵達代理程式之前，先對它們進行篩選。縮減幅度取決於命令與輸出。與 CodeAct 不同，這並不僅限於 Copilot CLI；只要 shell hook 可靠，就能發揮作用。請將 Windows 與預覽版的 hook 路徑視為試行項目。設定方式請參閱 [MCP 與工具成本 §2.7.7](08-mcp-tool-costs.md#277-compress-tool-output-at-the-source-rtk) 與 [§2.7.8](08-mcp-tool-costs.md#278-rtk-alternative-snip)。
 
-## 2.5.4 預設使用自動模型選擇 (Auto Model Selection)
+## 2.5.4 預設使用自動模型選擇
 
-模型選擇器是 Copilot 中成本最高的控制介面之一。為了「以防萬一」而鎖定高算力模型，會將該模型的每 Token 費率應用於會話中的每一次互動——包括那些瑣碎的互動。
+模型與推理強度的選擇請參閱[模型選擇與定價](11-models-and-pricing.md#good-default-heuristics)。快取穩定性與交接請遵循[內容脈絡管理](04-context-management.md#235-caching-store-and-reuse-context-within-prompts)。
 
-**正確的預設值是 Auto。** 根據 GitHub 的官方文件，Auto 會根據即時系統健康狀況和模型效能，從支援的自動選擇池中進行選擇，並且在付費方案中，其計費費率比手動鎖定相同模型更優惠。請將其視為最佳的預設基準，而不是自動升級到每個高階模型。高成本模型仍需謹慎鎖定。僅在您更了解情況時才進行覆蓋：
+## 2.5.5 針對目標模型重新調校提示詞
 
-- 當您「知道」任務很瑣碎（自動完成風格、語法查詢、單行編輯）時，鎖定到便宜/快速的模型。
-- 當您「知道」任務需要深度推理（架構、安全性審查、新穎的分解）時，鎖定到高算力模型。
-- 否則，**讓 Auto 選擇。** 它會自動捕捉便宜/預設的路徑，而無需您對選擇器進行微觀管理。如果您想要更高成本的高階模型，請明確鎖定它。請參閱 [模型選擇與定價](11-models-and-pricing.md)。
+重新調校提示詞不一定會縮短每個請求。它的目的是改善第一次的結果，並避免後續輪次、重複釐清與重工。
 
-將預設值從「總是 Sonnet」或「總是 Opus」切換為「Auto，必要時覆蓋」的團隊通常會減少支出，因為他們不再預設將每次互動都放入高成本通道。
+模型供應商會發布隨模型版本而變動的提示詞撰寫指南。請將模型升級視為相依套件升級：閱讀移轉／提示詞指南，然後針對該模型目前的行為調整你的提示詞與指示檔案。
 
-### 快取感知模型工作流
-
-模型路由和快取必須協同工作。在長期昂貴的會話中，避免在執行緒中間更改成本/控制介面：
-
-- 除非任務明顯改變，否則不要切換模型
-- 除非任務確實需要不同的工具，否則不要切換 MCP 伺服器
-- 不要在同一個長執行緒中切換代理/設定檔模式
-
-原因：這些控制項位於上下文的高穩定前綴中。更改它們可能會使快取的前綴失效，並強制重新處理大量的輸入區塊。
-
-實踐模式：
-
-1. 在會話開始時選擇通道：`{模型, 代理/設定檔, MCP 集合}`。
-2. 在處理該執行緒時保持通道穩定。
-3. 如果必須更改通道，請以簡潔的交接摘要開始一個新的聊天。
-
-## 2.5.5 針對目標模型重新調整提示詞
-
-這不是提示詞壓縮。它可能不會減少每次請求的 Token。但它通過提高初次嘗試的品質來減少總 Token 使用量，從而減少後續輪數、重複澄清和代理的返工。
-
-模型提供商發布的提示指南會隨模型版本更新。像對待依賴項升級一樣對待模型升級：閱讀遷移/提示指南，然後針對該模型的當前行為調整你的提示詞和指令文件。
-
-**工作流：**
+**工作流程：**
 
 ```text
-開啟目標模型的官方提示指南。
-將 URL 粘貼到 Copilot chat 中。
-詢問："根據此指南調整這些目標文件。保持行為不變。減少返工。"
-目標文件：.github/copilot-instructions.md, .github/instructions/*.instructions.md, agents/*.md, app 提示文件。
-審閱 diff。僅保留可衡量的、與模型相關的更改。
+開啟目標模型的官方提示詞撰寫指南。
+將 URL 貼到 Copilot 聊天中。
+詢問：「依照這份指南調整這些目標檔案。保持行為不變。減少重工。」
+目標檔案：.github/copilot-instructions.md、.github/instructions/*.instructions.md、agents/*.md、應用程式提示詞檔案。
+審查差異。只保留可量測且與模型相關的變更。
 ```
 
 官方起點：
 
-| 提供商 | 模型系列 | 提示指南 |
+| 供應商 | 模型系列 | 提示詞撰寫指南 |
 |---|---|---|
-| Anthropic | Claude Sonnet / Opus / Haiku | [Prompt engineering overview](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview) 和 [Claude latest-model best practices](https://platform.claude.com/docs/en/docs/build-with-claude/prompt-engineering/claude-4-best-practices) |
-| OpenAI | GPT-5.5 / GPT-5 | [GPT-5.5 prompting guide](https://developers.openai.com/api/docs/guides/prompt-guidance) 和 [GPT-5 prompting guide](https://cookbook.openai.com/examples/gpt-5/gpt-5_prompting_guide) |
+| Anthropic | Claude Sonnet / Opus / Haiku | [Prompt engineering overview](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview)與 [Claude latest-model best practices](https://platform.claude.com/docs/en/docs/build-with-claude/prompt-engineering/claude-4-best-practices) |
+| OpenAI | GPT-5.5 / GPT-5 | [GPT-5.5 prompting guide](https://developers.openai.com/api/docs/guides/prompt-guidance)與 [GPT-5 prompting guide](https://cookbook.openai.com/examples/gpt-5/gpt-5_prompting_guide) |
 | Google | Gemini | [Gemini prompt design strategies](https://ai.google.dev/gemini-api/docs/prompting-strategies) |
 
-### 範例：一個基礎指令，三種調優方式
+### 範例：一個基礎指示，三種調校方式
 
-基礎指令：
+基礎指示：
 
 ```markdown
-You are a coding assistant. Help with implementation. Be concise. Ask questions if needed. Follow repo style. Run tests.
+你是一位程式設計助理。協助進行實作。保持簡潔。有需要時請提問。遵循儲存庫的風格。執行測試。
 ```
 
-針對特定模型的重寫：
+針對特定模型的改寫：
 
-| 目標模型 | 調優後的指令 | 為什麼合適 |
+| 目標模型 | 調校後的指示 | 為何適合 |
 |---|---|---|
-| **Claude Sonnet** | `Role: senior repo engineer.\nUse XML-ish sections when helpful: <task>, <constraints>, <done>.\nBefore edits: inspect relevant files only. Preserve existing style.\nFor ambiguous requests: ask only if choice changes implementation.\nDone = patch applied + existing targeted tests pass or blocker named.` | Claude 指南強調明確的成功標準、範例/結構、明確的工具/使用界限以及經過校準的努力。XML 風格的分隔符通常有助於區分任務、上下文和約束。 |
-| **GPT-5.5** | `Outcome: correct repo change with minimal churn.\nSuccess: target behavior works, diff scoped, tests or exact blocker reported.\nChoose efficient path; do not over-spec process.\nStart tool-heavy work with one short progress update.\nAsk only for missing info that changes outcome or safety.` | GPT-5.5 指南偏好以結果為導向的提示、簡明的性格/協作規則、高效的解決路徑、多步驟工作的可見前言，以及避免遺留的過度規範。 |
-| **Gemini** | `Task: implement requested repo change.\nContext: use referenced files, nearby tests, and repo conventions.\nConstraints: concise output, scoped diff, no unrelated rewrites.\nFormat final: changed files + behavior impact + test result/blocker.\nIf input is incomplete, state one needed detail.` | Gemini 指南強調明確的「任務/輸入/約束/回應格式」結構。明確的格式和上下文界限可減少解讀偏差。 |
+| **Claude Sonnet** | `角色：資深儲存庫工程師。\n有幫助時使用類 XML 的區段：<task>、<constraints>、<done>。\n編輯之前：只檢視相關檔案。保留既有風格。\n對於模稜兩可的請求：只有在選擇會改變實作時才提問。\n完成 = 已套用修補 + 既有的目標測試通過，或指出阻礙因素。` | Claude 的指南強調明確的成功條件、範例／結構、明確的工具／使用邊界，以及經過校準的投入程度。XML 風格的分隔符號通常有助於區分任務、內容脈絡與限制。 |
+| **GPT-5.5** | `成果：以最少的變動完成正確的儲存庫變更。\n成功：目標行為可運作、差異範圍受控、回報測試結果或確切的阻礙因素。\n選擇有效率的路徑；不要過度規範流程。\n在開始大量使用工具的工作時，先提供一則簡短的進度更新。\n只有在缺少會影響成果或安全性的資訊時才提問。` | GPT-5.5 的指南偏好以成果為導向的提示詞、簡潔的個性／協作規則、有效率的解決路徑、多步驟工作時可見的開場說明，並避免過時的過度規範。 |
+| **Gemini** | `任務：實作所要求的儲存庫變更。\n內容脈絡：使用被參照的檔案、鄰近的測試與儲存庫慣例。\n限制：輸出簡潔、差異範圍受控、不做不相關的重寫。\n最終格式：變更的檔案 + 行為影響 + 測試結果／阻礙因素。\n如果輸入不完整，請說明所需的一項細節。` | Gemini 的指南強調清楚的任務／輸入／限制／回應格式結構。明確的格式與內容脈絡邊界可減少詮釋上的偏移。 |
 
-### 給 Copilot 的使用者提示範例
+### 給 Copilot 的使用者提示詞範例
 
 ```text
-Target model: GPT-5.5.
-Guide: https://developers.openai.com/api/docs/guides/prompt-guidance
-Files: .github/copilot-instructions.md, agents/token-saver.agent.md
-Adapt prompts to guide. Preserve behavior. Cut repeated clarification. Keep concise.
-Show diff only.
+目標模型：GPT-5.5。
+指南：https://developers.openai.com/api/docs/guides/prompt-guidance
+檔案：.github/copilot-instructions.md、agents/token-saver.agent.md
+依照指南調整提示詞。保留行為。減少重複釐清。保持簡潔。
+只顯示差異。
 ```
 
-在以下情況使用：
+在下列情況使用：
 
-- 升級或更改預設模型。
-- 提示詞在一個模型上有效，但在另一個模型上變得冗贅、懶散、過於積極或太過照本宣科。
-- 在模型更改後，代理一直做出錯誤的假設。
-- 維護應用程式提示詞、代理配置文件或可重用的指令文件。
+- 你升級或變更了預設模型。
+- 某個提示詞在一個模型上運作良好，但在另一個模型上變得冗長、怠惰、過度積極或過於字面。
+- 在模型變更之後，代理程式不斷做出同樣錯誤的假設。
+- 你維護應用程式提示詞、代理程式設定檔或可重複使用的指示檔案。
 
-當提示詞行為已經過測量且穩定時，請避免這樣做。在沒有失敗信號的情況下更改指令會增加噪音。
+當提示詞行為已經過量測且穩定時，請避免這麼做。在沒有失敗訊號的情況下變更指示，可能只會增加雜訊。
 
-## 2.5.6 何時「不要」壓縮
+## 2.5.6 何時不該壓縮
 
-壓縮是有極限的。某些情況需要完全的清晰度：
+壓縮有其限度。某些情況需要完整的清晰度：
 
-- **安全警告** —— "This will delete all user data" 絕對不能縮寫為 "del usr data"
-- **不可逆操作** —— 確認提示必須是明確無誤的
-- **入職上下文** —— 新團隊成員需要了解 "為什麼 (why)"，而不僅僅是 "做什麼 (what)"
-- **複雜的多步驟指令** —— 碎片化的順序可能導致誤讀
-- **監管/合規文本** —— 法律要求內容必須精確
+- **安全性警告** — 「這將會刪除所有使用者資料」不能被縮寫成「del usr data」
+- **不可逆的操作** — 確認提示必須明確無誤
+- **新人上手的情境** — 新進團隊成員需要知道「為什麼」，而不只是「是什麼」
+- **複雜的多步驟指示** — 當片段句的順序可能導致誤讀時
+- **法規／合規文字** — 法律要求需要精確
 
-一個設計良好的精簡提示模板或代理配置文件可以自動處理這一點 —— 在安全警告和不可逆操作確認時關閉精簡模式，然後在該部分結束後恢復。
+請告知精簡範本或代理程式設定檔，對安全性警告與不可逆動作的確認使用完整且明確的措辭。
 
-## 2.5.7 使用 `/chronicle` 閉環回饋
+## 2.5.7 使用 `/chronicle` 形成回饋迴圈
 
-Token 浪費不僅僅存在於單個提示詞中，還存在於你沒注意到的**模式**中。同樣的意圖誤讀在每個對話中都會額外消耗 5K Token。Copilot 為此提供了一個內建的問饋機制：[`/chronicle`](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/chronicle) 斜槓指令會分析你的本地對話歷史，並告訴你 Copilot 在哪裡感到困惑、你在哪裡繞圈子，以及如何修復它。
+反覆發生的誤解，浪費的 token 可能比一個冗長的提示詞還多。Copilot CLI 的 [`/chronicle`](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/chronicle) 命令會分析本機的工作階段歷程記錄，找出混淆、重複修正，以及其他值得改善的模式。
 
-> **範圍：** `/chronicle` 是 **Copilot CLI** 的功能，由 `~/.copilot/session-state/` 中的本地對話歷史記錄支援。它在 Copilot CLI 互動式對話中運行，也可以在 **JetBrains IDE** 中透過互動式 Copilot CLI 對話運行。它**不適用於** **VS Code**；有關 VS Code 的使用分析，請參閱下方的 [AI Engineering Coach](#258-vs-code-usage-analytics-ai-engineering-coach)。
+> **範圍：** `/chronicle` 是 **Copilot CLI** 的功能，由 `~/.copilot/session-state/` 中的本機工作階段歷程記錄支援。它在 Copilot CLI 的互動式工作階段中執行 — 並可透過互動式 Copilot CLI 工作階段在 **JetBrains IDE** 內執行。它在 **VS Code** 中**無法使用**；VS Code 的使用量分析請參閱下方的 [AI Engineering Coach](#258-vs-code-usage-analytics-ai-engineering-coach)。
 >
-> **可用性：** `/chronicle` 目前處於實驗階段。在互動式 Copilot CLI 對話中使用 `/experimental on` 啟用它，或在命令列中傳遞 `--experimental`。
+> **可用性：** `/chronicle` 目前為實驗性功能。請在互動式 Copilot CLI 工作階段中使用 `/experimental on` 啟用，或在命令列傳入 `--experimental`。
 
-完整的子指令集包括 `standup`、`tips`、`cost tips`、`search`、`improve` 和 `reindex`。其中對節省 Token 影響最大的三個是：
+子命令包括 `standup`、`tips`、`cost tips`、`search`、`improve` 與 `reindex`。用於成本與工作流程審查：
 
-| 指令 | 功能 | 節省 Token 的效益 |
+| 命令 | 功能 | 節省 token 的回報 |
 |---------|--------------|---------------------|
-| **`/chronicle cost tips`** | 分析你最近對話中的 Token 消耗（提示詞長度、工具調用頻率、接續步驟），並提出具體的降本建議 | 最高，且與本指南最相關。直接針對 Token 消耗。 |
-| **`/chronicle improve`** | 掃描對話歷史中的來回溝通、誤解意圖和重複修正，然後**生成自定義指令片段**以防止下次出現同樣模式 | 高。從源頭切斷重複的浪費。每次修復都會在該儲存庫未來的每個對話中產生複利效應。 |
-| **`/chronicle tips`** | 根據你實際使用 Copilot 的方式提供個性化指導，發掘你遺漏的功能和工作流改進 | 中。通常會建議 Ask 模式、模型路由或上下文範圍更改，這些都值得投入 Token。 |
-| **`/chronicle standup`** | 從你的對話數據（分支、PR、狀態）生成站立會議摘要 | 間接 —— 節省你花在回顧昨天工作上的 10 分鐘，而非直接節省 Token。 |
+| **`/chronicle cost tips`** | 檢閱近期工作階段中的提示詞長度、工具呼叫頻率與接續步驟 | 直接的成本建議 |
+| **`/chronicle improve`** | 找出重複的修正，並**產生自訂指示片段** | 可能避免反覆發生的誤解 |
+| **`/chronicle tips`** | 根據你的使用情形，建議功能與工作流程的調整 | 可能找出更好的模式、模型或內容脈絡選擇 |
+| **`/chronicle standup`** | 從工作階段資料中摘要分支、PR 與狀態 | 節省的是手動摘要的工作，而非直接節省 token |
 
-### `cost tips` 工作流
+### `cost tips` 工作流程
 
-與本指南最直接相關。每週執行一次，看看你的 Token 到底花在哪裡。
+請每週執行一次，檢視 token 的流向：
 
 ```text
 /chronicle cost tips
 ```
 
-Copilot CLI 會分析你最近對話中的 Token 使用情況（查看提示詞長度、工具調用頻率和接續步驟等模式），並提出具體的、基於實際使用的降本方法。與通用建議不同，這些建議與你的真實對話數據掛鉤，因此它們往往能指出消耗你最多成本的少數習慣。
+請利用它針對特定工作階段所提供的建議，決定要改變哪些習慣。
 
-### `improve` 工作流
+### `improve` 工作流程
 
-這是生成持久修復的方法。每週執行一次，或者當你發現自己在想「為什麼它老是搞錯？」的時候執行。
+請每週執行，或在你發現反覆出現混淆時執行：
 
 ```text
 /chronicle improve
 ```
 
-Copilot CLI 會讀取你最近的 CLI 對話，識別重複出現的困惑（例如：它一直假設錯誤的測試框架，或者一直詢問哪個目錄包含 API 代碼），並建議在你的自定義指令中添加內容。審查這些建議 —— 接受那些符合實際專案特定注意事項的建議，跳過那些只是 LLM 生成的樣板內容（參見 [第 7 部分：AGENTS.md 問題](07-agents-md-problem.md) 了解為什麼修剪很重要）。
+Copilot CLI 會讀取你近期的 CLI 工作階段，找出反覆出現的混淆（例如，它一直假設錯誤的測試框架，或一直詢問哪個目錄包含 API 程式碼），並建議要加入自訂指示的內容。請審查這些建議 — 接受那些符合專案實際注意事項的，略過那些只是 LLM 產生的樣板內容的（關於修剪為何重要，請參閱[第 7 部分：AGENTS.md 問題](07-agents-md-problem.md)）。
 
-**為什麼這符合 Token 優化指南：** 每次來回溝通都是完整的輸入 Token（你的後續跟進 + 累積的歷史記錄）**加上**完整的輸出 Token（修正後的內容）。一個導致額外三次來回的意圖誤讀很容易就消耗 10K-30K Token。透過 `/chronicle improve` 捕捉到一個模式 → 在 `copilot-instructions.md` 中添加一兩行內容 → 該模式就不再產生重複的 Token 成本。
+每次修正都會把你的後續訊息與累積的歷程記錄加入為輸入，再加上新的回應作為輸出。多出三輪就可能花費 1 萬至 3 萬個 token。只有在能解決反覆出現的失誤時，才加入專案專屬的指示。
 
-### `tips` 工作流
+### `tips` 工作流程
 
-每隔一兩週執行一次：
+請每一到兩週執行一次：
 
 ```text
 /chronicle tips
 ```
 
-將這些建議視為代碼審查 —— 並非所有建議都值得採納，但那些符合你實際工作流的建議通常具有很高的投資報酬率 (ROI)。與本指南重疊的常見建議包括：將解釋請求切換到 Ask 模式、使用 `applyTo` 限定指令文件的範圍、禁用未使用的 MCP 伺服器。
+請保留適合你工作流程的建議，例如使用 Ask 模式進行說明、以 `applyTo` 限定指示的範圍，或停用未使用的 MCP 伺服器。
 
-### 在工作流中的位置
+### 這在工作流程中的定位
 
-- **每週：** `/chronicle cost tips` —— 查看 Token 去向，以及 `/chronicle tips` —— 捕捉遺漏的習慣。
-- **當感覺事情重複時：** `/chronicle improve` —— 將摩擦轉化為一次性修復。
-- **每日站會（可選）：** `/chronicle standup last 24 hours` —— 為了人類的儀式感，而非為了 Token。
+- **每週：** `/chronicle cost tips` — 了解 token 的流向，以及 `/chronicle tips` — 找出遺漏的習慣。
+- **當某件事感覺重複時：** `/chronicle improve` — 將摩擦轉化為一次性的修正。
+- **每日站會（選用）：** `/chronicle standup last 24 hours` — 用於人員的例行儀式，而非為了 token。
 
-所有對話數據都保存在本地的 `~/.copilot/session-state/` 中，且僅存在於你的機器上。這是 **Copilot CLI 對話數據**，而非通用的 Copilot Chat 歷史存儲。當你執行 `/chronicle` 指令時，標準的模型互動仍然適用（數據會發送到模型以生成摘要），但不會上傳任何內容進行存儲。
+所有工作階段資料都儲存在本機的 `~/.copilot/session-state/`，且只在你的電腦上。這是 **Copilot CLI 工作階段資料**，並非通用的 Copilot Chat 歷程記錄儲存區。當你執行 `/chronicle` 命令時，仍會套用標準的模型互動（資料會傳送給模型以產生摘要），但不會上傳任何資料以供儲存。
 
-## 2.5.8 VS Code 使用分析：AI Engineering Coach
+## 2.5.8 VS Code 使用量分析：AI Engineering Coach
 
-[`/chronicle`](#257-close-the-loop-with-chronicle) 涵蓋了 Copilot CLI 對話。對於 VS Code 的使用，[**AI Engineering Coach**](https://github.com/microsoft/AI-Engineering-Coach) 是對應的工具 —— 這是一個本地 VS Code 擴充功能，它會讀取你的 VS Code AI 對話日誌，並呈現同類型的洞察：反模式、Token 模式、上下文健康狀況和技能發現。
+[`/chronicle`](#257-close-the-loop-with-chronicle) 涵蓋 Copilot CLI 的工作階段。至於 VS Code 的使用情形，[**AI Engineering Coach**](https://github.com/microsoft/AI-Engineering-Coach) 是對應的工具 — 一個本機的 VS Code 擴充功能，會讀取你的 VS Code AI 工作階段記錄，並呈現同一類的洞察：反模式、token 模式、內容脈絡健全度與技能探索。
 
-> **隱私：** 所有分析都在本地運行。數據不會離開你的機器。該擴充功能是唯讀的 —— 它絕不會修改你的對話文件。可選的 AI 功能（規則編譯器、上下文審查）僅在你明確調用時才使用 VS Code 內建的 Copilot 模型 API。
+> **隱私：** 所有分析都在本機執行。沒有任何資料會離開你的電腦。此擴充功能是唯讀的 — 絕不會修改你的工作階段檔案。選用的 AI 功能（規則編譯器、內容脈絡審查）只有在你明確叫用時，才會使用 VS Code 內建的 Copilot 模型 API。
 
-與 Token 效率相關的關鍵功能：
+與 token 效率相關的主要功能：
 
-| 功能 | 呈現內容 |
+| 功能 | 呈現的內容 |
 |---------|-----------------|
-| **反模式 (Anti-Patterns)** | 涵蓋提示詞質量、對話衛生、代碼審查、工具掌握和上下文管理的 45 條可編輯規則 —— 附帶嚴重程度評級和具體的修復行動 |
-| **上下文健康狀況 (Context Health)** | 代理就緒檢查清單、工作區上下文地圖和指令文件審計 |
-| **技能查找器 (Skill Finder)** | 檢測歷史記錄中重複的提示詞模式，並將其與開源目錄中的可重用技能進行匹配 |
-| **輸出 / 燃盡圖 (Output / Burndown)** | 按語言和模型分類的 AI 生成代碼量；Token 預算進度及預測 |
+| **反模式** | 涵蓋提示詞品質、工作階段衛生、程式碼審查、工具精熟度與內容脈絡管理的 45 條可編輯規則 — 附有嚴重性評等與具體的修正動作 |
+| **內容脈絡健全度** | 代理程式就緒度檢查清單、工作區內容脈絡地圖，以及指示檔案稽核 |
+| **技能搜尋器** | 偵測你歷程記錄中重複的提示詞模式，並與開放原始碼目錄中可重複使用的技能配對 |
+| **輸出／燃燒圖** | 依語言與模型分類的 AI 產生程式碼量；附有預測的 token 預算進度 |
 
-**快速開始：**
+**快速上手：**
 
 ```bash
 git clone https://github.com/microsoft/ai-engineering-coach.git
@@ -283,62 +258,39 @@ npm install && npm run package
 code --install-extension ai-engineer-coach-*.vsix
 ```
 
-然後 `Cmd+Shift+P` → **AI Engineer Coach: Open Dashboard**。
+然後按 `Cmd+Shift+P` → **AI Engineer Coach: Open Dashboard**。
 
-**它如何與 `/chronicle` 互補：** `/chronicle` 作用於 CLI 對話歷史以生成指令修復。AI Engineering Coach 作用於 VS Code 對話歷史，為你的實踐評分並標記結構性問題（上下文膨脹、未使用的 MCP、指令文件缺失）。兩者結合使用：用 chronicle 修復重複出現的提示詞失敗；用 AI Engineering Coach 審計更廣泛的 VS Code 設置並追蹤趨勢。
+請使用 `/chronicle` 處理 CLI 歷程記錄與指示建議。請使用 AI Engineering Coach 處理 VS Code 歷程記錄、內容脈絡膨脹、未使用的 MCP 與指示缺口。
 
-## 2.5.9 先規劃，後執行（並為階段路由模型）
+## 2.5.9 先規劃，再執行（並為各階段選擇路由）
 
-最昂貴的 Token 是花在達成*錯誤*結果上的：一個代理朝著錯誤方向編寫了二十個步驟，然後被撤銷並重做。將**規劃**與**執行**分離是減少這種浪費的最高槓桿習慣之一。
+對於複雜的工作，請在實作之前先就驗收條件達成共識。完整的[規劃／執行／驗證工作流程](13-outcome-per-token.md#plan-first-then-execute-cheaply)說明了何時應分開工作階段，並使用較便宜的執行模型。
 
-**兩階段模式：**
+## 2.5.10 在 Copilot 執行框架之上疊加工具
 
-![先規劃，後低成本執行：使用強大的模型進行規劃，保存計劃，然後在較便宜的新環境中執行並驗證驗收標準。](assets/diagrams/plan-execute-cheaply.svg)
+Copilot CLI 與 VS Code Copilot 已經最佳化了代理程式迴圈的某些部分。在加入外部工具之前，請將其視為基準：
 
-1. **先在規劃模式（或 Ask 模式）中進行規劃。** 在編寫任何代碼*之前*，使用 Copilot CLI 的規劃模式（或 VS Code 的 Ask 模式）思考方法 —— 要改動的文件、更改順序、邊緣情況、驗收標準。規劃是廉價的：它主要是推理，沒有大型 Diff，沒有重複的工具循環。這正是強大模型發揮價值的地方，因為一個好的計劃可以防止下游昂貴的重做。
-2. **保存計劃，然後執行。** 將商定的計劃寫入文件（例如 `plan.md`）或追蹤的 Issue 中，然後啟動一個**全新的對話**，並根據該保存的計劃提示執行。乾淨的對話可以保持可快取的字首穩定（參見 [快取 §2.3.5](04-context-management.md#235-caching-store-and-reuse-context-within-prompts)），並避免在每次執行輪次中將整個規劃對話作為輸入 Token 拖入。
+![MCP 與工具堆疊：限定 MCP 結構描述的範圍，對長工具鏈使用 CodeAct，以 RTK 或 snip 篩選命令輸出，並對重複的環境熟悉使用 Graphify。](assets/diagrams/mcp-tooling-stack.svg)
 
-**為什麼這能節省 Token：**
+- **提示詞／快取層：** 讓 `{model, active MCP set, active agent/profile}` 保持穩定，使快取的前綴能持續被重複使用。
+- **工具結構描述層：** 優先使用內建工具與限定範圍的 MCP；Copilot 可以延後或路由某些工具定義，但額外的伺服器與擴充功能仍會增加介面面積。
+- **傳輸／工作階段層：** WebSocket 重複使用與自動壓縮有助於長時間的代理程式執行，但壓縮是對代理程式已看過的內容進行摘要。
+- **終端機輸出層：** 內建的截斷是安全網，而不是語意篩選器。
 
-- **減少浪費的步驟。** 一個具體的、預先商定的計劃意味著代理不會去探索、猜測需求或回溯。每個避免的代理步驟都節省了一次完整的上下文重新加載（參見 [最小化代理步驟 §4.5.3](10-practical-setup.md#453-minimizing-agent-steps)）。
-- **更便宜的執行路徑。** 一旦完成深度思考並將其捕獲為明確的步驟，執行通常是機械性的 —— 較便宜的模型（Auto 或包含的模型）即可完成。將高級模型保留給推理質量決定結果的規劃階段。參見 [模型路由 §4.5](10-practical-setup.md#step-5-mix-models-by-task-model-routing)。
-- **乾淨的執行上下文。** 從保存的計劃開始執行，而不是從一個漫長的「先規劃後構建」的超長對話開始，可以保持歷史記錄簡短且對快取友好 —— 每輪的輸入成本保持在低位。
+請只針對真正有改善的層級，加入第三方工具：
 
-**經驗法則：** 用強大的模型進行規劃，用便宜的模型進行執行，並在兩者之間將計劃保存在磁碟上。這樣可以用更少的總 Token 達成結果，*而且*通常質量更高，因為計劃在編寫任何代碼之前就已經過審查。
-
-如需更完整的「每 Token 產出」框架、技能分類、基準測試注意事項，以及目前的模型路由矩陣，請參閱 [Outcome per Token](13-outcome-per-token.md)。
-
-## 2.5.10 在 Copilot 基礎之上疊加工具層
-
-Copilot CLI 和 VS Code Copilot 已經優化了代理迴圈（agent loop）的部分環節。在加入外部工具之前，應先將此視為基準：
-
-![MCP 與工具堆疊：縮小 MCP 範圍，使用 CodeAct 處理長工具鏈，用 RTK 或 snip 過濾命令輸出，並用 Graphify 進行重複的導覽。](assets/diagrams/mcp-tooling-stack.svg)
-
-- **提示詞/快取層（Prompt/cache layer）：** 保持 `{model, active MCP set, active agent/profile}` 穩定，以便快取的字首能重複使用。
-- **工具架構層（Tool-schema layer）：** 優先使用內建工具和範圍受限的 MCP；Copilot 可以延遲或路由部分工具定義，但額外的伺服器與擴充功能仍會增加複雜度。
-- **傳輸/工作階段層（Transport/session layer）：** WebSocket 重用與自動壓縮有助於長時間運行的代理，但壓縮會摘要代理已經看過的內容。
-- **終端機輸出層（Terminal-output layer）：** 內建的截斷只是安全網，並非語意過濾器。
-
-僅為它們實際改善的層級加入第三方工具：
-
-| 層級 | 工具 | 減少什麼 |
+| 層級 | 工具 | 減少的內容 |
 |-------|---------|-----------------|
-| 工作階段回合數 | CodeAct | 減少 Copilot CLI 中許多小工具呼叫的重複重播 |
-| 命令輸出 | RTK 或 snip | 冗長的 `git`、test、grep、build 和基礎設施命令輸出 |
-| 命令選擇 | minimal-context-tools | 廣泛的文件讀取與迭代搜尋，引導至 `rg`、`fd`、`jq`、`ast-grep` |
-| 程式碼庫導覽 | Graphify | 跨工作階段重複進行結構性文件讀取 |
-| 可見性/稽核 | [Tokentop](https://github.com/tokentopapp/tokentop), Tokalator, token-optimizer | Tokentop 提供即時本機會話、模型、Token、成本與燃燒速率的可見性；監控本身不會進行壓縮 |
+| 工作流程輪次 | CodeAct | 在 Copilot CLI 中，許多小型工具呼叫造成的重複重播 |
+| 命令輸出 | RTK 或 snip | 冗長的 `git`、測試、grep、建構與基礎結構命令輸出 |
+| 命令選擇 | minimal-context-tools | 透過引導使用 `rg`、`fd`、`jq`、`ast-grep`，減少大範圍的檔案讀取與反覆搜尋 |
+| 程式碼庫環境熟悉 | Graphify | 跨工作階段重複的結構性檔案讀取 |
+| 可見性／稽核 | [Tokentop](https://github.com/tokentopapp/tokentop)、Tokalator、token-optimizer | Tokentop 提供即時的本機工作階段、模型、token、成本與燃燒速率可見性；監控本身並不會壓縮 |
 
-**規則：** 每個層級只用一種工具。將 CodeAct 與 RTK 或 snip 結合是合理的，因為前者減少回合數，後者減少輸出大小。在同一個命令路徑上同時運行 RTK 和 snip 通常沒有幫助——它可能會導致輸出被雙重截斷，使錯誤更難檢查。
+**原則：** 每一層只用一種工具。將 CodeAct 與 RTK 或 snip 搭配使用可能合理，因為一個減少輪次數，另一個減少輸出大小。但在同一個命令路徑上同時執行 RTK 與 snip 通常並不合理 — 這可能會造成輸出被重複截斷，並使失敗更難檢查。
 
-調整工作階段時，請依照以下順序：
-
-1. 一次選定 Copilot 通道：模型、模式、啟用的 MCP/工具集，以及 agent/profile。
-2. 停用未使用的 MCP 伺服器與擴充功能提供的工具。
-3. 使用技能或專注的 agent 指示詞，使工具呼叫更精確。
-4. 如果命令輸出仍然很大，則加入一個 shell 輸出過濾器。
-5. 切換通道時啟動全新工作階段，而不是修改冗長的對話線程。
+請使用[實務設定](10-practical-setup.md#step-3-choose-mode-model-and-context)來套用這些選擇。工具的安裝說明位於[MCP 與工具成本](08-mcp-tool-costs.md)，而不在這份工作流程摘要中。
 
 ---
 
-**下一頁：** [AGENTS.md 問題 →](07-agents-md-problem.md)
+**下一章：**[AGENTS.md 問題 →](07-agents-md-problem.md)

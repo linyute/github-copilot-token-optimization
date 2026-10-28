@@ -1,166 +1,57 @@
 # 模型選擇與定價
 
-[← 返回指南](index.md)
+請選擇能可靠完成任務、且費用最低的可用模型。請將重試與審查時間也納入考量，而不只是單一請求的費率。
+
+## 決定成本的因素
+
+| 因素 | 應檢查的項目 |
+|---|---|
+| 模型 | 實際使用介面的輸入、快取輸入與輸出費率 |
+| 推理強度 | 在模型提供此控制項時，額外的推理工作 |
+| 內容脈絡 | 全新輸入與符合資格的快取輸入 |
+| 工作流程 | 代理程式步驟、重試與重複的歷程記錄 |
+| 方案與原則 | 模型可用性、折扣、預算與組織限制 |
+
+請使用 [GitHub 模型比較](https://docs.github.com/en/copilot/reference/ai-models/model-comparison)、[支援的模型](https://docs.github.com/en/copilot/reference/ai-models/supported-models)，以及[計費文件](https://docs.github.com/en/copilot/concepts/billing/copilot-requests)，以了解目前的可用性與收費。來自 [Anthropic](https://www.anthropic.com/pricing) 或 [OpenAI](https://openai.com/api/pricing/) 的 API 直接標價，並不是 Copilot 帳單的估算。
+
+[工作流程最佳化](06-workflow-optimization.md)涵蓋模式；[內容脈絡管理](04-context-management.md#235-caching-store-and-reuse-context-within-prompts)涵蓋快取穩定性與交接。
+
+## 良好的預設經驗法則
+
+| 任務 | 起始選擇 | 何時升級 |
+|---|---|---|
+| 語法查詢、簡短說明、小幅編輯 | Auto 或快速、便宜的模型 | 答案錯誤或缺少所需的內容脈絡 |
+| 具有明確驗收檢查的例行實作 | 曾處理過類似工作的模型 | 重複失敗的成本超過更強模型的成本 |
+| 跨檔案診斷或模稜兩可的規劃 | 較強的推理模型 | 驗證後仍暴露出未解決的假設 |
+| 架構或高風險的審查 | 能力足夠的模型，加上明確的人工審查 | 需要專家審查；模型選擇無法取代 |
+| 執行已核准的具體計畫 | 在全新工作階段中嘗試較便宜的模型 | 實作需要新的設計決策 |
+
+這些是起始選擇，並不保證某個模型等級適合每項任務。請在你自己的工作上量測已被接受的成果。
+
+### Auto 選擇
+
+Auto 會在該介面支援的集區中選擇。在支援的情況下，針對任務最佳化的 Auto 除了健全度與可用性之外，也會考量任務的複雜度。請檢查其目前的集區、原則限制，以及任何符合資格的折扣，而不要把它當作可存取每一個高階模型。請參閱 [GitHub 的 Auto 選擇文件](https://docs.github.com/en/copilot/concepts/models/auto-model-selection)。
+
+### 推理強度
+
+在推理強度可設定時，請依任務來選擇。對於直接了當的工作使用較低的強度；當更深入的推理能充分改善驗收結果、足以證明額外的工作量合理時，再提高強度。簡潔的最終答案並不會顯示實際計費了多少推理。
+
+請在長時間任務之前選好模型與推理強度。如果任務的變化大到足以證明需要不同的設定，請使用簡短的交接，而不是自動沿用整個歷程記錄。請遵循[快取工作流程](04-context-management.md#235-caching-store-and-reuse-context-within-prompts)。
+
+## 原則與資料處理
+
+可用性會因方案、預覽狀態、地理位置、組織原則與用戶端而異。選取器中出現的模型，並不代表已自動核准用於受規範的工作。
+
+請對照目前的[模型與定價規則](https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing)，檢查舊版年度方案的存取權、區域限制、合規附加費，以及延伸內容脈絡／推理強度的可用性。請勿將聊天的成本假設套用到程式碼完成或下一個編輯建議；請參閱[企業治理](12-enterprise-governance.md)。
+
+在路由敏感工作之前，請確認適用的供應商條款、資料保留控制與組織原則。GitHub 記載了[模型主機代管](https://docs.github.com/en/copilot/reference/ai-models/model-hosting)與[原則控制](https://docs.github.com/en/copilot/concepts/enterprise/policies)。請不要假設每個模型都有相同的保留條款，尤其是預覽版。例如，Fable 模型預設會保留提示詞與輸出；符合資格的企業需要另外核准與設定，才能取得有時間限制的零保留豁免。
+
+## 以完成的工作來評斷路由
+
+請針對類似的任務，比較成本、經過時間、驗收檢查與重試次數。一個需要多次修復嘗試的便宜請求，可能比一次成功的較強模型執行更昂貴。
+
+請將計費機制分開看待：模型費率、折扣、符合資格的快取與工作階段額外負擔，各自的作用方式不同。在合併節省估算之前，請參閱[比較與資料](09-comparisons-data.md)；組織層級的調整手段則請參閱[企業治理](12-enterprise-governance.md)。
 
 ---
 
-本頁面的存在是因為在關於 Token 優化的討論中，關於模型的建議往往被混為一談。目前共有**三種不同的定價觀點**在發揮作用：
-
-1. **GitHub Copilot 官方文檔** —— 根據計劃確定的模型可用性、Auto 的行為，以及 GitHub 發布的任何相對定價信號
-2. **本存儲庫的 UBB 框架** —— 如何思考 Business 和 Enterprise 計劃在 2026 年 6 月 1 日向用量計費 (UBB) 的轉變：按企業、組織、成本中心和使用者進行的 AI 額度計量和預算
-3. **廠商 API 定價** —— 來自 Anthropic 等提供商的每 Token 定價，其中輸入和輸出的計費方式不同
-
-**不要**將這些視為相同的單元。請根據每個觀點實際能回答的問題來使用它們。
-
-## 你需要的官方 GitHub 文檔
-
-- [關於 Copilot 自動模型選擇](https://docs.github.com/en/copilot/concepts/auto-model-selection)
-- [GitHub Copilot 中的請求](https://docs.github.com/en/copilot/concepts/billing/copilot-requests)
-- [GitHub Copilot 計劃](https://docs.github.com/en/copilot/get-started/plans)
-
-這三個頁面幾乎涵蓋了從業者今天需要的所有內容：
-
-- 存在哪些模型
-- 哪些計劃包含這些模型
-- 在付費計劃中，哪些模型是免費的，哪些是進階 (Premium) 的
-- 哪些模型目前被記錄為相對於其他模型更便宜或更昂貴
-- Auto 實際上在做什麼
-
-有一個時間點對本頁面的其餘部分至關重要：Copilot Business 和 Copilot Enterprise 的用量計費將於 **2026 年 6 月 1 日**開始。在該日期之後，AI 額度使用情況將成為 Business 和 Enterprise 治理的主要視角。下文中的任何進階請求措辭都應僅被視為過渡背景。
-
-## 關於 Auto 最重要的澄清
-
-本存儲庫已經推薦將 **Auto** 作為預設設置，這在方向上仍然是正確的。但 GitHub 官方文檔比本存儲庫之前的說明更具體。
-
-### Auto 實際上在做什麼
-
-根據 [關於 Copilot 自動模型選擇](https://docs.github.com/en/copilot/concepts/auto-model-selection)：
-
-- Auto 會根據你的計劃和組織政策，從**受支持的自動選擇池 (supported Auto pool)** 中進行選擇
-- 自動選擇基於**即時系統健康狀況和模型性能**
-- 在付費計劃中，Copilot Chat 中的自動選擇可獲得 **10% 的折扣**
-- Auto 會留在受支持的預設池中，而不會自動升級到每個進階模型
-
-最後一點非常重要。
-
-> **實際後果：** Auto 並非「在需要時挑選任何模型，包括昂貴的模型」。它是一個跨受支持自動集合的低摩擦預設值。如果你想要更高成本的進階模型，你應該**手動固定**。
-
-## 每個定價觀點回答了什麼問題
-
-| 定價觀點 | 單位 | 最佳用途 | 來源 |
-|---|---|---|---|
-| GitHub 公開的 Copilot 計費 | 模型倍率以及（6 月 1 日後）AI 額度使用量 | 「GitHub 目前對於 Copilot 內部的此模型成本披露了什麼？」 | [GitHub Copilot 中的請求](https://docs.github.com/en/copilot/concepts/billing/copilot-requests) |
-| 存儲庫 UBB 框架 | AI 額度和未來的用量預算 | 「在 Business 和 Enterprise 於 2026 年 6 月 1 日轉向用量計費後，我們該如何思考支出？」 | [計費產品的預算設置](https://docs.github.com/en/billing/how-tos/budgets/setting-up-budgets-to-control-spending-on-metered-products) |
-| 廠商 API 定價 | 每百萬 Token (MTok) 的輸入/輸出價格 | 「原始 Token 的價值有何不同，特別是輸入 vs 輸出？」 | [Anthropic 定價](https://platform.claude.com/docs/en/about-claude/pricing) |
-
-## 輸入 vs 輸出定價的適用場景
-
-官方公開的 GitHub Copilot 文檔並**沒有**發布按模型劃分的 Copilot 輸入 Token 價格 vs 輸出 Token 價格的公開表格。Anthropic 的 API 定價仍然提供了一個清晰的不對稱範例，這對於建立直覺仍然很有用。只是不要將其描述為當今 Copilot 的計費數學。
-
-| 模型 | 輸入 / MTok | 輸出 / MTok |
-|---|---:|---:|
-| Claude Haiku 4.5 | $1 | $5 |
-| Claude Sonnet 4.6 | $3 | $15 |
-| Claude Opus 4.6 | $5 | $25 |
-
-來源：[Anthropic 定價](https://platform.claude.com/docs/en/about-claude/pricing)
-
-這對於建立直覺很有用：
-
-- 輸出 Token 明顯比輸入 Token 昂貴
-- 冗長的回應會比人們預期的更快主導成本
-- 輸出控制仍然是本存儲庫中投資報酬率 (ROI) 最高的習慣之一
-
-## 推理強度 (Reasoning Effort) 是一個獨立的成本撥盤
-
-模型選擇並非唯一的撥盤。在受支持的具備推理能力的模型上，**思考努力 (thinking effort)** 或 **推理強度 (reasoning effort)** 會改變模型在回答前的工作量。
-
-這已在 [實踐設置](10-practical-setup.md#推理強度-reasoning-effort-另一個撥盤) 中有更詳細的介紹，但它也屬於本頁面，因為它直接影響支出。
-
-### 它改變了什麼
-
-- 模型在回應前花費多少 Token 進行思考
-- 它傾向於生成多少工具調用和前言
-- 延遲，特別是在較難的任務上
-
-### 實踐建議
-
-| 情況 | 推薦努力程度 | 為什麼 |
-|---|---|---|
-| 高通量、簡單的聊天或分類 | `low` | 最便宜。當可接受微小的品質損失時適用 |
-| 在受支持的推理模型上進行典型的編碼、重構、工具密集型工作 | `medium` | 成本與品質的最佳平衡；Anthropic 推薦將此作為 Sonnet 4.6 的預設值 |
-| 艱難的架構、安全審查、新型分解 | `high` 或 `max` | 僅在任務明確證明其合理性時才增加支出 |
-
-### 重要細微差別
-
-> **僅在支持推理強度的模型上使用。** GPT-4.1 和 GPT-4o 等非推理模型不具備此控制項。
-
-因此，完整的決策堆疊為：
-
-1. 選擇正確的模型層級
-2. 如果模型支持，選擇能完成工作的最低推理強度程度
-
-當比較一個在 `medium` 努力下便宜且具備推理能力的模型，與一個在 `high` 努力下的高成本進階模型時，這尤其相關。在實踐中，努力程度的調優可以作為跳向更昂貴模型的廉價替代方案。
-
-## 那麼你到底該怎麼做？
-
-### 預設立場
-
-1. **日常工作預設使用 Auto**
-2. **對於瑣碎任務，當你知道不需要更強大的模型時，使用包含在內或較低成本的模型**
-3. **當任務明確證明其合理性時，手動固定進階模型**
-4. **在啟用前審核組織的模型政策**，以便有意識地擴展進階訪問權限，而非隨意漂移
-
-### 良好的預設啟發法
-
-| 任務 | 預設選擇 | 為什麼 |
-|---|---|---|
-| 語法查詢、快速解釋、微小編輯 | 包含在內之模型或 Auto | 最便宜的路徑，品質足夠 |
-| 典型的實現、錯誤修復、重構 | Auto 或標準模型 | 最佳的品質-成本權衡 |
-| 架構、威脅建模、新型分解 | 手動固定進階模型 | Auto 不會自動升級到進階車道 |
-
-### 反模式 (Anti-patterns)
-
-- 在整個工作階段中一直固定使用昂貴的進階模型
-- 在長對話中途更改模型，而未考慮累積的上下文。之前的訊息、工具結果和可快取的字首仍可能是下一次請求的一部分；切換到更高成本的模型可能會使攜帶的上下文比重新開始更昂貴
-- 在長對話中途啟用/停用 MCP 伺服器。工具介面的更改通常會使穩定的快取字首失效
-- 在昂貴的執行過程中中途切換預設/自定義代理程式設定檔 (agent profiles)。代理程式/設定檔的更改可能會破壞同一對話的快取連續性
-- 假設當任務變難時，Auto 會自動升級到 Opus
-- 將廠商 API 價格和 Copilot 定價信號視為相同的指標
-- 在未檢查計劃是否包含該模型的情況下推薦該模型
-- 在檢查誰真正需要之前，為整個組織開啟所有進階模型
-
-**快取保護規則：** 在工作開始前選擇模型路徑，並在長對話中保持穩定：
-
-```text
-{ 模型, 推理強度, 已載入技能, 啟用中的 MCP/工具, 代理/設定檔 }
-```
-
-如果你必須切換模型路徑或配置（例如從便宜/Auto 切換到進階、從 `medium` 切換到 `high` 推理強度，或變更技能/工具組合），請開啟一個全新的對話，僅附上相關的摘要和檔案。這能保留原始對話中的快取友好穩定性，並避免將冗長且低價值的歷史記錄帶入成本較高的請求中。由於具體的計費實作可能因介面和計劃而異，因此應將快取失效視為需要避免的風險，而非必然的重新計價計算。
-
-## 組織推廣規則：啟用前審核
-
-對於團隊來說，模型選擇既是一個治理問題，也是一個提示詞問題。
-
-請使用 [配置 Copilot 中的 AI 模型訪問權限](https://docs.github.com/en/copilot/using-github-copilot/ai-models/configuring-access-to-ai-models-in-copilot) 來控制可用的 AI 模型。GitHub 文檔說明組織所有者和企業所有者可以為成員啟用或禁用 AI 模型的訪問權限。
-
-實踐規則：
-
-1. 先啟用較便宜的模型
-2. 根據工作流、團隊和預期投資報酬率 (ROI) 審核進階模型的需求
-3. 狹義地啟用進階訪問權限
-4. 在擴大訪問權限之前觀察使用報告和 AI 額度消耗情況
-
-當你需要直接的每使用者上限時，請使用使用者級別的 AI 額度預算。請記住，代碼補全和下一步編輯建議不按 AI 額度計費。更多內容請參閱 [企業治理](12-enterprise-governance.md)。
-
-## 本存儲庫中的交叉引用
-
-- [實踐設置](10-practical-setup.md) —— 日常設置和路由建議
-- [實踐設置 § 推理強度](10-practical-setup.md#推理強度-reasoning-effort-另一個撥盤) —— 推理等級的深入探討
-- [工作流優化](06-workflow-optimization.md) —— 為什麼 Auto 仍然是最佳預設值
-- [企業治理](12-enterprise-governance.md) —— 預算、使用者級別上限、模型政策、指令範圍
-- [首頁](index.md#快速術語) —— 快速術語和支持連結
-
----
-
-**下一頁：** [企業治理 →](12-enterprise-governance.md)
+**下一章：**[企業治理 →](12-enterprise-governance.md)

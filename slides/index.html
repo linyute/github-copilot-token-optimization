@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-Hant-TW">
+<html lang="zh-TW">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -201,10 +201,9 @@
         <section>
           <p class="kicker">8 小時客戶工作坊</p>
           <h1>GitHub Copilot Token 最佳化</h1>
-          <p>花費更少 Token。保持品質。建立企業防護欄。</p>
-          <p class="small muted">從儲存庫說明文件內容產生的 Reveal.js 簡報。</p>
+          <p>在不犧牲品質的前提下減少 token 支出。設定企業支出上限。</p>
           <aside class="notes">
-            免責聲明開場：此為社群說明指南，非 GitHub 或 Microsoft 官方指引。請使用官方文件以取得支援的控制項。
+            以免責聲明開場：這是社群指南，並非 GitHub 或 Microsoft 的官方指引。請以官方文件為準，了解受支援的控制項。
           </aside>
         </section>
 
@@ -212,89 +211,90 @@
           <h2>工作坊成果</h2>
           <div class="grid-3">
             <div class="card">
-              <h3>解釋成本</h3>
-              <p>輸入、輸出、快取 Token、代理程式 (Agent) 迴圈、MCP 結構描述 (schemas)、模型路由。</p>
+              <h3>說明成本</h3>
+              <p>輸入、輸出、快取 token、代理程式迴圈、MCP 結構描述、模型路由。</p>
             </div>
             <div class="card">
               <h3>改變行為</h3>
-              <p>提示詞壓縮、輸出控制、上下文衛生、Ask/Edit/Agent 路由。</p>
+              <p>提示詞壓縮、輸出控制、內容脈絡整潔、Ask/Edit/Agent 路由。</p>
             </div>
             <div class="card">
-              <h3>交付導入計劃</h3>
-              <p>企業預算、模型原則、指示範圍、每月審查迴圈。</p>
+              <h3>建立推行計畫</h3>
+              <p>企業預算、模型原則、指示範圍、每月檢視迴圈。</p>
             </div>
           </div>
         </section>
 
         <section>
-          <h2>重要框架</h2>
+          <h2>重要前提</h2>
           <div class="quote">
-            本簡報基於此儲存庫中的現場實務指引。其非 GitHub 或 Microsoft 的官方指引。
+            這是社群指南，並非 GitHub 或 Microsoft 的官方指引。
           </div>
-          <p class="small">請使用 <code>docs.github.com/copilot</code> 以了解支援的功能行為、計費控制項與管理員原則。</p>
+          <p class="small">請使用 <code>docs.github.com/copilot</code> 了解受支援的功能行為、計費控制與管理員原則。</p>
         </section>
 
         <section>
           <h2>8 小時議程</h2>
           <table>
             <thead>
-              <tr><th>時間</th><th>單元</th><th>產出</th></tr>
+              <tr><th>時間</th><th>區塊</th><th>產出</th></tr>
             </thead>
             <tbody>
-              <tr><td>00:00-00:30</td><td>為何 Token 至關重要 + 快速制勝法</td><td>共享成本模型</td></tr>
-              <tr><td>00:30-02:00</td><td>提示詞、語言、輸出實作</td><td>精簡提示詞範本</td></tr>
-              <tr><td>02:00-03:15</td><td>上下文 + 常駐檔案</td><td>指示剪裁差異 (diff)</td></tr>
+              <tr><td>00:00-00:30</td><td>為什麼 token 很重要 + 快速見效的做法</td><td>共用的成本模型</td></tr>
+              <tr><td>00:30-02:00</td><td>提示詞、語言、輸出實作演練</td><td>精簡的提示詞範本</td></tr>
+              <tr><td>02:00-03:15</td><td>內容脈絡 + 常駐檔案</td><td>指示修剪差異</td></tr>
               <tr><td>03:15-04:15</td><td>工作流程 + 模式</td><td>模式路由速查表</td></tr>
               <tr><td>04:15-05:15</td><td>MCP/工具成本 + 資料</td><td>MCP 稽核清單</td></tr>
-              <tr><td>05:15-06:15</td><td>實用設定</td><td>儲存庫設定檢查清單</td></tr>
-              <tr><td>06:15-07:10</td><td>模型/定價 + 治理</td><td>客戶管理員導入</td></tr>
-              <tr><td>07:10-07:40</td><td>每個 Token 成果</td><td>計劃/執行/驗證迴圈</td></tr>
-              <tr><td>07:40-08:00</td><td>專題實作</td><td>30 天 Token 計劃</td></tr>
+              <tr><td>05:15-06:15</td><td>實務設定</td><td>儲存庫設定檢查清單</td></tr>
+              <tr><td>06:15-07:10</td><td>模型/定價 + 治理</td><td>客戶管理員推行</td></tr>
+              <tr><td>07:10-07:40</td><td>每個 token 的成果</td><td>規劃/執行/驗證迴圈</td></tr>
+              <tr><td>07:40-08:00</td><td>總結實作</td><td>30 天 token 計畫</td></tr>
             </tbody>
           </table>
         </section>
 
         <section>
           <h2>導覽</h2>
-          <p>水平方向 = 章節。垂直方向 = 章節投影片 + 實作。</p>
-          <p class="small muted">按下 <code>Esc</code> 鍵顯示概觀。按下 <code>S</code> 鍵顯示講者備忘錄。</p>
+          <p>在各章節之間水平移動。在每個章節的投影片與實作演練中垂直移動。</p>
+          <p class="small muted">按 <code>Esc</code> 檢視總覽。按 <code>S</code> 檢視講者備註。</p>
         </section>
+
         <section>
           <section>
             <p class="kicker">快速入門</p>
-            <h2>現在可以做的 14 件事</h2>
-            <p>從輸出開始，然後縮減結構性輸入，最後路由模型與工具。</p>
+            <h2>現在就能做的 14 件事</h2>
+            <p>減少不需要的輸出、降低重複的內容脈絡，然後依任務選擇模型與工具。</p>
           </section>
 
           <section>
-            <h2>最速制勝法</h2>
+            <h2>最快見效的做法</h2>
             <ol>
-              <li><strong>僅程式碼回應</strong>：最高的每 Token 投資報酬率。</li>
-              <li><strong>限制格式</strong>：項目符號、單一句子、JSON、表格。</li>
-              <li><strong>縮減常駐上下文</strong>：指示與代理程式 (Agent) 檔案。</li>
-              <li><strong>預設使用 Auto</strong>：僅在有合理解釋時釘選進階模型。</li>
-              <li><strong>使用 Ask 模式</strong>處理簡單問題。</li>
+              <li><strong>僅輸出程式碼的回應</strong>：只需要程式碼時，略過說明。</li>
+              <li><strong>限制格式</strong>：項目符號、一句話、JSON、表格。</li>
+              <li><strong>縮小常駐內容脈絡</strong>：指示與代理程式檔案。</li>
+              <li><strong>預設使用 Auto</strong>：只有在有正當理由時才固定使用高階模型。</li>
+              <li>簡單問題請<strong>使用 Ask 模式</strong>。</li>
             </ol>
           </section>
 
           <section>
-            <h2>更多快速制勝法</h2>
+            <h2>更多快速見效的做法</h2>
             <ol start="6">
-              <li><strong>使用 <code>applyTo</code> 限制上下文範圍</strong>。</li>
-              <li><strong>撰寫精確提示詞</strong>：目標檔案、函式、完成條件。</li>
-              <li><strong>針對目標模型重新調整提示詞</strong>。</li>
+              <li><strong>以 <code>applyTo</code> 限定內容脈絡範圍</strong>。</li>
+              <li><strong>撰寫精確的提示詞</strong>：目標檔案、函式、完成條件。</li>
+              <li><strong>針對目標模型重新調校提示詞</strong>。</li>
               <li><strong>稽核 MCP 伺服器</strong>。</li>
-              <li><strong>先將富文字檔案轉換為 Markdown</strong>。</li>
+              <li><strong>先將富格式檔案轉換為 Markdown</strong>。</li>
             </ol>
           </section>
 
           <section>
-            <h2>更多快速制勝法，續</h2>
+            <h2>更多快速見效的做法（續）</h2>
             <ol start="11">
-              <li>在 Copilot CLI 中<strong>執行 <code>/chronicle cost tips</code> 與 <code>/chronicle improve</code></strong>。</li>
-              <li><strong>使用 AI Engineering Coach</strong>進行 VS Code 習慣審查。</li>
-              <li>對於長 CLI 工具鏈，<strong>嘗試 CodeAct</strong>。</li>
-              <li>為重複的程式碼庫導覽<strong>建構 Graphify 地圖</strong>。</li>
+              <li>在 Copilot CLI 中<strong>執行 <code>/chronicle cost tips</code> &amp; <code>/chronicle improve</code></strong>。</li>
+              <li>使用 <strong>AI Engineering Coach</strong> 檢視 VS Code 的使用習慣。</li>
+              <li>對長的 CLI 工具鏈<strong>嘗試 CodeAct</strong>。</li>
+              <li>為重複的程式碼庫導覽<strong>建立 Graphify 地圖</strong>。</li>
             </ol>
           </section>
 
@@ -302,35 +302,35 @@
             <h2>優先順序堆疊</h2>
             <div class="grid-3">
               <div class="card">
-                <h3>輸出優先</h3>
-                <p>一個預設設定即可改變每個回應。</p>
+                <h3>第一：輸出</h3>
+                <p>設定簡潔的回應預設值。</p>
               </div>
               <div class="card">
-                <h3>常駐次之</h3>
-                <p>微小的基準會產生加成效果。</p>
+                <h3>第二：常駐內容</h3>
+                <p>移除每一輪都重複的內容脈絡。</p>
               </div>
               <div class="card">
-                <h3>模式第三</h3>
-                <p>依工作形狀選擇 Ask、Edit、Agent。</p>
+                <h3>第三：模式</h3>
+                <p>依任務選擇 Ask、Edit 或 Agent。</p>
               </div>
               <div class="card">
-                <h3>治理第四</h3>
-                <p>預算與模型原則限制花費。</p>
+                <h3>第四：治理</h3>
+                <p>預算與模型原則為支出設限。</p>
               </div>
               <div class="card">
-                <h3>成果第五</h3>
-                <p>計劃、路由、驗證、關閉。</p>
+                <h3>第五：成果</h3>
+                <p>規劃、路由、驗證、收尾。</p>
               </div>
             </div>
           </section>
 
           <section>
-            <h2>實作 0：評估您的習慣基準</h2>
+            <h2>實作 0：建立你的習慣基準線</h2>
             <div class="card lab">
               <h3>目標</h3>
-              <p>在學習技巧前，找出您前三大 Token 洩漏點。</p>
-              <p><strong>步驟：</strong>將以下各項標記為綠/黃/紅：輸出詳細度、指示大小、開啟的標籤頁、Agent 使用、MCP 數量、模型釘選、長交談歷史紀錄。</p>
-              <p><strong>交付物：</strong>個人基準 + 一項「今日修正」行動。</p>
+              <p>在學習技巧之前，先找出你最大的 3 個 token 漏洞。</p>
+              <p><strong>做法：</strong>將下列各項標示為綠／黃／紅：輸出冗長度、指示大小、開啟的索引標籤、Agent 的使用、MCP 數量、模型固定、冗長的聊天歷程記錄。</p>
+              <p><strong>交付成果：</strong>個人基準線 + 一項「今天就修正」的行動。</p>
               <p><strong>時間：</strong>10 分鐘。</p>
             </div>
           </section>
@@ -338,69 +338,69 @@
 
         <section>
           <section>
-            <p class="kicker">第一部分</p>
-            <h2>為何 Token 至關重要</h2>
-            <p>Token 驅動成本、速度、限制與上下文容量。</p>
+            <p class="kicker">第 1 部分</p>
+            <h2>為什麼 token 很重要</h2>
+            <p>Token 決定了成本、速度、限制與內容脈絡容量。</p>
           </section>
 
           <section>
-            <h2>Token 是次字詞 (Subwords)</h2>
+            <h2>Token 是子詞</h2>
             <div class="two-col">
               <div class="card">
-                <h3>BPE 行為</h3>
+                <h3>BPE 的行為</h3>
                 <ul>
-                  <li>常用字詞可以是一個 Token。</li>
-                  <li>罕見字詞會拆分成碎片。</li>
-                  <li>標點符號與填充字詞仍然計算在內。</li>
+                  <li>常見的單字可以是一個 token。</li>
+                  <li>罕見的單字會被拆成多個片段。</li>
+                  <li>標點符號與贅詞同樣會計入。</li>
                 </ul>
               </div>
               <div class="card">
                 <h3>核心洞察</h3>
-                <p><code>Sure, I'd be happy to help!</code> 可能會燒掉約 10 個完全沒有技術價值的 Token。</p>
+                <p><code>Sure, I'd be happy to help!</code> 使用了約 10 個 token，卻沒有回答問題。</p>
               </div>
             </div>
           </section>
 
           <section>
             <h2>成本模型</h2>
-            <img class="diagram diagram-compact" src="../docs/assets/diagrams/token-cost-anatomy.svg" alt="Token 成本剖析：輸入 Token 包含隱藏的上下文，輸出 Token 是可見的回答，快取 Token 則重複使用穩定的前綴。">
-            <p class="small warning">在供應商定價範例中，輸出 Token 的成本通常比輸入 Token 高得多。</p>
+            <img class="diagram diagram-compact" src="../../source/docs/assets/diagrams/token-cost-anatomy.svg" alt="Token 成本剖析：輸入 token 包含隱藏的內容脈絡，輸出 token 是可見的答案，快取 token 重複使用穩定的前綴。">
+            <p class="small warning">在供應商的定價範例中，輸出 token 的成本通常明顯高於輸入 token。</p>
           </section>
 
           <section>
-            <h2>輸入大於您的提示詞</h2>
-            <pre><code class="language-text">上下文視窗
+            <h2>輸入比你的提示詞更大</h2>
+            <pre><code class="language-text">內容脈絡視窗
 ├─ 系統提示詞
 ├─ copilot-instructions.md / AGENTS.md
-├─ 檔案上下文與開啟的標籤頁
-├─ 交談歷史紀錄
+├─ 檔案內容脈絡與開啟的索引標籤
+├─ 對話歷程記錄
 ├─ MCP 工具結構描述
-└─ 您輸入的提示詞</code></pre>
-            <p class="small">您輸入的 20 字提示詞可能隱藏在數千個隱藏 Token 中。</p>
+└─ 你輸入的提示詞</code></pre>
+            <p class="small">一個 20 字的提示詞，可能會連同數千個內容脈絡 token 一起傳送。</p>
           </section>
 
           <section>
-            <h2>編碼代理程式 (Coding Agent) 倍增效應</h2>
-            <p>一次從 Issue 到 PR 的執行不只是一個請求。</p>
+            <h2>Coding Agent 的倍增效應</h2>
+            <p>一次從 issue 到 PR 的執行，並不只是一個請求。</p>
             <div class="grid">
               <div class="card">
-                <h3>代理程式 (Agent) 步驟</h3>
-                <p>計劃、搜尋、讀取檔案、編輯、執行測試、檢查失敗、重試。</p>
+                <h3>代理程式步驟</h3>
+                <p>規劃、搜尋、讀取檔案、編輯、執行測試、檢查失敗、重試。</p>
               </div>
               <div class="card">
-                <h3>加成效應</h3>
-                <p>每個步驟都會重新載入基準上下文，並加上之前的工具結果。</p>
+                <h3>累積效應</h3>
+                <p>每個步驟都會重新載入基準內容脈絡，並加上先前的工具結果。</p>
               </div>
             </div>
           </section>
 
           <section>
-            <h2>實作 1：Token 剖析</h2>
+            <h2>實作 1：token 剖析</h2>
             <div class="card lab">
               <h3>目標</h3>
-              <p>區分可見提示詞與隱藏上下文。</p>
-              <p><strong>步驟：</strong>選擇一個最近的 Copilot 工作。列出可能的上下文來源：開啟的檔案、參照的檔案、指示、歷史紀錄、工具、輸出。</p>
-              <p><strong>討論：</strong>哪個來源最容易控制？</p>
+              <p>將可見的提示詞與隱藏的內容脈絡區分開來。</p>
+              <p><strong>做法：</strong>選擇一項最近的 Copilot 任務。列出可能的內容脈絡來源：開啟的檔案、參照的檔案、指示、歷程記錄、工具、輸出。</p>
+              <p><strong>討論：</strong>哪一個來源最容易控制？</p>
               <p><strong>時間：</strong>15 分鐘。</p>
             </div>
           </section>
@@ -410,50 +410,51 @@
           <section>
             <p class="kicker">第 2.1 部分</p>
             <h2>提示詞壓縮</h2>
-            <p>用更少的 Token 表達相同的意思。保留技術精確度。</p>
-            <img class="diagram diagram-compact" src="../docs/assets/diagrams/prompt-compression-ladder.svg" alt="提示詞壓縮階梯：在保留技術實質內容的同時，從冗長、精簡、完整到極簡。">
+            <p>先讓請求清楚，再讓它變短。技術術語與限制條件必須保持精確。</p>
+            <p class="small">一般的簡潔語言是預設做法。簡寫是選用的。</p>
           </section>
 
           <section>
-            <h2>原始人模式</h2>
+            <h2>選用的簡寫</h2>
             <div class="grid">
               <div class="card">
-                <h3>丟棄</h3>
-                <p>冠詞、填充字、客套話、迴避字句、軟化詞。</p>
+                <h3>捨棄</h3>
+                <p>沒有增加任何任務資訊的冗詞與客套話。</p>
               </div>
               <div class="card">
                 <h3>保留</h3>
-                <p>技術術語、程式碼、檔案名稱、限制條件、確切的完成條件。</p>
+                <p>技術術語、程式碼、檔名、否定、條件與驗收檢查。</p>
               </div>
             </div>
-            <p class="accent"><code>[物件] [動作] [原因]。[下一步驟]。</code></p>
+            <p class="accent"><code>[對象] [動作] [原因]。[下一步]。</code></p>
+            <p class="small">當片段句會讓人看不出誰做了什麼時，請保留完整的句子。</p>
           </section>
 
           <section>
-            <h2>對比</h2>
+            <h2>前後對照</h2>
             <table>
-              <thead><tr><th>冗長</th><th>原始人</th></tr></thead>
+              <thead><tr><th>冗長</th><th>簡潔</th></tr></thead>
               <tbody>
                 <tr>
-                  <td>Could you please review this pull request and let me know if there are any issues?</td>
-                  <td><code>Review PR. Flag issues.</code></td>
+                  <td>你可以幫我審查這個 pull request，並告訴我是否有任何問題嗎？</td>
+                  <td><code>審查 PR。標出問題。</code></td>
                 </tr>
                 <tr>
-                  <td>Can you explain what this error message means and how I should fix it?</td>
-                  <td><code>Explain error. How fix.</code></td>
+                  <td>你可以解釋這個錯誤訊息的意思，以及我該如何修正嗎？</td>
+                  <td><code>說明此錯誤及修正方式。</code></td>
                 </tr>
               </tbody>
             </table>
           </section>
 
           <section>
-            <h2>壓縮級別</h2>
+            <h2>壓縮層級</h2>
             <table>
-              <thead><tr><th>級別</th><th>風格</th><th>適用時機</th></tr></thead>
+              <thead><tr><th>層級</th><th>風格</th><th>適用時機</th></tr></thead>
               <tbody>
-                <tr><td>精簡</td><td>專業但緊湊</td><td>面對客戶、引導新手</td></tr>
-                <tr><td>完整</td><td>片段，無廢話</td><td>每日開發人員提示詞</td></tr>
-                <tr><td>極簡</td><td>縮寫、箭頭、簡短</td><td>高容量、已知領域</td></tr>
+                <tr><td>簡潔的文字</td><td>平實、完整的措辭</td><td>預設</td></tr>
+                <tr><td>片段句</td><td>共用術語、簡短子句</td><td>主詞與條件仍然清楚</td></tr>
+                <tr><td>高密度簡寫</td><td>縮寫、箭頭</td><td>僅在讀者能可靠解讀時</td></tr>
               </tbody>
             </table>
           </section>
@@ -462,36 +463,36 @@
             <h2>結構化優於散文</h2>
             <pre><code class="language-text">POST /api/users
 驗證：
-- name: string, 必填
-- email: string, 必填, 有效
-驗證失敗時回傳 400
-成功時回傳 201，傳回建立的使用者
-儲存至資料庫</code></pre>
-            <p class="small">項目符號與鍵值組能強制提高清晰度並減少填充內容。</p>
+- name：字串，必填
+- email：字串，必填，格式有效
+驗證失敗回傳 400
+成功回傳 201，並傳回建立的使用者
+儲存至 DB</code></pre>
+            <p class="small">項目符號與鍵值對能強制讓內容清晰，並減少贅詞。</p>
           </section>
 
           <section>
-            <h2>以程式碼為中心的提示詞</h2>
+            <h2>以程式碼為中心的提示</h2>
             <div class="grid">
               <div class="card">
                 <h3>自然語言</h3>
-                <p>建立一個函式，接收數字、過濾掉負值、將剩餘的值加倍，然後傳回總和。</p>
+                <p>建立一個函式，接收數字、篩選掉負值、將其餘的值加倍，並傳回總和。</p>
               </div>
               <div class="card">
                 <h3>以程式碼為中心</h3>
                 <p><code>fn(nums) -> filter(&gt;0) -> map(*2) -> sum</code></p>
-                <p><code>類似 getUserById 但改用 email。若缺失則回傳 404。</code></p>
+                <p><code>類似 getUserById，但改用 email。找不到時回傳 404。</code></p>
               </div>
             </div>
           </section>
 
           <section>
-            <h2>防護欄作為不變量</h2>
+            <h2>將防護欄寫成不變條件</h2>
             <table>
-              <thead><tr><th>冗長步驟</th><th>壓縮的不變量</th></tr></thead>
+              <thead><tr><th>冗長的程序</th><th>壓縮後的不變條件</th></tr></thead>
               <tbody>
-                <tr><td>確保每個 SQL 查詢都將值參數化...</td><td><code>SQL：僅限參數化查詢。禁止字串拼接。</code></td></tr>
-                <tr><td>請為任何新程式碼撰寫測試...</td><td><code>新程式碼 -> 測試。涵蓋正常流程 + 錯誤。</code></td></tr>
+                <tr><td>請確保每個 SQL 查詢都將值參數化……</td><td><code>SQL：僅限參數化查詢。禁止字串串接。</code></td></tr>
+                <tr><td>請為任何新的程式碼撰寫測試……</td><td><code>新程式碼 -> 測試。涵蓋正常 + 錯誤情況。</code></td></tr>
               </tbody>
             </table>
           </section>
@@ -500,25 +501,25 @@
             <h2>實作 2：提示詞壓縮階梯</h2>
             <div class="card lab">
               <h3>目標</h3>
-              <p>以三種方式重寫一個真實的提示詞：精簡、完整、極簡。</p>
-              <p><strong>步驟：</strong>保留檔案名稱、行號、限制條件、完成條件。只丟棄廢話。</p>
-              <p><strong>比較：</strong>哪個版本最短且不增加歧義？</p>
+              <p>以三種方式改寫一個真實的提示詞：精簡、完整、極簡。</p>
+              <p><strong>做法：</strong>保留檔名、行號、限制條件與完成條件。只捨棄贅詞。</p>
+              <p><strong>比較：</strong>哪一個版本在不增加模糊性的前提下最短？</p>
               <p><strong>時間：</strong>20 分鐘。</p>
             </div>
           </section>
 
           <section>
-            <h2>實作 3：提示詞 A/B 測試</h2>
+            <h2>實作 3：提示詞 A/B</h2>
             <div class="card lab">
-              <h3>嘗試此方式 vs 彼方式</h3>
-              <pre><code class="language-text">A: Could you take a look at auth and improve error handling?
+              <h3>比較這個與那個</h3>
+              <pre><code class="language-text">A：你可以看一下 auth，並改善錯誤處理嗎？
 
-B: File: src/auth/login.ts.
-Bug: null user causes .email crash.
-Fix: null guard before .email.
-Test: add null-user case.
-Done: targeted test passes.</code></pre>
-              <p><strong>執行：</strong>使用 A，然後使用 B 詢問 Copilot。比較檔案讀取、釐清問題與輸出長度。</p>
+B：檔案：src/auth/login.ts。
+Bug：null 的 user 導致 .email 當機。
+修正：在 .email 之前加入 null 防護。
+測試：新增 null-user 的案例。
+完成：目標測試通過。</code></pre>
+              <p><strong>執行：</strong>先以 A 詢問 Copilot，再以 B 詢問。比較檔案讀取、釐清次數與輸出長度。</p>
             </div>
           </section>
         </section>
@@ -527,19 +528,19 @@ Done: targeted test passes.</code></pre>
           <section>
             <p class="kicker">第 2.2 部分</p>
             <h2>語言比較</h2>
-            <p>提示詞使用英文通常最節省 Token。</p>
+            <p>比較 token 數量，而不是字元數量。</p>
           </section>
 
           <section>
-            <h2>CJK 假設失敗</h2>
+            <h2>CJK 的假設不成立</h2>
             <table>
-              <thead><tr><th>語言</th><th>句子</th><th>Token 數</th><th>對比英文</th></tr></thead>
+              <thead><tr><th>語言</th><th>句子</th><th>Token</th><th>相對於英文</th></tr></thead>
               <tbody>
                 <tr><td>英文</td><td>I met a huge dog</td><td>5</td><td>1.0x</td></tr>
                 <tr><td>西班牙文</td><td>Conoci a un perro enorme</td><td>8</td><td>1.6x</td></tr>
-                <tr><td>中文</td><td>我遇到了一隻巨大的狗</td><td>11</td><td>2.2x</td></tr>
-                <tr><td>日文</td><td>大きな犬に会いました</td><td>11</td><td>2.2x</td></tr>
-                <tr><td>俄文</td><td>Я встретил огромную собаку</td><td>14</td><td>2.8x</td></tr>
+                <tr><td>中文</td><td>中文對應句</td><td>11</td><td>2.2x</td></tr>
+                <tr><td>日文</td><td>日文對應句</td><td>11</td><td>2.2x</td></tr>
+                <tr><td>俄文</td><td>俄文對應句</td><td>14</td><td>2.8x</td></tr>
               </tbody>
             </table>
           </section>
@@ -547,113 +548,111 @@ Done: targeted test passes.</code></pre>
           <section>
             <h2>原因</h2>
             <ul>
-              <li>BPE 分詞器主要針對英文進行訓練。</li>
-              <li>常用的英文單字通常只佔一個 Token。</li>
-              <li>CJK 文字的字元數較少，但每個字元產生的 Token 較多。</li>
-              <li>非拉丁語系的字體通常成本較高；音譯可能會有幫助。</li>
+              <li>BPE 分詞器的訓練資料以英文為大宗。</li>
+              <li>常見的英文單字通常只需一個 token。</li>
+              <li>CJK 文字的字元較少，但每個字元的 token 較多。</li>
+              <li>非拉丁文字的成本通常更高；音譯可以有所幫助。</li>
             </ul>
           </section>
 
           <section>
-            <h2>實用規則</h2>
+            <h2>實務原則</h2>
             <div class="quote">
-              提示詞與指示請使用簡短的英文。不要為了節省 Token 而將其翻譯為 CJK。
+              提示詞與指示請使用精簡的英文。不要為了節省 token 而翻譯成 CJK 語言。
             </div>
-            <p class="small">如果使用者用母語能寫得更好，品質可能大於 Token 成本。但以最佳化而言，英文勝出。</p>
+            <p class="small">如果你用母語能更清楚地表達需求，那份清晰度可能勝過節省 token 的好處。</p>
           </section>
 
           <section>
-            <h2>實作 4：分詞器 (Tokenizer) 現實檢驗</h2>
+            <h2>實作 4：分詞器的現實檢驗</h2>
             <div class="card lab">
               <h3>目標</h3>
-              <p>用實際的 Token 數量來證實或推翻語言假設。</p>
-              <p><strong>步驟：</strong>選擇一個提示詞。將其翻譯為您最擅長的非英語語言。在分詞器工具中比較 Token 數量。</p>
-              <p><strong>交付物：</strong>團隊語言指引：何時需要英文，何時可以使用母語。</p>
+              <p>以實際的 token 計數，推翻或證實對語言的假設。</p>
+              <p><strong>做法：</strong>挑選一個提示詞。翻譯成你最擅長的非英語語言。在分詞器工具中比較 token 計數。</p>
+              <p><strong>交付成果：</strong>團隊的語言指引：何時必須使用英文，何時可以使用母語。</p>
               <p><strong>時間：</strong>20 分鐘。</p>
             </div>
           </section>
         </section>
+
         <section>
           <section>
             <p class="kicker">第 2.3 部分</p>
-            <h2>上下文管理</h2>
-            <p>控制要傳送的內容。最大的輸入節省來自於結構化。</p>
+            <h2>內容脈絡管理</h2>
+            <p>控制哪些檔案、指示與歷程記錄會被傳送。</p>
           </section>
 
           <section>
-            <h2>常駐檔案在每次呼叫中都會產生花費</h2>
-            <p><code>.github/copilot-instructions.md</code>、<code>AGENTS.md</code>、<code>CLAUDE.md</code> 以及類似的檔案可能會變成持續的上下文。</p>
-            <p class="small warning">當多個檔案被不同工具載入時，重複的內容可能會被付費兩次。</p>
+            <h2>常駐檔案每一輪都要付費</h2>
+            <p><code>.github/copilot-instructions.md</code>、<code>AGENTS.md</code>、<code>CLAUDE.md</code> 與類似的檔案，可能成為持續存在的內容脈絡。</p>
+            <p class="small warning">當兩個檔案都被載入時，重複的規則會使內容脈絡加倍。</p>
           </section>
 
           <section>
-            <h2>指示壓縮範例</h2>
-            <pre><code class="language-text">像原始人一樣簡短。技術實質內容精確。只丟棄廢話。
-丟棄：冠詞、填充字 (just/really/basically)、客套話、迴避字句。
-可使用片段。簡短的同義詞。程式碼保持不變。
-模式：[物件] [動作] [原因]。[下一步驟]。</code></pre>
-            <p class="small">大約 50 個 Token。每次互動時載入。</p>
+            <h2>先修剪，再壓縮</h2>
+            <p>刪除重複的規則、過時的筆記，以及程式碼中可見的事實。保留專案專屬的陷阱。</p>
+            <p class="small">可重複使用的回應範本位於實務設定中。判斷某項規則是否相關，並不需要 token 數量的估算。</p>
           </section>
 
           <section>
-            <h2>上下文衛生</h2>
+            <h2>內容脈絡整潔</h2>
             <ul>
-              <li>關閉與目前工作無關的檔案。</li>
-              <li>保持檔案聚焦且精簡。</li>
-              <li>忽略建構輸出、供應商目錄、產生的檔案。</li>
-              <li>在 Business/Enterprise 版本中，使用內容排除 (Content Exclusion) 來處理敏感路徑。</li>
-              <li>在主題變更後開始新的對話。</li>
+              <li>關閉與目前任務無關的檔案。</li>
+              <li>讓檔案保持專注且小巧。</li>
+              <li>忽略建構輸出、vendor 目錄與產生的檔案。</li>
+              <li>在 Business/Enterprise 中，對敏感路徑使用內容排除。</li>
+              <li>主題改變後，開啟全新的對話。</li>
             </ul>
           </section>
 
           <section>
-            <h2>使用具範圍限制的指示</h2>
+            <h2>使用限定範圍的指示</h2>
             <pre><code class="language-markdown">---
 applyTo: "src/api/**/*.ts"
 ---
 API 慣例：
-- 路徑位於 src/api/routes/。處理常式 (Handlers) 保持精簡，邏輯置於 services/。
-- 使用 zod 進行驗證。
-- 透過 Result&lt;T,E&gt; 處理錯誤，絕不擲出錯誤。</code></pre>
-            <p class="small">僅在相關檔案處於範圍內時，才為特定路徑指引付費。</p>
+- 路由放在 src/api/routes/。Handler 保持精簡，邏輯放在 services/。
+- 使用 zod 驗證。
+- 以 Result&lt;T,E&gt; 回報錯誤，絕不 throw。</code></pre>
+            <p class="small">只對相符的檔案載入特定路徑的指引。</p>
           </section>
 
           <section>
-            <h2>常駐 vs 條件式 vs 隨選</h2>
-            <img class="diagram diagram-compact" src="../docs/assets/diagrams/context-loading-boundaries.svg" alt="常駐上下文應非常微小；具範圍限制的指示依路徑載入；隨選技能在呼叫時載入。">
+            <h2>常駐、條件式與隨需</h2>
+            <img class="diagram diagram-compact" src="../../source/docs/assets/diagrams/context-loading-boundaries.svg" alt="常駐內容脈絡應保持極小；限定範圍的指示依路徑載入；隨需技能在被叫用時才載入。">
           </section>
 
           <section>
-            <h2>先將富文字檔案標準化</h2>
-            <img class="diagram diagram-compact" src="../docs/assets/diagrams/format-tax-pipeline.svg" alt="富文字檔案帶有格式雜訊；MarkItDown 在 AI 運作前將其轉換為乾淨的 Markdown。">
+            <h2>先正規化富格式檔案</h2>
+            <img class="diagram diagram-compact" src="../../source/docs/assets/diagrams/format-tax-pipeline.svg" alt="富格式檔案帶有格式雜訊；MarkItDown 在進行 AI 工作之前，先將它們轉換為乾淨的 Markdown。">
           </section>
 
           <section>
-            <h2>快取友善行為</h2>
-            <img class="diagram diagram-compact" src="../docs/assets/diagrams/cache-stability.svg" alt="穩定的對話串重複使用前綴；破壞快取的對話串切換模型、工具或代理程式，應以交接開始新的交談。">
+            <h2>對快取友善的行為</h2>
+            <img class="diagram diagram-compact" src="../../source/docs/assets/diagrams/cache-stability.svg" alt="穩定的對話串會重複使用前綴；快取失效的對話串切換了模型、工具或代理程式，應改為以交接重新開始。">
           </section>
 
           <section>
-            <h2>持續性的圖形導覽</h2>
-            <img class="diagram diagram-compact" src="../docs/assets/diagrams/graphify-navigation.svg" alt="Graphify 僅建構一次 graph.json，以便代理程式可以查詢地圖，而無需重新讀取廣泛的檔案集。">
+            <h2>持久性圖譜導覽</h2>
+            <img class="diagram diagram-compact" src="../../source/docs/assets/diagrams/graphify-navigation.svg" alt="Graphify 只需建立一次 graph.json，代理程式便能查詢地圖，而不必重新讀取範圍廣泛的檔案集。">
           </section>
 
           <section>
             <h2>企業注意事項：內容排除</h2>
             <div class="card enterprise">
-              <h3>客戶端行動</h3>
-              <p>為敏感檔案、產生的套件、大型資料檔案以及受監管的路徑設定內容排除。</p>
-              <p><strong>重要：</strong>首先將此視為隱私/原則控制，其次才是節省 Token 的副作用。請查看官方文件中的目前支援範圍。</p>
+              <h3>客戶端的行動</h3>
+              <p>針對敏感檔案、產生的套件組合、大型資料檔案與受規範的路徑，設定內容排除。</p>
+              <p><strong>重要：</strong>請先將此視為隱私／原則控制，節省 token 只是附帶效果。請在官方文件中確認目前各介面的支援情形。</p>
             </div>
           </section>
 
           <section>
-            <h2>實作 5：上下文稽核</h2>
+            <h2>實作 5：內容脈絡稽核</h2>
             <div class="card lab">
               <h3>目標</h3>
-              <p>尋找應改為限定範圍或隨選的常駐上下文。</p>
-              <p><strong>步驟：</strong>檢查儲存庫指示、AGENTS/CLAUDE 檔案、開啟的標籤頁、產生的檔案、MCP 設定。</p>
-              <p><strong>交付物：</strong>三欄式清單：保留常駐、移動至 <code>applyTo</code>、移至隨選/刪除。</p>
+              <p>找出應改為限定範圍或隨需載入的常駐內容脈絡。</p>
+              <p><strong>做法：</strong>檢查儲存庫指示、AGENTS/CLAUDE 檔案、開啟的索引標籤、產生的檔案、MCP 設定。</p>
+              <p><strong>交付成果：</strong>三欄清單：保留常駐、移至 <code>applyTo</code>、移至隨需/刪除。</p>
               <p><strong>時間：</strong>30 分鐘。</p>
             </div>
           </section>
@@ -663,13 +662,13 @@ API 慣例：
           <section>
             <p class="kicker">第 2.4 部分</p>
             <h2>輸出控制</h2>
-            <p>告訴模型什麼不要說。最高的每 Token 投資報酬率。</p>
+            <p>要求你需要的答案格式。略過不需要的說明。</p>
           </section>
 
           <section>
-            <h2>預設指令</h2>
-            <pre><code class="language-text">僅程式碼，無須解釋。</code></pre>
-            <p>最適合團隊已了解預期變更時的生成工作。</p>
+            <h2>針對任務的程式碼輸出</h2>
+            <pre><code class="language-text">僅提供程式碼，不需說明。</code></pre>
+            <p>最適合團隊已經理解所需變更的產生類任務。</p>
           </section>
 
           <section>
@@ -677,32 +676,30 @@ API 慣例：
             <table>
               <thead><tr><th>指示</th><th>適用時機</th></tr></thead>
               <tbody>
-                <tr><td>以單一句子回答</td><td>快速決策或解釋</td></tr>
-                <tr><td>最多 3 個項目符號</td><td>易於瀏覽的摘要</td></tr>
-                <tr><td>以 JSON 回覆</td><td>機器可讀的擷取資訊</td></tr>
-                <tr><td>是/否，然後用一行說明原因</td><td>審查關卡</td></tr>
-                <tr><td>僅顯示差異 (Diff)</td><td>修補程式 (Patch) 檢查</td></tr>
+                <tr><td>用一句話回答</td><td>快速決策或說明</td></tr>
+                <tr><td>最多 3 個項目符號</td><td>便於快速瀏覽的摘要</td></tr>
+                <tr><td>以 JSON 回覆</td><td>機器可讀的擷取</td></tr>
+                <tr><td>先回答是/否，再用一行說明原因</td><td>審查關卡</td></tr>
+                <tr><td>僅提供差異</td><td>修補檢視</td></tr>
               </tbody>
             </table>
           </section>
 
           <section>
             <h2>專案預設值</h2>
-            <pre><code class="language-text">保持簡潔。除非要求，否則無須解釋。
-生成工作僅輸出程式碼。
-多用項目符號，少用段落。</code></pre>
-            <p class="small">學習、偵錯或教學時覆寫此設定：明確要求解釋。</p>
+            <p>先給答案。說明的篇幅要與任務成比例，並完整保留驗證證據與阻礙因素。</p>
+            <p class="small">請使用單一的<a href="../10-practical-setup/#step-1-set-a-concise-response-default">入門範本</a>，再加入相關的專案規則。</p>
           </section>
 
           <section>
-            <h2>實作 6：輸出 A/B 測試</h2>
+            <h2>實作 6：輸出 A/B</h2>
             <div class="card lab">
-              <h3>嘗試此方式 vs 彼方式</h3>
-              <pre><code class="language-text">A: Add input validation to processOrder().
+              <h3>比較這個與那個</h3>
+              <pre><code class="language-text">A：為 processOrder() 加入輸入驗證。
 
-B: Add input validation to processOrder().
-Code only. No explanation. Minimal diff.</code></pre>
-              <p><strong>評估：</strong>回應長度、解釋所花 Token、差異 (diff) 的實用性。</p>
+B：為 processOrder() 加入輸入驗證。
+僅提供程式碼。不需說明。最小差異。</code></pre>
+              <p><strong>量測：</strong>驗收檢查、完整的 token 用量、計費成本、時間與重試次數，而不是只看回應長度。</p>
               <p><strong>時間：</strong>15 分鐘。</p>
             </div>
           </section>
@@ -711,9 +708,9 @@ Code only. No explanation. Minimal diff.</code></pre>
             <h2>實作 7：強制格式</h2>
             <div class="card lab">
               <h3>目標</h3>
-              <p>練習要求有邊界限制的輸出。</p>
-              <p><strong>提示詞：</strong>「最多 3 個項目符號」、「僅限表格」、「僅限 JSON」、「單一行結論 + 風險」。</p>
-              <p><strong>交付物：</strong>團隊常用 Copilot 輸出的程式碼片段庫。</p>
+              <p>練習要求有範圍限制的輸出。</p>
+              <p><strong>提示詞：</strong>「最多 3 個項目符號」、「僅提供表格」、「僅提供 JSON」、「一行結論 + 風險」。</p>
+              <p><strong>交付成果：</strong>適用於常見 Copilot 輸出的團隊片段庫。</p>
             </div>
           </section>
         </section>
@@ -722,82 +719,82 @@ Code only. No explanation. Minimal diff.</code></pre>
           <section>
             <p class="kicker">第 2.5 部分</p>
             <h2>工作流程最佳化</h2>
-            <p>在最佳化字詞之前，先使用更便宜的互動形式。</p>
+            <p>在縮短個別提示詞之前，先選擇額外負擔較低的工作流程。</p>
           </section>
 
           <section>
-            <h2>認可 (Commit) 與 PR 文字至關重要</h2>
+            <h2>提交與 PR 的文字很重要</h2>
             <div class="grid">
               <div class="card">
-                <h3>認可 (Commit)</h3>
-                <p><code>feat: 新增透過設定頁面重設密碼功能</code></p>
-                <p>僅在「原因」不明顯時才寫正文。</p>
+                <h3>提交</h3>
+                <p><code>feat: 透過設定頁面新增密碼重設功能</code></p>
+                <p>只有在「為什麼」不明顯時才加上內文。</p>
               </div>
               <div class="card">
                 <h3>審查</h3>
-                <p><code>L42：錯誤：使用者可能為 null。在 .email 前加入保護。</code></p>
-                <p>單行、具體可行、有嚴重性代碼。</p>
+                <p><code>L42: bug：user 可能為 null。請在 .email 之前加入防護。</code></p>
+                <p>單行、可執行、並標示嚴重性。</p>
               </div>
             </div>
           </section>
 
           <section>
-            <h2>Ask vs Edit vs Agent</h2>
-            <img class="diagram diagram-compact" src="../docs/assets/diagrams/mode-decision-tree.svg" alt="決策樹：使用 Ask 進行提問，使用 Edit 進行針對性的單一檔案變更，使用 Agent 進行明確的多檔案工作，模糊的工作先進行釐清。">
+            <h2>Ask、Edit 與 Agent</h2>
+            <img class="diagram diagram-compact" src="../../source/docs/assets/diagrams/mode-decision-tree.svg" alt="決策樹：問題使用 Ask，針對性的單一檔案變更使用 Edit，明確的多檔案工作使用 Agent，模糊的任務則先釐清。">
           </section>
 
           <section>
-            <h2>Auto模型預設</h2>
-            <p>Auto 是一個很好的基準：支援的 Auto 池、具組織原則感知、根據文件對符合條件的付費方案 Chat 使用量提供折扣。</p>
-            <p class="warning">Auto 並不代表「提升至所有進階模型」。請刻意釘選進階模型。</p>
+            <h2>Auto 模型預設值</h2>
+            <p>Auto 是不錯的基準：受支援的 Auto 集區、感知組織原則，且依文件對符合資格的付費方案 Chat 用量提供折扣。</p>
+            <p class="warning">Auto 並不代表「升級使用每一個高階模型」。請刻意固定使用高階模型。</p>
           </section>
 
           <section>
-            <h2>當模型變更時重新調整提示詞</h2>
+            <h2>模型變更時重新調校提示詞</h2>
             <pre><code class="language-text">目標模型：GPT-5.5。
-指引：&lt;官方提示指引 URL&gt;
+指南：&lt;官方提示詞撰寫指南 URL&gt;
 檔案：.github/copilot-instructions.md、.github/instructions/*.md
-使提示詞適應指引。保留行為。減少重工。
-僅顯示差異 (diff)。</code></pre>
+依照指南調整提示詞。保留行為。減少重工。
+只顯示差異。</code></pre>
           </section>
 
           <section>
-            <h2>何時不應壓縮</h2>
+            <h2>何時不該壓縮</h2>
             <ul>
               <li>安全性警告。</li>
               <li>不可逆的操作。</li>
-              <li>引導新手與教學。</li>
-              <li>合規性/法規語言。</li>
-              <li>使用片段會增加歧義的複雜指示。</li>
+              <li>新人上手與教學。</li>
+              <li>法規／合規用語。</li>
+              <li>片段句會增加模糊性的複雜指示。</li>
             </ul>
           </section>
 
           <section>
-            <h2>透過使用教練建立閉環</h2>
+            <h2>以用量教練形成回饋迴圈</h2>
             <div class="grid">
               <div class="card">
                 <h3><code>/chronicle</code></h3>
-                <p>Copilot CLI 工作階段歷史紀錄 (非 VS Code)。使用 <code>/chronicle cost tips</code> 查看 Token 花費，並使用 <code>/chronicle improve</code> 解決重複出現的困惑。</p>
+                <p>Copilot CLI 的工作階段歷程記錄（不含 VS Code）。使用 <code>/chronicle cost tips</code> 檢視 token 支出，使用 <code>/chronicle improve</code> 處理反覆出現的混淆。</p>
               </div>
               <div class="card">
                 <h3>AI Engineering Coach</h3>
-                <p>VS Code 本地延伸模組。尋找反模式、上下文健康狀況與技能機會。</p>
+                <p>VS Code 的本機擴充功能。找出反模式、內容脈絡健全度與技能機會。</p>
               </div>
             </div>
           </section>
 
           <section>
-            <h2>計劃優先，廉價執行</h2>
-            <img class="diagram diagram-compact" src="../docs/assets/diagrams/plan-execute-cheaply.svg" alt="使用強大的推論模型規劃、儲存驗收標準、在全新的較便宜工作階段中執行，然後驗證實作。">
+            <h2>先規劃，再以低成本執行</h2>
+            <img class="diagram diagram-compact" src="../../source/docs/assets/diagrams/plan-execute-cheaply.svg" alt="以強模型規劃、儲存計畫、在全新且較便宜的工作階段中執行，然後驗證驗收條件。">
           </section>
 
           <section>
             <h2>實作 8：模式路由演練</h2>
             <div class="card lab">
               <h3>目標</h3>
-              <p>停止在一次性工作中使用 Agent 模式。</p>
-              <p><strong>步驟：</strong>將 20 個工作範例分類為 Ask/Edit/Agent/Coding Agent。為您的選擇辯護。</p>
-              <p><strong>交付物：</strong>團隊模式路由速查表。</p>
+              <p>不再把 Agent 模式用於單次完成的工作。</p>
+              <p><strong>做法：</strong>將 20 個範例任務分類為 Ask/Edit/Agent/Coding Agent。並為你的選擇辯護。</p>
+              <p><strong>交付成果：</strong>團隊的模式路由速查表。</p>
               <p><strong>時間：</strong>20 分鐘。</p>
             </div>
           </section>
@@ -806,17 +803,18 @@ Code only. No explanation. Minimal diff.</code></pre>
             <h2>實作 9：模型路由演練</h2>
             <div class="card lab">
               <h3>目標</h3>
-              <p>預設防止釘選昂貴的模型。</p>
-              <p><strong>步驟：</strong>將工作對應到 Auto、內建/較低成本、標準、進階模型。如果可行，包含推理強度 (reasoning-effort) 選擇。</p>
-              <p><strong>交付物：</strong>模型升級規則。</p>
+              <p>避免預設就固定使用昂貴的模型。</p>
+              <p><strong>做法：</strong>將任務對應到 Auto、包含在內／較低成本、標準、高階。若有提供，也納入推理強度的選擇。</p>
+              <p><strong>交付成果：</strong>模型升級規則。</p>
             </div>
           </section>
         </section>
+
         <section>
           <section>
             <p class="kicker">第 2.6 部分</p>
-            <h2>常駐上下文問題</h2>
-            <p>更多上下文可能會讓代理程式 (Agents) 表現更差且花費更多。</p>
+            <h2>常駐內容脈絡問題</h2>
+            <p>更多的內容脈絡可能讓代理程式表現更差，成本也更高。</p>
           </section>
 
           <section>
@@ -824,52 +822,52 @@ Code only. No explanation. Minimal diff.</code></pre>
             <table>
               <thead><tr><th>發現</th><th>觀察到的影響</th></tr></thead>
               <tbody>
-                <tr><td>LLM 產生的上下文檔案</td><td>在 5/8 的設定中受損</td></tr>
-                <tr><td>平均正確率</td><td>下降約 2%</td></tr>
-                <tr><td>Token 成本</td><td>上升 20-23%</td></tr>
-                <tr><td>推論額外開銷</td><td>在所引用的設定中上升約 22%</td></tr>
+                <tr><td>LLM 產生的內容脈絡檔案</td><td>在 8 種設定中有 5 種造成損害</td></tr>
+                <tr><td>平均正確性</td><td>下降約 2%</td></tr>
+                <tr><td>Token 成本</td><td>增加 20-23%</td></tr>
+                <tr><td>推理額外負擔</td><td>在所引用的設定中增加約 22%</td></tr>
               </tbody>
             </table>
           </section>
 
           <section>
-            <h2>為何上下文會造成損害</h2>
+            <h2>為什麼內容脈絡有害</h2>
             <div class="grid">
-              <div class="card"><h3>冗餘稅</h3><p>重複代理程式可以自行發現的事實。</p></div>
-              <div class="card"><h3>注意力稅</h3><p>重要規則會在中間遺失。</p></div>
-              <div class="card"><h3>錨定陷阱</h3><p>過時的工具指引過度影響代理程式。</p></div>
-              <div class="card"><h3>訊號/雜訊</h3><p>常規事實會稀釋地雷。</p></div>
+              <div class="card"><h3>冗餘</h3><p>重複代理程式能在程式碼中找到的事實。</p></div>
+              <div class="card"><h3>注意力</h3><p>把重要的規則埋在冗長的內容脈絡中。</p></div>
+              <div class="card"><h3>錨定</h3><p>把代理程式導向過時的工具。</p></div>
+              <div class="card"><h3>訊雜比</h3><p>讓專案專屬的陷阱更難被發現。</p></div>
             </div>
           </section>
 
           <section>
-            <h2>僅保留地雷</h2>
+            <h2>只保留地雷</h2>
             <table>
               <thead><tr><th>保留</th><th>刪除</th></tr></thead>
               <tbody>
-                <tr><td>使用 <code>uv</code> 代替 <code>pip</code></td><td>這是一個 Python 專案</td></tr>
-                <tr><td>資料庫遷移必須按順序執行</td><td>我們使用 PostgreSQL</td></tr>
-                <tr><td>不要重構 auth 模組；稽核暫緩中</td><td>我們使用 JWT 驗證</td></tr>
-                <tr><td>部署需要 VPN</td><td>主分支 (Main branch) 受保護</td></tr>
+                <tr><td>使用 <code>uv</code> 而非 <code>pip</code></td><td>這是一個 Python 專案</td></tr>
+                <tr><td>資料庫移轉必須依序執行</td><td>我們使用 PostgreSQL</td></tr>
+                <tr><td>不要重構身分驗證模組；稽核待處理</td><td>我們使用 JWT 身分驗證</td></tr>
+                <tr><td>部署需要 VPN</td><td>主要分支受到保護</td></tr>
               </tbody>
             </table>
           </section>
 
           <section>
             <h2>錯誤追蹤器模型</h2>
-            <pre><code class="language-text">開始時幾乎保持空白。
-代理程式在某些地方犯錯 -> 新增一行。
-根本原因修正後 -> 刪除該行。</code></pre>
-            <p>指示檔案應該增加與縮減，而不是像維基 (Wiki) 一樣累積。</p>
+            <pre><code class="language-text">從幾乎空白開始。
+代理程式在某處出錯 -> 加入一行。
+根本原因被修正 -> 刪除那一行。</code></pre>
+            <p>當根本問題被修正後，就移除該指示。</p>
           </section>
 
           <section>
             <h2>實作 10：地雷修剪</h2>
             <div class="card lab">
               <h3>目標</h3>
-              <p>在不失去正確性的情況下削減上下文。</p>
-              <p><strong>步驟：</strong>將每個指示標記為可發現的、風格、地雷、過時的、重複的。刪除或限制除真正的常駐地雷外的一切範圍。</p>
-              <p><strong>交付物：</strong>最多 10 行的指示檔案草稿。</p>
+              <p>在不損失正確性的前提下縮減內容脈絡。</p>
+              <p><strong>做法：</strong>將每項指示標示為可自行發現、風格、地雷、過時、重複。除了真正的常駐地雷之外，其餘一律刪除或限定範圍。</p>
+              <p><strong>交付成果：</strong>最多 10 行的指示檔案草稿。</p>
               <p><strong>時間：</strong>35 分鐘。</p>
             </div>
           </section>
@@ -879,51 +877,52 @@ Code only. No explanation. Minimal diff.</code></pre>
           <section>
             <p class="kicker">第 2.7 部分</p>
             <h2>MCP 與工具成本</h2>
-            <p>工具結構描述是隱藏的 Token 稅。</p>
-            <img class="diagram diagram-compact" src="../docs/assets/diagrams/mcp-tooling-stack.svg" alt="工具堆疊：限定 MCP 結構描述範圍、使用 CodeAct 處理呼叫迴圈、使用 RTK 或 snip 處理輸出、使用 Graphify 處理方向定位。">
+            <p>已載入的工具定義即使未被使用，也會增加輸入。</p>
+            <img class="diagram diagram-compact" src="../../source/docs/assets/diagrams/mcp-tooling-stack.svg" alt="工具堆疊：限定 MCP 結構描述的範圍、以 CodeAct 處理輪次迴圈、以 RTK 或 snip 處理輸出、以 Graphify 進行環境熟悉。">
           </section>
 
           <section>
-            <h2>先進行評估</h2>
+            <h2>先量測</h2>
             <pre><code class="language-text">/context
 
-系統/工具：MCP + 指示 + 系統提示詞
-訊息：交談歷史紀錄
-可用空間：剩餘的上下文</code></pre>
-            <p class="small">在 VS Code 中，估計作用中的 MCP 伺服器數量 x 工具數量 x 約 200 Token/工具。</p>
+System/Tools: MCP + 指示 + 系統提示詞
+Messages: 對話歷程記錄
+Free Space: 剩餘的內容脈絡</code></pre>
+            <p class="small">檢查已載入的工具。單看已安裝的伺服器數量，無法反映延後載入的定義或快取行為。</p>
           </section>
 
           <section>
-            <h2>每個工具都會消耗 Token</h2>
+            <h2>每個工具都會消耗 token</h2>
             <table>
               <thead><tr><th>元件</th><th>大約成本</th></tr></thead>
               <tbody>
-                <tr><td>名稱 + 說明</td><td>20-50 個 Token</td></tr>
-                <tr><td>簡單參數結構描述</td><td>30-80 個 Token</td></tr>
-                <tr><td>複雜參數結構描述</td><td>100-300 個 Token</td></tr>
-                <tr><td>每個工具總計</td><td>100-500 個 Token</td></tr>
+                <tr><td>名稱 + 描述</td><td>20-50 個 token</td></tr>
+                <tr><td>簡單的參數結構描述</td><td>30-80 個 token</td></tr>
+                <tr><td>複雜的參數結構描述</td><td>100-300 個 token</td></tr>
+                <tr><td>每個工具總計</td><td>100-500 個 token</td></tr>
               </tbody>
             </table>
           </section>
 
           <section>
-            <h2>相乘問題</h2>
+            <h2>倍增問題</h2>
             <pre><code class="language-text">10 個 MCP 伺服器
-x 每個伺服器 5 個工具
-x 200 Token/工具
-= 每步 10,000 個 Token
+x 每個 5 個工具
+x 每個工具 200 個 token
+= 每個步驟 10,000 個 token
 
-15 個代理程式步驟 = 150,000 個結構描述 Token</code></pre>
+15 個代理程式步驟 = 150,000 個結構描述 token</code></pre>
+            <p class="small">這是假設的完整目錄載入，並非實際量測的計費。延後載入的定義與快取會改變結果。</p>
           </section>
 
           <section>
             <h2>稽核規則</h2>
             <ul>
               <li>停用目前不需要的伺服器。</li>
-              <li>使用每個工作區專屬的設定，而不是全域啟用所有內容。</li>
-              <li>優先使用內建工具，而不是重複的檔案系統 MCP。</li>
-              <li>針對偶爾需要的功能使用技能。</li>
-              <li>在支援的情況下，透過命名空間/模式限制大型外掛程式 (Plugins) 的範圍。</li>
+              <li>專案專屬的伺服器請使用工作區設定。</li>
+              <li>優先使用內建工具，而非重複的檔案系統 MCP。</li>
+              <li>偶爾才需要的功能請使用技能。</li>
+              <li>在支援時，依命名空間／模式限定大型外掛程式的範圍。</li>
             </ul>
           </section>
 
@@ -932,46 +931,46 @@ x 200 Token/工具
             <div class="grid">
               <div class="card">
                 <h3>RTK</h3>
-                <p>Rust CLI 代理過濾嘈雜的 Shell 輸出：測試、git diff、grep、記錄 (logs)、檔案清單。</p>
+                <p>Rust CLI Proxy 會篩選雜亂的 shell 輸出：測試、git diff、grep、記錄、檔案清單。</p>
                 <pre><code class="language-bash">rtk init --copilot</code></pre>
               </div>
               <div class="card">
                 <h3>snip</h3>
-                <p>YAML 可延伸的命令過濾器，具有本地節省統計資料與團隊維護的規則。</p>
+                <p>可透過 YAML 擴充的命令篩選器，具備本機節省統計與由團隊維護的規則。</p>
                 <pre><code class="language-bash">snip init --agent copilot</code></pre>
               </div>
             </div>
-            <p class="small warning">每個命令路徑選擇一個輸出過濾器層。預設情況下，請勿同時堆疊 RTK 和 snip。</p>
+            <p class="small warning">每個命令路徑只選擇一個輸出篩選層。預設情況下不要同時堆疊 RTK 與 snip。</p>
           </section>
 
           <section>
-            <h2>每層一個工具</h2>
+            <h2>每一層只用一種工具</h2>
             <table>
-              <thead><tr><th>圖層</th><th>工具</th><th>減少項目</th></tr></thead>
+              <thead><tr><th>層級</th><th>工具</th><th>減少的內容</th></tr></thead>
               <tbody>
-                <tr><td>工作流程呼叫</td><td>CodeAct</td><td>重複的模型與工具迴圈</td></tr>
-                <tr><td>命令輸出</td><td>RTK 或 snip</td><td>冗長的 Shell 結果</td></tr>
-                <tr><td>命令選擇</td><td>minimal-context-tools</td><td>寬泛的搜尋/讀取行為</td></tr>
-                <tr><td>程式碼庫方向定位</td><td>Graphify</td><td>重複的檔案讀取</td></tr>
-                <tr><td>可見性</td><td>Chronicle / Coach</td><td>您可能會遺漏的浪費</td></tr>
+                <tr><td>工作流程輪次</td><td>CodeAct</td><td>重複的模型與工具迴圈</td></tr>
+                <tr><td>命令輸出</td><td>RTK 或 snip</td><td>冗長的 shell 結果</td></tr>
+                <tr><td>命令選擇</td><td>minimal-context-tools</td><td>大範圍的搜尋／讀取行為</td></tr>
+                <tr><td>程式碼庫環境熟悉</td><td>Graphify</td><td>重複的檔案重新讀取</td></tr>
+                <tr><td>可見性</td><td>Chronicle / Coach</td><td>你可能會遺漏的浪費</td></tr>
               </tbody>
             </table>
           </section>
 
           <section>
             <h2>Azure MCP 案例模式</h2>
-            <p>一個大型外掛程式可能會主導系統/工具預算。</p>
+            <p>單一個大型外掛程式就可能佔去 System/Tools 內容脈絡的大部分。</p>
             <pre><code class="language-bash">--namespace appservice --namespace cosmos --namespace keyvault --namespace storage</code></pre>
-            <p class="small">按服務/角色限制範圍。除非確實需要，否則請避免「所有工具」模式。</p>
+            <p class="small">載入各角色需要的服務。除非任務需要，否則避免使用「所有工具」模式。</p>
           </section>
 
           <section>
             <h2>實作 11：MCP 稽核</h2>
             <div class="card lab">
               <h3>目標</h3>
-              <p>移除隱藏的結構描述額外開銷。</p>
-              <p><strong>步驟：</strong>盤點啟用的 MCP 伺服器、工具數量、全域 vs 工作區範圍、擁有者、使用頻率。</p>
-              <p><strong>交付物：</strong>保留/停用/限定範圍的表格 + 重啟計劃。</p>
+              <p>移除隱藏的結構描述額外負擔。</p>
+              <p><strong>做法：</strong>盤點已啟用的 MCP 伺服器、工具數量、全域與工作區範圍、負責人、使用頻率。</p>
+              <p><strong>交付成果：</strong>保留／停用／限定範圍的表格 + 重新啟動計畫。</p>
               <p><strong>時間：</strong>30 分鐘。</p>
             </div>
           </section>
@@ -979,58 +978,61 @@ x 200 Token/工具
           <section>
             <h2>企業實作：工具原則</h2>
             <div class="card enterprise">
-              <h3>客戶端行動</h3>
+              <h3>客戶端的行動</h3>
               <p>依角色定義核准的 MCP 伺服器：開發人員、資料、平台、安全性、支援。</p>
-              <p><strong>交付物：</strong>每個團隊的預設 MCP 設定檔 + 大型外掛程式的例外流程。</p>
+              <p><strong>交付成果：</strong>每個團隊的預設 MCP 設定檔 + 大型外掛程式的例外流程。</p>
             </div>
           </section>
         </section>
+
         <section>
           <section>
-            <p class="kicker">第三部分</p>
+            <p class="kicker">第 3 部分</p>
             <h2>比較與資料</h2>
-            <p>使用證據來選擇具有最佳影響力對付出努力比例的習慣。</p>
+            <p>請將量測到的效果，連同其基準線、工作負載與限制一起比較。</p>
           </section>
 
           <section>
-            <h2>相同工作，不同成本</h2>
+            <h2>相同任務，不同成本</h2>
             <table>
-              <thead><tr><th>技巧</th><th>提示詞</th><th>Token 數</th></tr></thead>
+              <thead><tr><th>研究</th><th>對照組</th><th>結果</th></tr></thead>
               <tbody>
-                <tr><td>冗長</td><td>請加入完整的錯誤處理...</td><td>~40</td></tr>
-                <tr><td>精簡原始人</td><td>加入錯誤處理。涵蓋 null、型別、網路。</td><td>~16</td></tr>
-                <tr><td>完整原始人</td><td>錯誤處理。涵蓋：null、錯誤型別、網路錯誤。</td><td>~12</td></tr>
-                <tr><td>極簡</td><td>錯誤處理：null/錯誤型別/網路錯誤。</td><td>~7</td></tr>
+                <tr><td>上游</td><td>Answer concisely.</td><td>輸出中位數減少 3%；10 個提示詞，單次執行</td></tr>
+                <tr><td>JetBrains</td><td>原始 Claude Code</td><td>輸出 token 減少 8.5%；82 組配對任務</td></tr>
+                <tr><td>JetBrains 總成本</td><td>同一次完整執行</td><td>高出 11.6%；長內容脈絡的離群值</td></tr>
               </tbody>
             </table>
+            <p class="small">不同的對照組，並非通用的節省幅度。<a href="../05-output-control/#caveman-optional-output-style">來源、版本與品質限制</a>。</p>
           </section>
 
           <section>
-            <h2>最大贏家</h2>
+            <h2>最大的成效來源</h2>
             <ol>
-              <li>原始人說話方式 + 精確的提示詞。</li>
-              <li>僅程式碼 / 受限的輸出。</li>
-              <li>縮減常駐上下文。</li>
-              <li>處理簡單問題時使用 Ask 模式。</li>
-              <li>稽核 MCP 伺服器。</li>
-              <li>模型變更後重新調整提示詞。</li>
+              <li>找出主要的成本類別。</li>
+              <li>移除不相關的內容脈絡與工具定義。</li>
+              <li>要求任務所需的回應格式。</li>
+              <li>避免不必要的代理程式迴圈與重試。</li>
+              <li>以已被接受的成果與總成本來測試變更。</li>
             </ol>
           </section>
 
           <section>
-            <h2>品質曲線</h2>
-            <pre><code class="language-text">節省量：  精簡 ---- 完整 ---- 極簡 ---- 極端
-風險：    低   ---- 低   ---- 中   ---- 高</code></pre>
-            <p class="accent">最佳點：完整原始人。對技術使用者而言有最大回報，且風險可以忽略。</p>
+            <h2>測試成本與正確性</h2>
+            <ol>
+              <li>預設：沒有額外的風格指示。</li>
+              <li>簡潔：<code>Answer concisely.</code></li>
+              <li>Caveman：相同的簡潔指示，加上固定版本的技能。</li>
+            </ol>
+            <p class="small">重複配對的任務。追蹤驗收檢查、token 類別、成本、時間與重試次數。本指南尚未自行執行付費的基準測試。</p>
           </section>
 
           <section>
-            <h2>實作 12：安排技巧優先順序</h2>
+            <h2>實作 12：為技巧排定優先順序</h2>
             <div class="card lab">
               <h3>目標</h3>
-              <p>依影響力、努力、風險來選擇變更。</p>
-              <p><strong>步驟：</strong>就影響力、努力、採用摩擦力、治理需求，為每項技巧評分 1-5 分。</p>
-              <p><strong>交付物：</strong>團隊前 5 名與「不採用」清單。</p>
+              <p>依影響、投入、風險來挑選變更。</p>
+              <p><strong>做法：</strong>針對每項技巧，就影響、投入、採用阻力、治理需求各給 1-5 分。</p>
+              <p><strong>交付成果：</strong>團隊的前 5 名與「不採用」清單。</p>
               <p><strong>時間：</strong>25 分鐘。</p>
             </div>
           </section>
@@ -1038,60 +1040,61 @@ x 200 Token/工具
 
         <section>
           <section>
-            <p class="kicker">第四部分</p>
-            <h2>實用設定</h2>
+            <p class="kicker">第 4 部分</p>
+            <h2>實務設定</h2>
             <p>將技巧轉化為儲存庫與團隊的預設值。</p>
           </section>
 
           <section>
             <h2>儲存庫設定步驟</h2>
             <ol>
-              <li>建立壓縮的 <code>.github/copilot-instructions.md</code>。</li>
-              <li>加入壓縮的專案專屬規則。</li>
-              <li>使用 <code>applyTo</code> 拆分特定路徑的指引。</li>
-              <li>預設使用 Auto；僅在有原因時釘選。</li>
-              <li>為 Coding Agent 新增 <code>copilot-setup-steps.yml</code>。</li>
+              <li>設定簡潔、易讀的回應偏好。</li>
+              <li>只加入相關的專案專屬規則。</li>
+              <li>以 <code>applyTo</code> 拆分特定路徑的指引。</li>
+              <li>預設使用 Auto；只有在有理由時才固定。</li>
+              <li>為 Coding Agent 加入 <code>copilot-setup-steps.yml</code>。</li>
             </ol>
           </section>
 
           <section>
             <h2>入門指示範本</h2>
-            <pre><code class="language-text">像原始人一樣簡短。技術實質內容精確。只丟棄廢話。
-丟棄：冠詞、填充字、客套話、迴避字句。
-可使用片段。簡短的同義詞。程式碼保持不變。
-生成工作僅輸出程式碼。除非要求，否則無須解釋。
-最少化工具呼叫。批次處理相關的讀取/編輯。</code></pre>
+            <pre><code class="language-text">先給答案。說明的篇幅要與任務成比例。
+省略問候語、重複的摘要，以及主動提出的後續協助。
+保留技術術語、否定、條件、數字、單位、程式碼與命令。
+當簡短會使動作變得模稜兩可時，請使用完整的句子。
+對於程式碼變更，請回報變更了什麼，以及相關的測試結果或阻礙因素。</code></pre>
+            <p class="small">標準範本：<a href="../10-practical-setup/#step-1-set-a-concise-response-default">實務設定</a>。</p>
           </section>
 
           <section>
             <h2>Coding Agent 設定</h2>
             <pre><code class="language-yaml"># .github/copilot-setup-steps.yml
 steps:
-  - name: 安裝相依套件
+  - name: Install dependencies
     run: npm ci
-  - name: 建構
+  - name: Build
     run: npm run build</code></pre>
-            <p class="small">防止透過嘗試錯誤來探索。節省代理程式 (Agent) 步驟。</p>
+            <p class="small">避免以試誤方式探索。節省代理程式步驟。</p>
           </section>
 
           <section>
-            <h2>精確的 Issue 範本</h2>
-            <pre><code class="language-text">錯誤：當 email 包含「+」時登入失敗。
-檔案：src/auth/login.ts，validateEmail() L42。
-修正：在呼叫 OAuth 供應商前對 email 進行 URL 編碼。
-測試：新增 user+tag@example.com 案例。
-完成：針對性測試通過。</code></pre>
+            <h2>精確的 issue 範本</h2>
+            <pre><code class="language-text">Bug：當電子郵件包含 "+" 時，登入會失敗。
+檔案：src/auth/login.ts，validateEmail() 第 42 行。
+修正：在呼叫 OAuth 提供者之前，先對電子郵件進行 URL 編碼。
+測試：新增 user+tag@example.com 的案例。
+完成：目標測試通過。</code></pre>
           </section>
 
           <section>
-            <h2>在 4 週內建立習慣</h2>
+            <h2>在 4 週內養成習慣</h2>
             <table>
-              <thead><tr><th>週次</th><th>習慣</th></tr></thead>
+              <thead><tr><th>週</th><th>習慣</th></tr></thead>
               <tbody>
-                <tr><td>1</td><td>壓縮指示 + 提問時使用 Ask 模式</td></tr>
-                <tr><td>2</td><td>精簡原始人提示詞</td></tr>
-                <tr><td>3</td><td>完整原始人 + 結構化格式</td></tr>
-                <tr><td>4</td><td>僅限程式碼預設值 + 常駐上下文之外的可重複使用片段</td></tr>
+                <tr><td>1</td><td>記錄基準線；修剪不相關的指示</td></tr>
+                <tr><td>2</td><td>使用簡潔的請求與針對任務的回應格式</td></tr>
+                <tr><td>3</td><td>稽核已載入的工具、命令輸出與內容脈絡</td></tr>
+                <tr><td>4</td><td>比較已被接受的成果、總成本、時間與重試次數</td></tr>
               </tbody>
             </table>
           </section>
@@ -1102,32 +1105,32 @@ steps:
   "chat.agent.maxRequests": 10,
   "github.copilot.chat.agent.model": "auto"
 }</code></pre>
-            <p class="small">小心限制失控的工作階段。僅在工作需要時增加。</p>
+            <p class="small">請謹慎地限制失控的工作階段。只有在任務需要時才提高上限。</p>
           </section>
 
           <section>
             <h2>Agent 模式成本迴圈</h2>
-            <img class="diagram diagram-compact" src="../docs/assets/diagrams/agent-cost-loop.svg" alt="代理程式迴圈：載入上下文、決定工具、擷取結果、重新載入上下文、重複。">
+            <img class="diagram diagram-compact" src="../../source/docs/assets/diagrams/agent-cost-loop.svg" alt="代理程式迴圈：載入內容脈絡、決定工具、擷取結果、重播內容脈絡、重複。">
           </section>
 
           <section>
-            <h2>工作階段組態檢查清單</h2>
+            <h2>工作階段執行框架檢查清單</h2>
             <pre><code class="language-text">模型
 模式
-代理程式/設定檔 (agent/profile)
-作用中的 MCP/工具
-輸出過濾器
+代理程式/設定檔
+啟用中的 MCP/工具
+輸出篩選器
 儲存庫指示</code></pre>
-            <p class="small">在工作階段開始前選擇。穩定的組態 = 可預測的成本與快取行為。</p>
+            <p class="small">請在工作階段開始前選好設定。保持穩定有助於保留快取的內容脈絡。</p>
           </section>
 
           <section>
             <h2>實作 13：儲存庫實作</h2>
             <div class="card lab">
               <h3>目標</h3>
-              <p>建立一個已就緒的儲存庫 Token 最佳化 PR 草稿。</p>
-              <p><strong>步驟：</strong>草擬 <code>copilot-instructions.md</code>、一個具範圍限制的指示檔案、一個 Coding Agent 設定步驟、一個 Issue 範本片段。</p>
-              <p><strong>交付物：</strong>分支或修補程式提案。</p>
+              <p>建立一份可直接用於儲存庫的 token 最佳化 PR 草稿。</p>
+              <p><strong>做法：</strong>草擬 <code>copilot-instructions.md</code>、一個限定範圍的指示檔案、一個 Coding Agent 設定步驟、一段 issue 範本片段。</p>
+              <p><strong>交付成果：</strong>分支或修補提案。</p>
               <p><strong>時間：</strong>45 分鐘。</p>
             </div>
           </section>
@@ -1137,17 +1140,17 @@ steps:
           <section>
             <p class="kicker">第 4.2 部分</p>
             <h2>模型選擇與定價</h2>
-            <p>區分 Copilot 文件、UBB 框架以及供應商 Token 定價。</p>
+            <p>區分 Copilot 文件、UBB 框架與供應商的 token 定價。</p>
           </section>
 
           <section>
-            <h2>三種定價視角</h2>
+            <h2>三種定價檢視</h2>
             <table>
-              <thead><tr><th>視角</th><th>解答內容</th></tr></thead>
+              <thead><tr><th>檢視</th><th>回答的問題</th></tr></thead>
               <tbody>
-                <tr><td>GitHub Copilot 文件</td><td>方案可用性、模型存取、Auto 行為、發布的訊號</td></tr>
-                <tr><td>UBB 框架</td><td>轉換後的 AI 額度預算與治理</td></tr>
-                <tr><td>供應商 API 定價</td><td>輸入 vs 輸出的直覺，而非 Copilot 計費表</td></tr>
+                <tr><td>GitHub Copilot 文件</td><td>方案可用性、模型存取、Auto 行為、已發布的訊號</td></tr>
+                <tr><td>UBB 框架</td><td>計費切換後的 AI 點數預算與治理</td></tr>
+                <tr><td>供應商 API 定價</td><td>輸入與輸出的直覺，而非 Copilot 計費表</td></tr>
               </tbody>
             </table>
           </section>
@@ -1155,22 +1158,22 @@ steps:
           <section>
             <h2>Auto：實際意義</h2>
             <ul>
-              <li>從支援的 Auto 池中選擇。</li>
+              <li>從受支援的 Auto 集區中選擇。</li>
               <li>受方案與組織原則約束。</li>
-              <li>基於健全狀況與效能。</li>
-              <li>對符合條件的付費方案 Chat 使用量提供折扣。</li>
-              <li>不會自動提升到所有進階模型。</li>
+              <li>在支援時，針對任務最佳化的路由會考量複雜度、健全度與可用性。</li>
+              <li>對符合資格的付費方案 Chat 用量提供折扣。</li>
+              <li>不會自動升級到每一個高階模型。</li>
             </ul>
           </section>
 
           <section>
-            <h2>推理強度 (Reasoning effort)</h2>
+            <h2>推理強度</h2>
             <table>
-              <thead><tr><th>強度</th><th>適用於</th></tr></thead>
+              <thead><tr><th>強度</th><th>用於</th></tr></thead>
               <tbody>
-                <tr><td>低</td><td>高容量的簡單交談/分類</td></tr>
-                <tr><td>中</td><td>在支援的情況下，典型編碼與大量使用工具的工作</td></tr>
-                <tr><td>高/最大</td><td>架構、安全性、新型分解</td></tr>
+                <tr><td>低</td><td>大量的簡單聊天／分類</td></tr>
+                <tr><td>中</td><td>在支援時，用於一般的程式開發與大量使用工具的工作</td></tr>
+                <tr><td>高/最大</td><td>架構、安全性、全新的問題分解</td></tr>
               </tbody>
             </table>
             <p class="small warning">僅在提供此控制項的模型上使用。</p>
@@ -1179,113 +1182,114 @@ steps:
           <section>
             <h2>反模式</h2>
             <ul>
-              <li>整天釘選進階模型。</li>
-              <li>假設當工作變難時 Auto 會自動跳轉到進階模型。</li>
-              <li>將供應商 API 定價等同於 Copilot 計費。</li>
-              <li>首先為整個組織啟用所有進階模型。</li>
-              <li>忽略方案/模型的可用性。</li>
+              <li>整天固定使用高階模型。</li>
+              <li>假設 Auto 會繞過模型存取原則。</li>
+              <li>將供應商的 API 定價等同於 Copilot 計費。</li>
+              <li>一開始就為整個組織啟用每一個高階模型。</li>
+              <li>忽略方案／模型的可用性。</li>
             </ul>
           </section>
 
           <section>
             <h2>實作 14：模型升級原則</h2>
             <div class="card enterprise">
-              <h3>客戶端行動</h3>
-              <p>定義使用者何時可以釘選進階模型，以及何時需要使用 Auto。</p>
-              <p><strong>步驟：</strong>將工作流程對應到預設模型通道、升級觸發條件、預期價值、回復訊號。</p>
-              <p><strong>交付物：</strong>一頁的模型原則草稿。</p>
+              <h3>客戶端的行動</h3>
+              <p>定義使用者何時可以固定使用高階模型，以及何時必須使用 Auto。</p>
+              <p><strong>做法：</strong>將工作流程對應到預設的模型路線、升級觸發條件、預期價值與回復訊號。</p>
+              <p><strong>交付成果：</strong>一頁式的模型原則草稿。</p>
               <p><strong>時間：</strong>30 分鐘。</p>
             </div>
           </section>
         </section>
+
         <section>
           <section>
             <p class="kicker">第 4.3 部分</p>
             <h2>企業治理</h2>
-            <p>管理員控制項限制花費。提示詞習慣提高效率。</p>
+            <p>管理員控制項為支出設限。提示詞習慣則提升效率。</p>
           </section>
 
           <section>
-            <h2>花費槓桿</h2>
-            <img class="diagram diagram-compact" src="../docs/assets/diagrams/enterprise-governance-control-plane.svg" alt="企業治理控制層連接預算、使用者級別限制、模型存取、使用量報告、同儕群組 (cohorts) 以及原則審查。">
-            <p class="small">提示詞壓縮不會限制花費。它會減少允許使用量內的浪費。</p>
+            <h2>支出調節手段</h2>
+            <img class="diagram diagram-compact" src="../../source/docs/assets/diagrams/enterprise-governance-control-plane.svg" alt="企業治理控制平面連結預算、使用者層級上限、模型存取、用量報告、群組與原則審查。">
+            <p class="small">提示詞壓縮並不會為支出設限。它減少的是在允許的用量之內的浪費。</p>
           </section>
 
           <section>
-            <h2>優先設定預算</h2>
+            <h2>先設定預算</h2>
             <div class="card enterprise">
-              <h3>客戶端行動</h3>
-              <p>設定企業/組織/成本中心預算。儘早啟用警示。在報告取得信任後啟用停止使用功能。每月進行審查。</p>
+              <h3>客戶端的行動</h3>
+              <p>設定企業／組織／成本中心的預算。及早啟用警示。在報告值得信賴之後，啟用停止使用。每月檢視。</p>
             </div>
           </section>
 
           <section>
-            <h2>使用者級別緊縮</h2>
+            <h2>使用者層級的收緊</h2>
             <ul>
-              <li>基準使用者：低 AI 額度預算。</li>
-              <li>權力使用者 (Power users)：配合工作需要給予較高預算。</li>
-              <li><code>$0</code> 預算：沒有基於使用量的功能。</li>
-              <li>每月審查並調降未使用的分配額度。</li>
+              <li>基準使用者：較低的 AI 點數預算。</li>
+              <li>進階使用者：有職務需求時給予較高的預算。</li>
+              <li><code>$0</code> 預算：無法使用以使用量計費的功能。</li>
+              <li>每月檢視，並降低未使用的配額。</li>
             </ul>
           </section>
 
           <section>
-            <h2>在啟用前審查模型</h2>
+            <h2>啟用之前先審查模型</h2>
             <table>
               <thead><tr><th>問題</th><th>決策</th></tr></thead>
               <tbody>
-                <tr><td>哪些工作流程需要進階模型？</td><td>窄範圍啟用</td></tr>
-                <tr><td>哪些團隊能創造可衡量的價值？</td><td>分配較高預算</td></tr>
-                <tr><td>哪些使用者可以留在 Auto？</td><td>保持預設路徑廉價</td></tr>
-                <tr><td>回復訊號是什麼？</td><td>使用量上升，價值持平</td></tr>
+                <tr><td>哪些工作流程需要高階模型？</td><td>縮小範圍啟用</td></tr>
+                <tr><td>哪些團隊創造了可衡量的價值？</td><td>分配較高的預算</td></tr>
+                <tr><td>哪些使用者可以維持使用 Auto？</td><td>讓預設路徑保持低成本</td></tr>
+                <tr><td>回復訊號是什麼？</td><td>用量上升、價值持平</td></tr>
               </tbody>
             </table>
           </section>
 
           <section>
-            <h2>指示範圍治理</h2>
+            <h2>指示範圍的治理</h2>
             <ul>
-              <li>組織指示：寬泛的 GitHub.com 原則與審查提醒。</li>
-              <li>儲存庫指示：IDE 工作流程預設值與編碼規則。</li>
-              <li>路徑專屬指示：在上下文付費的本地規則。</li>
-              <li>不要假設組織指示適用於所有地方；請查看文件。</li>
+              <li>組織指示：廣泛的 GitHub.com 原則與審查提醒。</li>
+              <li>儲存庫指示：IDE 工作流程的預設值與程式碼撰寫規則。</li>
+              <li>特定路徑的指示：內容脈絡值回票價的本機規則。</li>
+              <li>不要假設組織指示適用於所有地方；請查閱文件。</li>
             </ul>
           </section>
 
           <section>
-            <h2>獨立組織：僅作為備用方案</h2>
-            <p>當組織結構已與群組匹配時，對不同的模型原則或計費界限非常有用。</p>
-            <p class="warning">成本：管理額外開銷、授權複雜性、使用者擴張、SCIM/成本中心限制。</p>
+            <h2>獨立組織：僅作為備援</h2>
+            <p>當組織結構已與群組相符時，適用於不同的模型原則或計費界線。</p>
+            <p class="warning">成本：管理額外負擔、授權複雜性、使用者分散、SCIM／成本中心的限制。</p>
           </section>
 
           <section>
-            <h2>衡量正確的事情</h2>
+            <h2>衡量正確的事物</h2>
             <ol>
               <li>哪些團隊超出基準？</li>
-              <li>哪些使用者推升了 AI 額度使用量？</li>
-              <li>哪些模型改善了成果？</li>
-              <li>哪些代理程式工作流程在沒有交付價值的情況下花費？</li>
+              <li>哪些使用者帶來 AI 點數用量？</li>
+              <li>哪些模型能改善成果？</li>
+              <li>哪些代理程式工作流程花了錢卻沒有交付價值？</li>
             </ol>
           </section>
 
           <section>
-            <h2>6 月 1 日轉換檢查清單</h2>
+            <h2>6 月 1 日切換檢查清單</h2>
             <ol>
-              <li>從請求計數器轉移到 AI 額度預算。</li>
-              <li>決定共用預算 vs 使用者級別預算。</li>
-              <li>在進階模型變成直接支出前，審查模型的可用性。</li>
-              <li>提醒團隊，自動完成與下一次編輯不包含在 AI 額度計費中。</li>
-              <li>首先關注長交談與代理程式工作流程。</li>
+              <li>從請求計數器轉移到 AI 點數預算。</li>
+              <li>決定共用預算還是使用者層級預算。</li>
+              <li>在高階模型成為直接支出之前，先檢視模型可用性。</li>
+              <li>提醒團隊，程式碼完成／下一個編輯仍不屬於 AI 點數計費。</li>
+              <li>優先留意長時間的聊天與代理程式工作流程。</li>
             </ol>
           </section>
 
           <section>
-            <h2>實作 15：預算導入</h2>
+            <h2>實作 15：預算推行</h2>
             <div class="card enterprise">
-              <h3>客戶端行動</h3>
-              <p>為一個企業帳戶設計預算導入。</p>
-              <p><strong>步驟：</strong>選擇試行組織、成本中心、基準預算、警示臨界值、停止使用規則、使用者例外。</p>
-              <p><strong>交付物：</strong>預算營運模型。</p>
+              <h3>客戶端的行動</h3>
+              <p>為一個企業帳戶設計預算推行方式。</p>
+              <p><strong>做法：</strong>選擇試行組織、成本中心、基準預算、警示門檻、停止使用規則、使用者例外。</p>
+              <p><strong>交付成果：</strong>預算營運模型。</p>
               <p><strong>時間：</strong>35 分鐘。</p>
             </div>
           </section>
@@ -1294,8 +1298,8 @@ steps:
             <h2>實作 16：治理桌面演練</h2>
             <div class="card enterprise">
               <h3>情境</h3>
-              <p>代理程式工作階段使一個團隊的 AI 額度使用量飆升 4 倍。交付產出保持不變。</p>
-              <p><strong>步驟：</strong>決定預算行動、模型原則行動、指示/上下文行動、MCP 稽核行動、溝通計劃。</p>
+              <p>某個團隊的代理程式工作階段使 AI 點數用量暴增 4 倍。交付產出沒有變化。</p>
+              <p><strong>決定：</strong>預算行動、模型原則行動、指示／內容脈絡行動、MCP 稽核行動、溝通計畫。</p>
               <p><strong>時間：</strong>25 分鐘。</p>
             </div>
           </section>
@@ -1304,122 +1308,122 @@ steps:
         <section>
           <section>
             <p class="kicker">第 4.4 部分</p>
-            <h2>每個 Token 成果</h2>
-            <p>針對被接受的工作進行最佳化，而非最短的提示詞。</p>
+            <h2>每個 token 的成果</h2>
+            <p>為已被接受的工作最佳化，而不是為最短的提示詞最佳化。</p>
           </section>
 
           <section>
             <h2>指標</h2>
             <div class="quote">
-              每個 Token 成果 = 已驗證的完成工作 / 花費的總 Token 數
+              每個 token 的成果 = 已驗證完成的工作 / 花費的總 token 數
             </div>
-            <p class="small">一個導致錯誤方向工作的簡短提示詞，比一個能正確達成的較長計劃更昂貴。</p>
+            <p class="small">較長的計畫，成本可能比一個導致錯誤實作的簡短提示詞更低。</p>
           </section>
 
           <section>
-            <h2>代理程式成本研究訊號</h2>
+            <h2>代理式成本的研究訊號</h2>
             <table>
-              <thead><tr><th>發現</th><th>隱含意義</th></tr></thead>
+              <thead><tr><th>發現</th><th>含意</th></tr></thead>
               <tbody>
-                <tr><td>代理程式編碼的消耗可能遠高於交談</td><td>請勿推斷簡單交談的成本</td></tr>
-                <tr><td>相同工作在不同執行次數間可能會有很大差異</td><td>使用預算與停止規則</td></tr>
-                <tr><td>更多 Token 並不保證準確性</td><td>最佳化迴圈品質</td></tr>
-                <tr><td>輸入主導了代理程式成本</td><td>上下文衛生至關重要</td></tr>
+                <tr><td>代理式程式開發可能消耗遠多於聊天的 token</td><td>不要外推單純聊天的成本</td></tr>
+                <tr><td>同一項任務在不同執行之間可能差異很大</td><td>使用預算與停止規則</td></tr>
+                <tr><td>更多 token 並不保證準確度</td><td>最佳化迴圈的品質</td></tr>
+                <tr><td>輸入主導了代理式成本</td><td>內容脈絡整潔很重要</td></tr>
               </tbody>
             </table>
           </section>
 
           <section>
             <h2>成果迴圈</h2>
-            <img class="diagram diagram-compact" src="../docs/assets/diagrams/outcome-per-token-loop.svg" alt="每個 Token 成果迴圈：選擇工作形狀、計劃、路由模型、目標上下文、驗證證據、乾淨關閉。">
+            <img class="diagram diagram-compact" src="../../source/docs/assets/diagrams/outcome-per-token-loop.svg" alt="每個 token 成果的迴圈：選擇任務形態、規劃、為模型安排路由、鎖定內容脈絡、驗證證據、乾淨地收尾。">
           </section>
 
           <section>
-            <h2>技能作為實踐</h2>
+            <h2>作為實務的技能</h2>
             <table>
-              <thead><tr><th>技能</th><th>Token 影響</th></tr></thead>
+              <thead><tr><th>技能</th><th>對 token 的影響</th></tr></thead>
               <tbody>
-                <tr><td>腦力激盪</td><td>防止過早鎖定</td></tr>
-                <tr><td>規劃</td><td>減少執行過程中的猜測</td></tr>
-                <tr><td>綠色狀態 (建構無誤)</td><td>避免對未知的基準失敗進行偵錯</td></tr>
-                <tr><td>驗證</td><td>防止虛假完成</td></tr>
-                <tr><td>完美關閉</td><td>防止審查流失</td></tr>
-                <tr><td>分支關閉紀律</td><td>停止過時的上下文結轉</td></tr>
+                <tr><td>腦力激盪</td><td>避免過早鎖定</td></tr>
+                <tr><td>規劃</td><td>減少執行期間的猜測</td></tr>
+                <tr><td>綠燈</td><td>避免去偵錯未知的基準線失敗</td></tr>
+                <tr><td>驗證</td><td>避免錯誤的完成宣告</td></tr>
+                <tr><td>無瑕收尾</td><td>避免審查反覆</td></tr>
+                <tr><td>分支收尾紀律</td><td>阻止過時內容脈絡的延續</td></tr>
               </tbody>
             </table>
           </section>
 
           <section>
-            <h2>技能庫：借鏡模式</h2>
+            <h2>技能函式庫：借鑑模式</h2>
             <div class="grid">
-              <div class="card"><h3>SDLC</h3><p>Superpowers、規劃、TDD、分支完成。</p></div>
-              <div class="card"><h3>交接</h3><p>用於需求、計劃、熵控制的 agent-toolkit 模式。</p></div>
-              <div class="card"><h3>防護欄</h3><p>金鑰、雲端、資料庫、Docker、相依性以及重試停止注意事項。</p></div>
-              <div class="card"><h3>QA / 寫作</h3><p>瀏覽器證據、寫作審查、隨選 QA 深度。</p></div>
+              <div class="card"><h3>SDLC</h3><p>Superpowers、規劃、TDD、分支收尾。</p></div>
+              <div class="card"><h3>交接</h3><p>agent-toolkit 針對需求、計畫，以及移除不必要工作的模式。</p></div>
+              <div class="card"><h3>防護欄</h3><p>密碼、雲端、資料庫、Docker、相依項目與重試停止的注意事項。</p></div>
+              <div class="card"><h3>QA / 寫作</h3><p>瀏覽器證據、寫作審查、隨需提供的 QA 深度。</p></div>
             </div>
-            <p class="small warning">不要安裝所有技能。僅載入改變下一步行動的技能。</p>
+            <p class="small warning">不要安裝每一項技能。只載入會改變下一個動作的技能。</p>
           </section>
 
           <section>
-            <h2>技能庫採用訊號</h2>
-            <img class="star-history" src="https://api.star-history.com/svg?repos=obra/superpowers,softaworks/agent-toolkit,catpilotai/catpilot-ai-guardrails,vercel-labs/agent-browser,vercel-labs/writing-guidelines,mattpocock/skills,PramodDutta/qaskills&amp;type=timeline" alt="所選社群技能庫的 Star 歷史紀錄。">
-            <p class="small">Star 數顯示受關注度，而非品質。請根據技能是否改變下一個代理程式行動來判斷。</p>
+            <h2>技能函式庫的採用訊號</h2>
+            <img class="star-history" src="https://api.star-history.com/svg?repos=obra/superpowers,softaworks/agent-toolkit,catpilotai/catpilot-ai-guardrails,vercel-labs/agent-browser,vercel-labs/writing-guidelines,mattpocock/skills,PramodDutta/qaskills&amp;type=timeline" alt="所選社群技能函式庫的 Star 歷程。">
+            <p class="small">Star 數代表關注度，而非品質。請以該技能是否改變代理程式的下一個動作來評斷。</p>
           </section>
 
           <section>
-            <h2>計劃優先，廉價執行</h2>
-            <img class="diagram diagram-compact" src="../docs/assets/diagrams/plan-execute-cheaply.svg" alt="使用強大的推論模型規劃、儲存驗收標準、在全新的較便宜工作階段中執行、驗證實作。">
+            <h2>先規劃，再以低成本執行</h2>
+            <img class="diagram diagram-compact" src="../../source/docs/assets/diagrams/plan-execute-cheaply.svg" alt="以強推理模型規劃、儲存驗收條件、在全新且較便宜的工作階段中執行、驗證實作。">
           </section>
 
           <section>
-            <h2>日常模型指南</h2>
+            <h2>日常的模型指引</h2>
             <ol>
-              <li>未知日常工作<strong>優先使用 Auto</strong>。</li>
-              <li>微小有界限的工作使用<strong>輕量級模型</strong>。</li>
-              <li>明確計劃後的正常實作使用<strong>中階模型</strong>。</li>
-              <li>規劃、架構、困難偵錯使用<strong>強大模型</strong>。</li>
-              <li>切換模型/工具/代理程式通道時使用<strong>全新工作階段</strong>。</li>
+              <li>對於不確定的日常工作，<strong>優先使用 Auto</strong>。</li>
+              <li>對於微小且範圍明確的工作，使用<strong>輕量模型</strong>。</li>
+              <li>在計畫清楚之後，一般的實作使用<strong>中階模型</strong>。</li>
+              <li>規劃、架構與困難的偵錯使用<strong>強大模型</strong>。</li>
+              <li>變更模型／工具／代理程式路線時，使用<strong>全新工作階段</strong>。</li>
             </ol>
           </section>
 
           <section>
-            <h2>基準測試注意事項</h2>
+            <h2>基準測試的注意事項</h2>
             <ul>
-              <li>基準測試用來選擇候選方案；儲存庫工作用來選擇預設值。</li>
-              <li>測試架構、工具、檢索以及推理強度會影響評分。</li>
-              <li>將成果與成本一起比較，而非單看評分。</li>
-              <li>標記來源：已驗證、方向性、軼事趣聞。</li>
+              <li>使用基準測試來篩選候選模型；以儲存庫任務測試來決定預設值。</li>
+              <li>執行框架、工具、擷取與推理強度都會影響分數。</li>
+              <li>請將成果與成本一起比較，而不是只看分數。</li>
+              <li>標示來源：已驗證、僅供參考、軼事。</li>
             </ul>
           </section>
         </section>
 
         <section>
           <section>
-            <p class="kicker">專題實作</p>
-            <h2>30 天 Token 最佳化計劃</h2>
-            <p>將工作坊轉化為客戶導入方案。</p>
+            <p class="kicker">總結實作</p>
+            <h2>30 天 token 最佳化計畫</h2>
+            <p>為客戶的推行選擇變更項目、負責人與日期。</p>
           </section>
 
           <section>
-            <h2>逐週導入</h2>
+            <h2>逐週推行</h2>
             <table>
-              <thead><tr><th>週次</th><th>團隊行動</th><th>管理員行動</th></tr></thead>
+              <thead><tr><th>週</th><th>團隊行動</th><th>管理員行動</th></tr></thead>
               <tbody>
-                <tr><td>1</td><td>輸出預設值 + Ask 模式</td><td>使用量基準</td></tr>
-                <tr><td>2</td><td>指示剪裁 + 範圍限制規則 + Markdown 轉換</td><td>預算試行</td></tr>
-                <tr><td>3</td><td>MCP 稽核 + 輸出過濾器 + Graphify 試行</td><td>模型存取審查</td></tr>
-                <tr><td>4</td><td>計劃優先執行 + 驗證/關閉紀律</td><td>每月每個 Token 成果審查</td></tr>
+                <tr><td>1</td><td>輸出預設值 + Ask 模式</td><td>用量基準線</td></tr>
+                <tr><td>2</td><td>指示修剪 + 限定範圍的規則 + Markdown 轉換</td><td>預算試行</td></tr>
+                <tr><td>3</td><td>MCP 稽核 + 輸出篩選器 + Graphify 試行</td><td>模型存取審查</td></tr>
+                <tr><td>4</td><td>先規劃再執行 + 驗證／收尾紀律</td><td>每月的每個 token 成果檢視</td></tr>
               </tbody>
             </table>
           </section>
 
           <section>
-            <h2>專題實作</h2>
+            <h2>總結實作</h2>
             <div class="card lab">
               <h3>目標</h3>
-              <p>建立客戶專屬的行動計劃。</p>
-              <p><strong>單元：</strong>儲存庫變更、使用者習慣、MCP/工具原則、模型原則、預算、報告、擁有者、截止日期。</p>
-              <p><strong>交付物：</strong>準備給客戶贊助商的 30 天計劃。</p>
+              <p>為一位客戶建立行動計畫。</p>
+              <p><strong>章節：</strong>儲存庫變更、使用者習慣、MCP/工具原則、模型原則、預算、報告、負責人、到期日。</p>
+              <p><strong>交付成果：</strong>可交給客戶贊助者的 30 天計畫。</p>
               <p><strong>時間：</strong>30 分鐘。</p>
             </div>
           </section>
@@ -1430,20 +1434,20 @@ steps:
               <div class="card checkpoint">
                 <h3>開發人員</h3>
                 <ul>
-                  <li>僅限程式碼預設值</li>
+                  <li>簡潔、符合任務的輸出</li>
                   <li>Ask/Edit/Agent 路由</li>
                   <li>簡潔的提示詞</li>
-                  <li>計劃優先，全新工作階段</li>
+                  <li>先規劃、使用全新工作階段</li>
                 </ul>
               </div>
               <div class="card checkpoint">
                 <h3>儲存庫</h3>
                 <ul>
-                  <li>微小常駐指示</li>
-                  <li>範圍限制的 <code>applyTo</code> 檔案</li>
+                  <li>極小的常駐指示</li>
+                  <li>限定範圍的 <code>applyTo</code> 檔案</li>
                   <li>Coding Agent 設定步驟</li>
-                  <li>精確的 Issue 範本</li>
-                  <li>實用時使用 Graphify 地圖</li>
+                  <li>精確的 issue 範本</li>
+                  <li>在有用之處建立 Graphify 地圖</li>
                 </ul>
               </div>
               <div class="card checkpoint">
@@ -1453,529 +1457,532 @@ steps:
                   <li>內容排除</li>
                   <li>模型存取原則</li>
                   <li>RTK 或 snip 輸出策略</li>
-                  <li>每層一個工具</li>
+                  <li>每一層只用一種工具</li>
                 </ul>
               </div>
               <div class="card checkpoint">
                 <h3>企業</h3>
                 <ul>
                   <li>預算</li>
-                  <li>使用者級別限制</li>
-                  <li>使用量報告</li>
-                  <li>每月成果審查</li>
+                  <li>使用者層級上限</li>
+                  <li>用量報告</li>
+                  <li>每月成果檢視</li>
                 </ul>
               </div>
             </div>
           </section>
 
           <section>
-            <h2>結束訊息</h2>
+            <h2>結語</h2>
             <div class="quote">
-              廉價預設優先。例外情況才開放進階存取。擴張前先進行評估。
+              先用低成本的預設值。高階存取以例外方式提供。先量測，再擴大。
             </div>
           </section>
         </section>
+      </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.js" integrity="sha384-rZIIVPQD/+U9IL3I62KrBHuVtPgYv+xdXvER5RBiVQRszJEJfLKRrcrZwI7fhcHT" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/plugin/notes/notes.js" integrity="sha384-zaxVZlTGBPySa6IWC61g+1BgKaWp4jQ7Qcm/TrxRPMAziaAmE0ZbNGwRAGI2vmkk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/plugin/markdown/markdown.js" integrity="sha384-ee/QmFMUwC+YUuswSDzliKj27Anp3rSblE1ujBcPKyrzwG15Daa1GL6JcNbPg/oG" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/plugin/highlight/highlight.js" integrity="sha384-RStjjmink02UsZt/lqz6BNqXt/+nevOv97+PJ6CB6e7Sn5mzmf+qPdFtF59M9d4V" crossorigin="anonymous"></script>
     <script>
       const presenterNotes = {
-        "Outcome per token": `
+        "每個 token 的成果": `
           <p><strong>時間：</strong>2 分鐘。</p>
-          <p>將此框架定為升級後的目標：不是不惜一切代價減少字數，而是提高每 Token 的已驗證工作成果。</p>
-          <p>使用此項目將開發人員習慣與企業支出成果相連結。</p>
+          <p>將此定位為升級後的目標：不是不計代價地減少字數，而是讓每個 token 完成更多已驗證的工作。</p>
+          <p>以此連結開發人員的習慣與企業的支出成果。</p>
         `,
-        "The metric": `
+        "指標": `
           <p><strong>時間：</strong>3 分鐘。</p>
-          <p>強調如果能防止重工，一個稍微長一點的計劃可能會比一個簡短模糊的提示詞更便宜。</p>
+          <p>強調：如果能避免重工，稍長的計畫可能比簡短而含糊的提示詞更便宜。</p>
         `,
-        "Agentic cost research signal": `
+        "代理式成本的研究訊號": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>保持論點的界限。這裡的教訓是變異性與迴圈控制，而不是針對每項工作都有一個通用的固定倍數。</p>
+          <p>保持論述有界限。重點是變異性與迴圈控制，而不是適用於每項任務的通用固定倍數。</p>
         `,
-        "Outcome loop": `
+        "成果迴圈": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>順時針前進：工作形狀、計劃、路由、目標上下文、驗證、關閉。這將成為專題實作的心智模型。</p>
+          <p>依順時針走一遍：任務形態、規劃、路由、鎖定內容脈絡、驗證、收尾。這會成為總結實作的心智模型。</p>
         `,
-        "Skills as practices": `
+        "作為實務的技能": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>將技能解釋為可重複使用的操作程序。當它們改變下一個行動或防止不良行動時，可以節省 Token。</p>
+          <p>將技能解釋為可重複使用的操作程序。當它們改變下一個動作，或避免一個錯誤的動作時，就能節省 token。</p>
         `,
-        "Skill libraries: borrow patterns": `
+        "技能函式庫：借鑑模式": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>這些是社群範例，而非官方建議。借鏡這些實踐；預設情況下不要安裝所有內容。</p>
+          <p>這些是社群的範例，並非官方建議。請借鑑其做法；不要預設就全部安裝。</p>
         `,
-        "Skill library adoption signal": `
+        "技能函式庫的採用訊號": `
           <p><strong>時間：</strong>2 分鐘。</p>
-          <p>Star 數代表關注度，而非品質或安全性。僅視為探索的輸入資料。</p>
+          <p>Star 數代表關注度，而非品質或安全性。僅將其視為探索時的參考輸入。</p>
         `,
-        "Plan first, execute cheaply": `
+        "先規劃，再以低成本執行": `
           <p><strong>時間：</strong>5 分鐘。</p>
-          <p>規劃是進階推論模型展現其價值的地方。一旦寫下步驟與驗收標準，執行通常可以使用較便宜的通道。</p>
-          <p>強調切換模型/工具/代理程式通道時使用全新工作階段。</p>
+          <p>規劃是高階推理發揮價值之處。一旦寫下步驟與驗收條件，執行通常可以改用較便宜的路線。</p>
+          <p>強調在變更模型／工具／代理程式路線時，要使用全新的工作階段。</p>
         `,
-        "Day-to-day model guidance": `
+        "日常的模型指引": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>將此作為實用的路由規則，而非永久的定價事實。重新檢查官方模型文件以取得面向客戶的指引。</p>
+          <p>將此作為實用的路由規則，而非永久的定價事實。對面向客戶的指引，請重新確認官方模型文件。</p>
         `,
-        "Benchmark caveats": `
+        "基準測試的注意事項": `
           <p><strong>時間：</strong>3 分鐘。</p>
-          <p>基準測試有助於選擇候選方案。實際的儲存庫工作與組織原則決定了預設值。</p>
+          <p>基準測試有助於挑選候選項目。實際的儲存庫任務與組織原則才決定預設值。</p>
         `,
-        "Normalize rich files first": `
+        "先正規化富格式檔案": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>解釋格式稅：模型應該讀取語意內容，而不是字型/版面配置/XML 雜訊。在 AI 工作開始前轉換為 Markdown。</p>
+          <p>說明格式稅：模型應該讀取語意內容，而不是字型／版面／XML 雜訊。在進行 AI 工作之前，先轉換為 Markdown。</p>
         `,
-        "Persistent graph navigation": `
+        "持久性圖譜導覽": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>當代理程式重複重新讀取相同的儲存庫結構時，Graphify 非常有用。對於微型儲存庫請跳過。</p>
+          <p>當代理程式反覆重新讀取相同的儲存庫結構時，Graphify 就很有用。小型儲存庫則可略過。</p>
         `,
-        "One tool per layer": `
+        "每一層只用一種工具": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>區分呼叫次數、輸出大小、命令選擇、方向定位以及能見度。在同一層堆疊工具可能會隱藏有用的證據。</p>
+          <p>將輪次數、輸出大小、命令選擇、環境熟悉與可見性分開看待。在同一層堆疊多個工具，可能會掩蓋有用的證據。</p>
         `,
-        "Agent mode cost loop": `
+        "Agent 模式成本迴圈": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>每一個避開的代理程式步驟都能節省完整的上下文重播。使用精確的提示詞與計劃來減少迴圈。</p>
+          <p>每避免一個代理程式步驟，就省下一次完整的內容脈絡重播。請使用精確的提示詞與計畫來減少迴圈。</p>
         `,
-        "Session harness checklist": `
+        "工作階段執行框架檢查清單": `
           <p><strong>時間：</strong>3 分鐘。</p>
-          <p>讓參與者在開始長時間工作前選擇此項。工作階段中途的變動會破壞快取並使評估失準。</p>
+          <p>請參與者在長時間工作開始之前就選好這些項目。工作階段中途的變動會破壞快取，並使量測變得模糊。</p>
         `,
-        "Workshop outcome": `
+        "工作坊成果": `
           <p><strong>時間：</strong>2 分鐘。</p>
-          <p>設定預期：這是實用的操作指引，而非理論。參與者在結束時應帶走儲存庫變更、個人習慣與管理員導入決策。</p>
-          <p>要求大家在所有實作中記住一個真實的儲存庫/客戶。</p>
+          <p>設定期望：這是實用的操作指引，而不是理論。參與者離開時，應該帶著儲存庫變更、個人習慣與管理員推行決策。</p>
+          <p>請現場參與者在所有實作演練中，心裡都想著一個真實的儲存庫／客戶。</p>
         `,
-        "Important framing": `
+        "重要前提": `
           <p><strong>時間：</strong>2 分鐘。</p>
-          <p>坦白說明：此為社群/現場實務指引，而非官方 GitHub/Microsoft 原則。關於計費/管理員控制項，請參考 docs.github.com。</p>
-          <p>這可以保護在企業客戶面前的公信力。</p>
+          <p>直接說明：這是社群／現場指南，並非 GitHub/Microsoft 的官方政策。對於計費／管理員控制項，請以 docs.github.com 為準。</p>
+          <p>這能保護你在企業客戶面前的可信度。</p>
         `,
-        "8 hour agenda": `
+        "8 小時議程": `
           <p><strong>時間：</strong>3 分鐘。</p>
-          <p>解釋節奏：簡短的概念說明、實作、分享。保持實作時間限制；未完成的工作會成為行動計劃的輸入內容。</p>
-          <p>在最後四分之一（當從業者了解成本機制後）提出治理議題。</p>
+          <p>說明節奏：簡短的概念區塊、實作演練、分享。實作演練要嚴格控制時間；未完成的工作會成為行動計畫的輸入。</p>
+          <p>指出治理安排在最後四分之一，也就是在實務工作者了解成本機制之後。</p>
         `,
-        "Navigation": `
+        "導覽": `
           <p><strong>時間：</strong>1 分鐘。</p>
-          <p>僅在從瀏覽器現場簡報時示範控制項。使用簡報者檢視畫面看備忘錄；如果聽眾要求跳轉章節，使用概觀。</p>
+          <p>只有在從瀏覽器現場簡報時，才示範操作控制。使用講者檢視來看備註；如果聽眾要求跳到某個章節，則使用總覽。</p>
         `,
-        "14 things to do right now": `
+        "現在就能做的 14 件事": `
           <p><strong>時間：</strong>2 分鐘。</p>
-          <p>建構為執行摘要。如果客戶只導入一頁，請導入這一頁。</p>
-          <p>強調順序：輸出、常駐上下文、模式/模型/工具路由，然後是成果紀律。</p>
+          <p>將其定位為執行摘要。如果客戶只實作一頁，就實作這一頁。</p>
+          <p>強調順序：輸出、常駐內容脈絡、模式／模型／工具路由，然後是成果紀律。</p>
         `,
-        "Fastest wins": `
+        "最快見效的做法": `
           <p><strong>時間：</strong>3 分鐘。</p>
-          <p>解釋這些是幾近於零設定的習慣。輸出控制排在第一位，因為冗長的回答會重複產生花費，且很容易停止。</p>
-          <p>詢問聽眾他們已經做了哪一項；記錄差距以供稍後實作使用。</p>
+          <p>說明這些是幾乎不需要設定的習慣。輸出控制排在第一，因為冗長的回答會反覆產生成本，而且很容易停止。</p>
+          <p>詢問聽眾哪一項他們已經在做；記下缺口，留待之後的實作演練處理。</p>
         `,
-        "More fast wins": `
+        "更多快速見效的做法": `
           <p><strong>時間：</strong>3 分鐘。</p>
-          <p>將日常使用者習慣與平台控制項區分開來。Markdown 轉換與 MCP 稽核具有廣泛用途；Chronicle 與 CodeAct 則是 Copilot CLI 專屬的。</p>
+          <p>將日常使用者的習慣與平台控制項區分開來。Markdown 轉換與 MCP 稽核廣泛適用；Chronicle 與 CodeAct 則是 Copilot CLI 專屬。</p>
         `,
-        "More fast wins, continued": `
+        "更多快速見效的做法（續）": `
           <p><strong>時間：</strong>3 分鐘。</p>
-          <p>保持警示清晰：Chronicle 是 Copilot CLI，AI Engineering Coach 是 VS Code，CodeAct 是選用的外部 CLI 工具，當定位讀取重複時 Graphify 會有幫助。</p>
+          <p>讓注意事項簡明扼要：Chronicle 是 Copilot CLI、AI Engineering Coach 是 VS Code、CodeAct 是選用的外部 CLI 工具，Graphify 則在環境熟悉的讀取反覆出現時有幫助。</p>
         `,
-        "The priority stack": `
+        "優先順序堆疊": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>將此作為當天重複使用之架構。輸出優先改變每個回應。常駐上下文改變每個請求。模式/模型/工具路由改變工作形狀。治理限制花費。</p>
+          <p>將此作為整天反覆使用的心智模型。輸出第一，會改變每一個回應。常駐內容脈絡會改變每一個請求。模式／模型／工具路由會改變任務的形態。治理為支出設限。</p>
         `,
-        "Lab 0: baseline your habits": `
+        "實作 0：建立你的習慣基準線": `
           <p><strong>時間：</strong>10 分鐘實作 + 5 分鐘分享。</p>
-          <p>讓參與者快速為自己評分。不要爭論精確的 Token 數。目標是找出目前阻力最大的習慣。</p>
-          <p>收集 2-3 個範例以在後續實作中重複使用。</p>
+          <p>請參與者快速為自己評分。不要爭論確切的 token 數量。目標是找出目前阻力最大的習慣。</p>
+          <p>蒐集 2-3 個範例，以便在之後的實作演練中重複使用。</p>
         `,
-        "Why tokens matter": `
+        "為什麼 token 很重要": `
           <p><strong>時間：</strong>2 分鐘。</p>
-          <p>從提示過渡到機制。如果人們理解是什麼進入了上下文視窗，後續的建議就會顯得顯而易見。</p>
+          <p>從技巧轉進到機制。如果大家了解什麼會進入內容脈絡視窗，之後的建議就會顯得理所當然。</p>
         `,
-        "Tokens are subwords": `
+        "Token 是子詞": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>保持簡單：Token 不是單字。常用英文壓縮效果好。客氣的填充字仍有成本且無工作價值。</p>
-          <p>除非聽眾提問，否則避免深入探討分詞器內部原理。</p>
+          <p>保持簡單：token 不是單字。常見的英文壓縮效果很好。客套的贅詞仍然有成本，卻沒有任務價值。</p>
+          <p>除非聽眾詢問，否則避免深入分詞器的內部細節。</p>
         `,
-        "Cost model": `
+        "成本模型": `
           <p><strong>時間：</strong>5 分鐘。</p>
-          <p>解釋三個水桶（分類）。供應商定價說明了輸出/輸入的不對稱性；除非文件有發布，否則不要聲稱精確的 Copilot 公開每 Token 計費表。</p>
-          <p>關鍵結論：輸出控制具有不成比例的極高價值。</p>
+          <p>說明三種類別。供應商的定價說明了輸出／輸入的不對稱；除非文件有公布，否則不要宣稱有確切的 Copilot 公開每 token 費率表。</p>
+          <p>重點：輸出控制的價值格外突出。</p>
         `,
-        "Input is bigger than your prompt": `
+        "輸入比你的提示詞更大": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>挑戰常見的誤解：輸入的提示詞很小。隱藏的上下文主導了一切：檔案、歷史紀錄、指示、工具。</p>
-          <p>詢問：「您今天有什麼上下文是本來不打算傳送的？」</p>
+          <p>挑戰常見的迷思：以為輸入的提示詞很小。隱藏的內容脈絡才是大宗：檔案、歷程記錄、指示、工具。</p>
+          <p>詢問：「今天有哪些內容脈絡是你並不打算傳送的？」</p>
         `,
-        "Coding Agent multiplier": `
+        "Coding Agent 的倍增效應": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>一個可見的工作可以是多次內部呼叫。每個步驟都需要為基準上下文付費並累積工具輸出結果。</p>
-          <p>這為稍後精確的 Issue 說明與設定步驟提供了合理依據。</p>
+          <p>一項可見的任務，可能包含許多內部呼叫。每個步驟都要付出基準內容脈絡的成本，並累積工具輸出。</p>
+          <p>這說明了為什麼之後要撰寫精確的 issue 描述與設定步驟。</p>
         `,
-        "Lab 1: token anatomy": `
+        "實作 1：token 剖析": `
           <p><strong>時間：</strong>15 分鐘實作 + 5 分鐘分享。</p>
-          <p>使用最近真實的 Copilot 工作。讓團隊找出隱藏的上下文來源。促使他們區分使用者提示詞與自動上下文。</p>
+          <p>使用最近的真實 Copilot 任務。請各團隊找出隱藏的內容脈絡來源。引導他們區分使用者提示詞與自動內容脈絡。</p>
         `,
-        "Prompt compression": `
+        "提示詞壓縮": `
           <p><strong>時間：</strong>2 分鐘。</p>
-          <p>設定規則：壓縮不是簡化或降智。技術實質內容保持精確。只丟棄廢話。</p>
+          <p>設定規則：壓縮不等於簡化到失去內涵。技術實質必須保持精確。只有贅詞該去除。</p>
         `,
-        "Caveman pattern": `
+        "選用的簡寫": `
           <p><strong>時間：</strong>5 分鐘。</p>
-          <p>大聲朗讀模式。說明檔案、函式、限制條件與完成條件比語法更重要。</p>
-          <p>警告：在未定義的情況下，不要縮寫未知的專案術語。</p>
+          <p>將這個模式視為選用的請求風格，而不是關於回應技能的證據。請讓主詞、否定與條件保持明確。</p>
+          <p>不要縮寫不熟悉的專案術語。平實簡潔的文字是起點。</p>
         `,
-        "Before vs after": `
+        "前後對照": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>詢問聽眾他們更願意接收哪個版本的工作。大多數人選擇原始人，因為動作更清晰。</p>
+          <p>比較每個版本所保留的需求。僅憑偏好並不能證明節省了 token 或具有正確性。</p>
         `,
-        "Compression levels": `
+        "壓縮層級": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>建議將完整原始人作為內部開發的預設值。精簡原始人適用於面對客戶/引導新手。極簡原始人僅在領域共用且歧義低時使用。</p>
+          <p>從簡潔的文字開始。當共用的內容脈絡讓語意保持明確時，片段句是選用的。沒有任何一個壓縮層級適用品質保證。</p>
         `,
-        "Structured beats prose": `
+        "結構化優於散文": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>指出結構化可以改善品質，而不僅僅是 Token 數量。它能暴露出遺漏的需求：狀態碼、驗證欄位、持久化。</p>
+          <p>指出結構改善的是品質，而不只是 token 數量。它會暴露遺漏的需求：狀態碼、驗證欄位、持久化。</p>
         `,
-        "Code-centric prompting": `
+        "以程式碼為中心的提示": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>開發人員通常可以使用簽章 (signatures)、TODO 或「類似 X 但改成 Y」的參照，更緊湊地表達意圖。</p>
+          <p>開發人員通常可以透過簽章、TODO，或「像 X 但改成 Y」的參照，更精簡地表達意圖。</p>
         `,
-        "Guardrails as invariants": `
+        "將防護欄寫成不變條件": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>宣告式不變量更容易被模型滿足，也更容易供人類審查。</p>
-          <p>也將此應用於指示檔案。</p>
+          <p>宣告式的不變條件更容易讓模型滿足，也更容易讓人審查。</p>
+          <p>指示檔案同樣適用。</p>
         `,
-        "Lab 2: prompt compression ladder": `
+        "實作 2：提示詞壓縮階梯": `
           <p><strong>時間：</strong>20 分鐘實作 + 5 分鐘分享。</p>
-          <p>兩人一組。一人重寫，另一人檢查是否遺失原意。獲勝的提示詞是保持無歧義的最短提示詞。</p>
+          <p>讓大家兩兩一組。一人改寫；另一人檢查是否遺失語意。勝出的提示詞是仍然不含糊的最短版本。</p>
         `,
-        "Lab 3: prompt A/B": `
+        "實作 3：提示詞 A/B": `
           <p><strong>時間：</strong>20 分鐘。</p>
-          <p>依可用環境在 Ask/Edit/Agent 中執行。不僅比較輸出，還要比較釐清次數與觸及的檔案數量。</p>
+          <p>依可用的環境，在 Ask/Edit/Agent 中執行。不只比較輸出，也比較釐清的次數與動到的檔案。</p>
         `,
-        "Language comparison": `
-          <p><strong>時間：</strong>20 分鐘。</p>
-          <p>作為打破迷思引入。字元較少並不意味著 Token 較少。</p>
-        `,
-        "CJK assumption fails": `
-          <p><strong>時間：</strong>4 分鐘。</p>
-          <p>使用表格展示反直覺的結果。對人類而言 CJK 可能更緊湊，但分詞器經濟學有所不同。</p>
-        `,
-        "Why": `
-          <p><strong>時間：</strong>4 分鐘。</p>
-          <p>解釋以英文為主的分詞器訓練。避免建構為語言品質問題；這是壓縮經濟學。</p>
-        `,
-        "Practical rule": `
-          <p><strong>時間：</strong>3 分鐘。</p>
-          <p>對於 Token 最佳化，請使用簡短英文。如果使用母語能帶來好得多的需求清晰度，品質可以超越節省。</p>
-        `,
-        "Lab 4: tokenizer reality check": `
-          <p><strong>時間：</strong>20 分鐘。</p>
-          <p>讓多語言參與者測試實際提示詞。捕捉令人驚訝的結果。以本地團隊原則結束，而非普遍的道德說教。</p>
-        `,
-        "Context management": `
+        "語言比較": `
           <p><strong>時間：</strong>2 分鐘。</p>
-          <p>從鍵入的提示詞轉向結構化輸入。最大的輸入節省來自於常駐載入或自動包含的內容。</p>
+          <p>以破除迷思的方式引入。字元較少並不代表 token 較少。</p>
         `,
-        "Always-on files cost every turn": `
-          <p><strong>時間：</strong>5 分鐘。</p>
-          <p>釐清不同的檔案慣例可以共存。成本問題是共有的：常駐文字會變成重複的基準。</p>
-          <p>如果相同的指引出現在多個常駐檔案中，請進行去重複處理。</p>
-        `,
-        "Instruction compression example": `
+        "CJK 的假設不成立": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>將此作為具體目標。好的指示檔案更接近設定檔，而非維基百科。</p>
+          <p>使用表格展示違反直覺的結果。CJK 對人類而言可能更緊湊，但分詞器的經濟學並不相同。</p>
         `,
-        "Context hygiene": `
-          <p><strong>時間：</strong>5 分鐘。</p>
-          <p>強調日常動作：關閉標籤頁、避免產生的檔案、保持忽略大型產出物、重啟陳舊交談。</p>
-        `,
-        "Use scoped instructions": `
-          <p><strong>時間：</strong>5 分鐘。</p>
-          <p>解釋路徑範圍限制可以保持豐富的指引可用，而不會對每次無關的互動收費。</p>
-          <p>好的企業模式：中央標準、儲存庫專屬微小核心、路徑專屬深度。</p>
-        `,
-        "Always-on vs conditional vs on-demand": `
+        "原因": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>詢問他們目前的檢查清單存放在哪裡。任何每月才使用一次的內容都不應該在每次提示時付費。</p>
+          <p>說明以英文為主的分詞器訓練。避免將其描述為語言的品質優劣；這是壓縮機制的問題。</p>
         `,
-        "Cache-friendly behavior": `
+        "實務原則": `
           <p><strong>時間：</strong>3 分鐘。</p>
-          <p>保持穩定前綴穩定。頻繁的上下文變動會同時損害速度與快取價值。</p>
+          <p>為了 token 最佳化，請使用精簡的英文。如果母語能讓需求清晰得多，品質可能勝過節省。</p>
         `,
-        "Enterprise note: Content Exclusion": `
+        "實作 4：分詞器的現實檢驗": `
+          <p><strong>時間：</strong>20 分鐘。</p>
+          <p>請會多種語言的參與者測試實際的提示詞。記錄令人意外的結果。最後以本地團隊的原則作結，而不是說教式的通則。</p>
+        `,
+        "內容脈絡管理": `
+          <p><strong>時間：</strong>2 分鐘。</p>
+          <p>從輸入的提示詞轉向結構性的輸入。最大的輸入節省，來自常駐載入或自動納入的內容。</p>
+        `,
+        "常駐檔案每一輪都要付費": `
           <p><strong>時間：</strong>5 分鐘。</p>
-          <p>強調客戶端管理員的擁有權。主要原因是原則/隱私。節省 Token 是次要的，且取決於使用介面。</p>
-          <p>行動：識別排除審查的路徑與擁有者。</p>
+          <p>釐清不同的檔案慣例可以並存。成本問題是共通的：常駐文字會成為重複的基準。</p>
+          <p>如果相同的指引出現在多個常駐檔案中，請去除重複。</p>
         `,
-        "Lab 5: context audit": `
+        "先修剪，再壓縮": `
+          <p><strong>時間：</strong>4 分鐘。</p>
+          <p>詢問每條規則對任務有何貢獻。在縮短句子之前，先移除重複與過時的內容。</p>
+        `,
+        "內容脈絡整潔": `
+          <p><strong>時間：</strong>5 分鐘。</p>
+          <p>強調平凡的動作：關閉索引標籤、避免產生的檔案、讓大型成品保持被忽略、重新開始過時的聊天。</p>
+        `,
+        "使用限定範圍的指示": `
+          <p><strong>時間：</strong>5 分鐘。</p>
+          <p>說明路徑限定能讓豐富的指引保持可用，而不必在每一次不相關的互動中都付費。</p>
+          <p>良好的企業模式：集中的標準、各儲存庫的極小核心、特定路徑的深入內容。</p>
+        `,
+        "常駐、條件式與隨需": `
+          <p><strong>時間：</strong>4 分鐘。</p>
+          <p>詢問他們目前的檢查清單放在哪裡。任何每月才用一次的內容，都不應該在每個提示詞中付費。</p>
+        `,
+        "對快取友善的行為": `
+          <p><strong>時間：</strong>3 分鐘。</p>
+          <p>讓穩定的前綴保持穩定。頻繁變動內容脈絡，會同時損害速度與快取價值。</p>
+        `,
+        "企業注意事項：內容排除": `
+          <p><strong>時間：</strong>5 分鐘。</p>
+          <p>強調由客戶端的管理員負責。主要原因是原則／隱私。節省 token 是次要的，且取決於介面。</p>
+          <p>行動：找出需要排除審查的路徑與負責人。</p>
+        `,
+        "實作 5：內容脈絡稽核": `
           <p><strong>時間：</strong>30 分鐘實作 + 10 分鐘分享。</p>
-          <p>使用一個真實的儲存庫。如果無法存取儲存庫，請使用匿名化的指示範例。強制做出決策：保留、限定範圍、隨選、刪除。</p>
+          <p>使用一個真實的儲存庫。如果沒有儲存庫的存取權，則使用去識別化的指示範例。強制做出決定：保留、限定範圍、隨需、刪除。</p>
         `,
-        "Output control": `
+        "輸出控制": `
           <p><strong>時間：</strong>2 分鐘。</p>
-          <p>定位為最高投資報酬率，因為它很簡單且每次都適用。它還能改善人類接收的訊號。</p>
+          <p>將最終的敘述與程式碼、工具呼叫及推理分開。較短的可見回應，並不能證明整體任務成本較低。</p>
         `,
-        "Default line": `
+        "針對任務的程式碼輸出": `
           <p><strong>時間：</strong>3 分鐘。</p>
-          <p>說明：適用於實作，而非學習。如果需要解釋，請明確詢問並接受成本。</p>
+          <p>說明：用於實作，而非學習。如果需要說明，請明確要求並接受其成本。</p>
         `,
-        "Format constraints": `
+        "格式限制": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>這些是輸出預算。與確切的工作配對，使模型不會花費 Token 選擇結構。</p>
+          <p>這些是輸出預算。請搭配明確的任務，讓模型不必花費 token 去選擇結構。</p>
         `,
-        "Project default": `
+        "專案預設值": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>建議將此放入 IDE 工作流程的儲存庫指示中。僅憑組織指示可能無法涵蓋所有介面。</p>
+          <p>請使用標準的入門範本，而不是第二個變體。當任務需要說明時，請予以保留。</p>
         `,
-        "Lab 6: output A/B": `
+        "實作 6：輸出 A/B": `
           <p><strong>時間：</strong>15 分鐘。</p>
-          <p>參與者應比較回應長度與實用性。不要僅以最短評分；以最短且可接受的輸出評分。</p>
+          <p>參與者應比較回應長度與實用性。不要只以最短來評分；請以最短且可接受的輸出來評分。</p>
         `,
-        "Lab 7: format forcing": `
+        "實作 7：強制格式": `
           <p><strong>時間：</strong>15 分鐘。</p>
-          <p>以可重複使用的程式碼片段結束：審查結論、偵錯摘要、風險清單、遷移檢查清單、測試計劃。</p>
+          <p>以可重複使用的片段作結：審查結論、偵錯摘要、風險清單、移轉檢查清單、測試計畫。</p>
         `,
-        "Workflow optimization": `
+        "工作流程最佳化": `
           <p><strong>時間：</strong>2 分鐘。</p>
-          <p>過渡：有時最大的節省是選擇不同的工作流程，而非更短的字詞。</p>
+          <p>轉場：有時最大的節省來自選擇不同的工作流程，而不是更短的措辭。</p>
         `,
-        "Commit and PR text matter": `
+        "提交與 PR 的文字很重要": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>代理程式會閱讀 git 歷史紀錄與審查意見。簡短、具體可行的歷史紀錄對人類與模型都有幫助。</p>
+          <p>代理程式會讀取 git 歷程記錄與審查留言。精簡且可執行的歷程記錄，對人類與模型都有幫助。</p>
         `,
-        "Ask vs Edit vs Agent": `
+        "Ask、Edit 與 Agent": `
           <p><strong>時間：</strong>6 分鐘。</p>
-          <p>使其切合實際。Ask 最便宜。Edit 具針對性。Agent 強大但昂貴。Coding Agent 用於自主的 Issue 到 PR 工作。</p>
-          <p>常見失敗：在 Agent 模式中輸入模糊的提示詞。</p>
+          <p>讓這部分貼近實務。Ask 最便宜。Edit 針對性強。Agent 功能強大但昂貴。Coding Agent 用於自主的 issue 到 PR。</p>
+          <p>常見的失誤：在 Agent 模式中使用模糊的提示詞。</p>
         `,
-        "Auto model default": `
+        "Auto 模型預設值": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>Auto 是基準。釘選進階模型是明確的例外。這可以減少意外的昂貴工作階段。</p>
+          <p>Auto 是基準。固定使用高階模型是明確的例外。這能減少意外產生的昂貴工作階段。</p>
         `,
-        "Retune prompts when model changes": `
+        "模型變更時重新調校提示詞": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>模型升級是相依性升級。根據官方提示指引重新調整指示檔案與代理程式設定檔，然後審查差異。</p>
+          <p>模型升級就是相依套件升級。請根據官方提示詞指南重新調校指示檔案與代理程式設定檔，然後審查差異。</p>
         `,
-        "When not to compress": `
+        "何時不該壓縮": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>壓縮絕不能降低安全性或法律清晰度。鼓勵團隊標記必須使用完整說明的上下文。</p>
+          <p>壓縮不得降低安全性或法律上的清晰度。鼓勵團隊標示出必須使用完整文字的情境。</p>
         `,
-        "Close loop with usage coaching": `
+        "以用量教練形成回饋迴圈": `
           <p><strong>時間：</strong>5 分鐘。</p>
-          <p>Chronicle 捕捉重複的 CLI 混淆；AI Engineering Coach 浮現 VS Code 習慣。將輸出作為審查建議，而非自動原則。</p>
+          <p>Chronicle 能抓出反覆出現的 CLI 混淆；AI Engineering Coach 則呈現 VS Code 的習慣。請將輸出作為審查建議，而不是自動的原則。</p>
         `,
-        "Lab 8: mode routing drill": `
+        "實作 8：模式路由演練": `
           <p><strong>時間：</strong>20 分鐘。</p>
-          <p>使用情境卡。讓大家先投票決定模式，然後進行討論。捕捉在 Agent 之前需要釐清的邊緣案例。</p>
+          <p>使用情境卡片。請大家先對模式投票，再進行討論。記錄在使用 Agent 之前需要先釐清的邊界情況。</p>
         `,
-        "Lab 9: model routing drill": `
+        "實作 9：模型路由演練": `
           <p><strong>時間：</strong>20 分鐘。</p>
-          <p>專注於決策規則，而非精確的模型名稱。名稱會變，但通道不變：便宜/內建、標準、進階。</p>
+          <p>聚焦於決策規則，而不是確切的模型名稱。名稱會變；但路線不變：低成本/包含在內、標準、高階。</p>
         `,
-        "Always-on context problem": `
+        "常駐內容脈絡問題": `
           <p><strong>時間：</strong>2 分鐘。</p>
-          <p>反直覺的單元。讓聽眾做好準備：更多上下文可能會藉由增加雜訊來降低準確性。</p>
+          <p>這是違反直覺的章節。請讓聽眾有心理準備：更多的內容脈絡會因增加雜訊而降低準確度。</p>
         `,
-        "Research signal": `
+        "研究訊號": `
           <p><strong>時間：</strong>5 分鐘。</p>
-          <p>不要過度聲稱。將資料視為對產生的樣板內容的警告，而非所有上下文檔案都很差的證明。</p>
+          <p>不要過度宣稱。請將這些資料視為對產生的樣板內容的警示，而不是所有內容脈絡檔案都不好的證明。</p>
         `,
-        "Why context hurts": `
+        "為什麼內容脈絡有害": `
           <p><strong>時間：</strong>5 分鐘。</p>
-          <p>使用四種機制來診斷客戶儲存庫。大多數膨脹的檔案都結合了這四種。</p>
+          <p>使用這四種機制來診斷客戶的儲存庫。大多數臃腫的檔案同時具備這四種問題。</p>
         `,
-        "Keep landmines only": `
+        "只保留地雷": `
           <p><strong>時間：</strong>5 分鐘。</p>
-          <p>極佳的引導問題：「代理程式可以透過閱讀程式碼來發現這一點嗎？」如果可以，請刪除或限制其範圍。</p>
+          <p>很好的引導問題：「代理程式能否透過閱讀程式碼發現這件事？」如果可以，就刪除或限定範圍。</p>
         `,
-        "Bug tracker model": `
+        "錯誤追蹤器模型": `
           <p><strong>時間：</strong>3 分鐘。</p>
-          <p>指示檔案需要刪除紀律。當模型出錯時新增一行；當程式碼/程序修正根本原因時將其刪除。</p>
+          <p>指示檔案需要刪除的紀律。當模型出錯時加入一行；當程式碼／流程修正了根本原因時就刪除。</p>
         `,
-        "Lab 10: landmine pruning": `
+        "實作 10：地雷修剪": `
           <p><strong>時間：</strong>35 分鐘。</p>
-          <p>使用嚴格的 10 行限制來強制排定優先順序。如果團隊有爭議，將有爭議的規則移至範圍限制/隨選水桶中。</p>
+          <p>使用嚴格的 10 行上限來強迫排定優先順序。如果團隊有爭議，就將有爭議的規則移到限定範圍／隨需的類別。</p>
         `,
-        "MCP and tool costs": `
+        "MCP 與工具成本": `
           <p><strong>時間：</strong>2 分鐘。</p>
-          <p>引進隱藏稅：工具定義就是上下文，即使工具未被使用也是如此。</p>
+          <p>介紹隱藏的稅：工具定義就是內容脈絡，即使工具未被使用。</p>
         `,
-        "Measure first": `
+        "先量測": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>在 CLI 中，/context 提供具體拆解。在 VS Code 中，以伺服器/工具數量進行估算，直到有等效的遙測資料為止。</p>
+          <p>在 CLI 中，/context 會提供具體的細項分析。在其他主機中，請檢查已載入的定義，而不要將所有已安裝的伺服器視為完全載入。</p>
         `,
-        "Every tool costs tokens": `
+        "每個工具都會消耗 token": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>結構描述 Token 包含說明與參數 JSON。複雜的工具可能會非常昂貴，令人驚訝。</p>
+          <p>結構描述 token 包含描述與參數 JSON。複雜的工具可能出乎意料地昂貴。</p>
         `,
-        "Multiplication problem": `
+        "倍增問題": `
           <p><strong>時間：</strong>5 分鐘。</p>
-          <p>在數學計算上暫停。每步額外開銷乘以代理程式步驟，很快就會變成六位數。</p>
+          <p>這說明的是完整目錄的重播。請不要將它呈現為實際量測的執行結果，也不要忽略快取與延後探索。</p>
         `,
-        "Audit rule": `
+        "稽核規則": `
           <p><strong>時間：</strong>5 分鐘。</p>
-          <p>實用的企業模式：基於角色的 MCP 設定檔。開發人員不應該全域啟用每項整合。</p>
+          <p>實用的企業模式：依角色區分的 MCP 設定檔。開發人員不應該在全域啟用每一項整合。</p>
         `,
-        "Tool output compression": `
+        "工具輸出壓縮": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>結構描述稽核減少載入內容。RTK 或 snip 減少命令傳回內容。不同的槓桿；兩者皆有用。</p>
-          <p>預設情況下請勿同時堆疊 RTK 和 snip；選擇一個過濾器層，並驗證失敗測試/偵錯詳細資訊保持可用。</p>
-          <p>如果客戶需要安全性審查，請提及外部工具狀態。</p>
+          <p>結構描述稽核減少的是載入的內容。RTK 或 snip 減少的是命令傳回的內容。兩者是不同的調節手段；都有用。</p>
+          <p>預設情況下不要堆疊 RTK 與 snip；請選擇一個篩選層，並驗證失敗測試／偵錯的細節仍然可用。</p>
+          <p>如果客戶需要安全性審查，請提及外部工具的狀態。</p>
         `,
-        "Azure MCP case pattern": `
+        "Azure MCP 案例模式": `
           <p><strong>時間：</strong>5 分鐘。</p>
-          <p>作為限制大型外掛程式範圍的範例。命名空間/角色優於全有或全無的啟用方式。</p>
+          <p>以此作為限定大型外掛程式範圍的範例。命名空間／角色勝過全有或全無的啟用方式。</p>
         `,
-        "Lab 11: MCP audit": `
+        "實作 11：MCP 稽核": `
           <p><strong>時間：</strong>30 分鐘。</p>
-          <p>讓管理員與開發人員配對。開發人員知道他們使用什麼；管理員知道治理限制條件。</p>
+          <p>讓管理員與開發人員兩兩一組。開發人員知道自己用了什麼；管理員知道治理的限制。</p>
         `,
-        "Enterprise lab: tool policy": `
+        "企業實作：工具原則": `
           <p><strong>時間：</strong>20 分鐘。</p>
-          <p>產出應是可操作的：核准的預設伺服器、限定範圍的大型外掛程式、例外工作流程、審查節奏。</p>
+          <p>產出應具備可操作性：核准的預設伺服器、限定範圍的大型外掛程式、例外流程、檢視週期。</p>
         `,
-        "Comparisons and data": `
+        "比較與資料": `
           <p><strong>時間：</strong>2 分鐘。</p>
-          <p>在技巧巡禮後將此作為決策檢查點。資料有助於排定採用優先順序。</p>
+          <p>將此作為技巧巡禮之後的決策檢查點。資料有助於排定採用的優先順序。</p>
         `,
-        "Same task, different cost": `
+        "相同任務，不同成本": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>在各個版本中，品質保持在可接受範圍，直到極簡版本出現歧義。這支持了完整原始人的最佳平衡點。</p>
+          <p>將各基準線分開。僅限輸出的變化，並不能證明總成本有所節省。請引導讀者閱讀證據章節，了解範圍與品質限制。</p>
         `,
-        "Big winners": `
+        "最大的成效來源": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>讓聽眾將此清單與實作 0 的基準進行比較。選擇前兩名立即採用。</p>
+          <p>請聽眾將此清單與他們在實作 0 中的基準線比較。挑選前兩項立即採用。</p>
         `,
-        "Quality curve": `
+        "測試成本與正確性": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>壓縮不是線性的。第一階段剪裁是免費的；極端壓縮會增加重工風險。</p>
+          <p>將 Caveman 與單純簡潔的比較，和簡潔與預設輸出的比較分開進行。請納入失敗、規則的額外負擔與離群值。這張投影片描述的是一套通訊協定，並非本指南的結果。</p>
         `,
-        "Lab 12: prioritize techniques": `
+        "實作 12：為技巧排定優先順序": `
           <p><strong>時間：</strong>25 分鐘。</p>
-          <p>使用影響力/努力矩陣。避免一次採用所有技巧；客戶需要有順序的變更計劃。</p>
+          <p>使用影響／投入矩陣。避免一次採用所有技巧；客戶需要有先後順序的變更計畫。</p>
         `,
-        "Practical setup": `
+        "實務設定": `
           <p><strong>時間：</strong>2 分鐘。</p>
-          <p>現在將想法轉化為儲存庫產出物與可重複的習慣。</p>
+          <p>現在將想法轉換為儲存庫成品與可重複的習慣。</p>
         `,
-        "Repo setup steps": `
+        "儲存庫設定步驟": `
           <p><strong>時間：</strong>5 分鐘。</p>
-          <p>解釋相依鏈：微小全域指示優先、限定範圍深度次之、Coding Agent 設定結構第三。</p>
+          <p>說明相依鏈：先是極小的全域指示，其次是限定範圍的深入內容，第三是 Coding Agent 設定。</p>
         `,
-        "Starter instruction template": `
+        "入門指示範本": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>鼓勵團隊複製後進行自訂。謹慎加入專案專屬地雷。</p>
+          <p>鼓勵團隊先複製再自訂。謹慎地加入專案專屬的地雷。</p>
         `,
-        "Coding Agent setup": `
+        "Coding Agent 設定": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>預先安裝/建構可節省探索嘗試。保持設定具確定性且最小化。</p>
+          <p>預先安裝／建構可以節省探索的嘗試次數。讓設定保持確定性且精簡。</p>
         `,
-        "Precise issue template": `
+        "精確的 issue 範本": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>Issue 品質控制著代理程式的探索。好的 Issue 說明成本更低，且能產生更好的 PR。</p>
+          <p>issue 的品質控制了代理程式的探索。好的 issue 描述成本更低，也能產生更好的 PR。</p>
         `,
-        "Build habit over 4 weeks": `
+        "在 4 週內養成習慣": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>採用順序可防止超載。從預設值開始，然後是習慣，最後是進階路由。</p>
+          <p>採用的順序可避免負荷過重。先從預設值開始，接著是習慣，然後是進階路由。</p>
         `,
-        "Agent mode controls": `
+        "Agent 模式控制項": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>最大請求數是一道安全欄杆，而非萬靈丹。設得太低可能會阻止有效的工作。依工作流程進行調整。</p>
+          <p>最大請求數是安全護欄，而不是萬靈丹。設得太低可能會中斷有效的工作。請依工作流程調整。</p>
         `,
-        "Lab 13: repo implementation": `
+        "實作 13：儲存庫實作": `
           <p><strong>時間：</strong>45 分鐘。</p>
-          <p>對從業者而言最佳的實作。如果沒有寫入權限，產生修補程式文字或 PR 檢查清單。</p>
+          <p>這是最適合實務工作者的實作演練。如果沒有寫入權限，請產出修補文字或 PR 檢查清單。</p>
         `,
-        "Model selection and pricing": `
+        "模型選擇與定價": `
           <p><strong>時間：</strong>2 分鐘。</p>
-          <p>重設精確度：模型建議混合了計費概念。保持分離以避免錯誤的客戶主張。</p>
+          <p>重設精確度：模型建議混合了多種計費概念。請將它們分開，以避免對客戶做出錯誤的宣稱。</p>
         `,
-        "Three pricing views": `
+        "三種定價檢視": `
           <p><strong>時間：</strong>5 分鐘。</p>
-          <p>對於 Copilot 控制項使用 GitHub 文件。對於治理使用 UBB 框架。僅針對輸入/輸出直覺使用供應商定價。</p>
+          <p>Copilot 的控制項請使用 GitHub 文件。治理請使用 UBB 框架。供應商定價僅用於輸入／輸出的直覺。</p>
         `,
-        "Auto: practical meaning": `
+        "Auto：實際意義": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>Auto 是廉價預設通道，而非神奇的進階模型提升。客戶必須刻意啟用/釘選進階模型。</p>
+          <p>在支援時，Auto 可以依任務複雜度進行路由，但仍受方案與模型存取原則約束。請檢查目前的集區，而不要承諾提供每一個高階模型。</p>
         `,
-        "Reasoning effort": `
+        "推理強度": `
           <p><strong>時間：</strong>5 分鐘。</p>
-          <p>在有顯示的地方，推理強度是另一個成本度量。使用能滿足工作的最低難易度。困難的工作才需要高難易度。</p>
+          <p>在有提供時，推理強度是另一個成本旋鈕。請使用能滿足任務的最低強度。困難的任務才有理由使用高強度。</p>
         `,
-        "Anti-patterns": `
+        "反模式": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>詢問客戶他們最常看到哪種反模式。釘選進階模型與寬泛啟用是很常見的。</p>
+          <p>詢問客戶最常看到哪一種反模式。固定使用高階模型與廣泛啟用很常見。</p>
         `,
-        "Lab 14: model escalation policy": `
+        "實作 14：模型升級原則": `
           <p><strong>時間：</strong>30 分鐘。</p>
-          <p>原則必須包含觸格與回復條件。「開發人員想要」是不夠的；請定義工作流程價值。</p>
+          <p>原則必須包含觸發條件與回復機制。「開發人員想要」並不足夠；請定義工作流程的價值。</p>
         `,
-        "Enterprise governance": `
+        "企業治理": `
           <p><strong>時間：</strong>2 分鐘。</p>
-          <p>從行為變更轉向控制。管理員控制項限制花費；開發人員習慣減少限制內的浪費。</p>
+          <p>從行為改變轉向控制項。管理員控制項為支出設限；開發人員的習慣則減少上限之內的浪費。</p>
         `,
-        "Spend levers": `
+        "支出調節手段": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>重複：預算、使用者預算、模型可用性。提示詞文字並非支出上限。</p>
+          <p>重複一次：預算、使用者預算、模型可用性。提示詞的文字並不是支出上限。</p>
         `,
-        "Set budgets first": `
+        "先設定預算": `
           <p><strong>時間：</strong>5 分鐘。</p>
-          <p>從試行與警示開始。僅在利害關係人信任報告並了解影響後，才啟用停止使用功能。</p>
+          <p>從試行與警示開始。只有在利害關係人信任報告並了解影響之後，才啟用停止使用。</p>
         `,
-        "User-level tightening": `
+        "使用者層級的收緊": `
           <p><strong>時間：</strong>5 分鐘。</p>
-          <p>配合工作需要使用預算。仔細解釋 $0 的含意：阻擋基於使用量的功能，但自動完成/下一次編輯依文件規定會有所不同。</p>
+          <p>使用預算來符合職務需求。請謹慎說明 $0 的含意：以使用量計費的功能會被封鎖，但依文件，程式碼完成／下一個編輯則有所不同。</p>
         `,
-        "Review models before enablement": `
+        "啟用之前先審查模型": `
           <p><strong>時間：</strong>5 分鐘。</p>
-          <p>分階段開放進階模型存取。在擴大範圍前審查輸出品質與使用量。將模型存取與工作流程連結，而非資歷。</p>
+          <p>分階段開放高階存取。在擴大之前，先檢視輸出品質與用量。將模型存取與工作流程掛鉤，而不是與資歷掛鉤。</p>
         `,
-        "Instruction scope governance": `
-          <p><strong>時間：</strong>5 min。</p>
-          <p>重要的文件細節：組織指示不會自動涵蓋每個 IDE 介面。儲存庫指示帶有 IDE 預設值。</p>
+        "指示範圍的治理": `
+          <p><strong>時間：</strong>5 分鐘。</p>
+          <p>重要的文件細微差異：組織指示不會自動涵蓋每一個 IDE 介面。儲存庫指示負責 IDE 的預設值。</p>
         `,
-        "Separate orgs: fallback only": `
+        "獨立組織：僅作為備援": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>不要首推組織擴張。僅在計費/原則界限已與營運模型對應時，才使用獨立組織。</p>
+          <p>不要以組織分散作為開場。只有在計費／原則界線已經對應到營運模式時，才使用獨立組織。</p>
         `,
-        "Measure right thing": `
+        "衡量正確的事物": `
           <p><strong>時間：</strong>4 分鐘。</p>
-          <p>沒有成果的使用量評估是不完整的。將 AI 額度報告與交付指標配對：PR、週期時間、缺陷、審查品質。</p>
+          <p>只有用量而沒有成果是不完整的。請將 AI 點數報告與交付指標搭配：PR、週期時間、缺陷、審查品質。</p>
         `,
-        "June 1 cutover checklist": `
+        "6 月 1 日切換檢查清單": `
           <p><strong>時間：</strong>5 分鐘。</p>
-          <p>使其符合特定客戶需求。如果需要，簡報時對照官方文件確認日期/狀態。</p>
+          <p>讓此部分針對客戶客製化。如有需要，請在簡報時依官方文件確認日期／狀態。</p>
         `,
-        "Lab 15: budget rollout": `
+        "實作 15：預算推行": `
           <p><strong>時間：</strong>35 分鐘。</p>
-          <p>如果客戶可以分享，詢問具體數字。否則使用相對層級：試行、基準、權力使用者、阻擋。</p>
+          <p>如果客戶能分享，請詢問具體的數字。否則請使用相對的層級：試行、基準、進階使用者、封鎖。</p>
         `,
-        "Lab 16: governance tabletop": `
+        "實作 16：治理桌面演練": `
           <p><strong>時間：</strong>25 分鐘。</p>
-          <p>像事件回應一樣引導。將立即阻斷與根本原因修正及溝通分開。</p>
+          <p>以類似事件回應的方式主持。將立即的圍堵與根本原因的修正及溝通分開。</p>
         `,
-        "30 day token optimization plan": `
+        "30 天 token 最佳化計畫": `
           <p><strong>時間：</strong>2 分鐘。</p>
-          <p>專題實作將實作結合至導入中。明確指派擁有者與日期。</p>
+          <p>總結實作將各項實作演練整合成推行計畫。請明確指定負責人與日期。</p>
         `,
-        "Week-by-week rollout": `
+        "逐週推行": `
           <p><strong>時間：</strong>5 分鐘。</p>
-          <p>作為預設計劃。配合客戶成熟度與管理員準備程度進行調整。</p>
+          <p>將此作為預設計畫。依客戶的成熟度與管理員的準備程度進行調整。</p>
         `,
-        "Capstone lab": `
+        "總結實作": `
           <p><strong>時間：</strong>30 分鐘。</p>
-          <p>讓團隊現場填寫計劃。要求每個工作流都有一名擁有者：儲存庫、使用者、平台、企業。</p>
+          <p>請各團隊現場填寫計畫。每個工作串流要求一位負責人：儲存庫、使用者、平台、企業。</p>
         `,
-        "Final checklist": `
+        "最終檢查清單": `
           <p><strong>時間：</strong>5 分鐘。</p>
-          <p>用於驗證計劃涵蓋範圍。如果有一個象限是空白的，客戶導入就會有盲點。</p>
+          <p>用來驗證計畫的涵蓋範圍。如果有一個象限是空的，客戶的推行就存在盲點。</p>
         `,
-        "Closing message": `
+        "結語": `
           <p><strong>時間：</strong>2 分鐘。</p>
-          <p>以營運原則作結。Token 最佳化是治理加上習慣，而非一次性的提示詞把戲。</p>
+          <p>以操作原則作結。Token 最佳化是治理加上習慣，而不是一次性的提示詞技巧。</p>
         `
       };
 

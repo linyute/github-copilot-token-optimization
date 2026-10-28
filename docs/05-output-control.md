@@ -1,59 +1,89 @@
-# 2.4 輸出控制 —— 告訴模型「不要」說什麼
+# 2.4 輸出控制
 
 [← 返回指南](index.md)
 
-> **為什麼這一節對成本最重要。** 在 Anthropic/Copilot UBB 的所有定價層級中，輸出 Token 的成本比輸入 Token **貴 5 倍**。儘管回應的數量通常比總輸入（包括文件上下文、歷史記錄和工具架構）小，但定價的不對稱性使得輸出控制成為本指南中投資報酬率 (ROI) 最高的行為。在 `copilot-instructions.md` 中加入一行 —— "Code only, no explanation" —— 就能在每個代碼任務上永久減少 40-70% 的輸出成本。
+只要求你需要的回應。請從一般的簡潔指示開始；當說明、警告與驗證證據有助於你採取行動時，就予以保留。
+
+## 2.4.1 要求僅輸出程式碼的回應
+
+在你已經理解做法的程式碼產生情境中：
+
+```text
+僅提供程式碼，不需說明。
+```
+
+或是限制單一任務：
+
+```text
+為 processOrder() 加入輸入驗證。僅提供程式碼。
+```
+
+請勿以此抑制錯誤、缺漏的需求或失敗的測試。在學習與偵錯時，請要求提供說明。
+
+## 2.4.2 限制回應格式
+
+| 需求 | 指示 |
+|---|---|
+| 快速回答 | 「用一句話回答」 |
+| 簡短摘要 | 「最多 3 個項目符號」 |
+| 機器可讀的擷取 | 「以 JSON 回覆」 |
+| 比較 | 「使用表格格式」 |
+| 決策 | 「先回答是或否，再用一行說明原因」 |
+
+這些是格式上的選擇，並非固定的節省比率。請判斷結果是否包含足夠可用的資訊。
+
+## 2.4.3 系統層級的精簡輸出
+
+請使用[簡潔入門範本](10-practical-setup.md#step-1-set-a-concise-response-default)作為專案預設值。當任務需要更多細節時，請覆寫它。
+
+## Caveman：選用的輸出風格
+
+Caveman 可以縮短助理的敘述。相較於一般簡潔指示，額外節省的幅度可能很小。在將它視為成本最佳化手段之前，請先量測整體任務成本與正確性。
+
+這個**回應風格技能**不會壓縮輸入的內容脈絡或思考 token；它的規則反而會增加輸入。上游的記憶體檔案壓縮器與 Proxy 則是另外的機制。[^honest]
+
+### 已量測的結果
+
+證據檢查日期為 2026 年 10 月 27 日。上游連結固定指向某個原始碼修訂版本，並不代表對後續版本的承諾。
+
+| 研究 | 比較與結果 | 限制 |
+|---|---|---|
+| 上游回應風格評估 | 標準 Caveman：**在 `Answer concisely.` 之外，輸出的中位數減少 3%** | 10 個提示詞、單次執行、`claude-opus-5-5`、近似的 `o200k_base` 計數。測試的是技能 3.1.0 版；在 3.2.0 規則變更後未重新執行。沒有經過審查的忠實度快照。[^honest][^evals] |
+| JetBrains，2026 年 7 月 | 強制使用 Caveman 對比原始 Claude Code：在 82 組配對任務中**輸出 token 減少 8.5%** | SkillsBench、`claude-sonnet-5`、低推理強度。品質上沒有統計上可偵測的差異（`p = 0.82`），但這不能證明兩者等價。[^jetbrains] |
+| 同一份 JetBrains 完整執行，計費成本 | 技能組的原始總成本**高出 11.6%** | 有一個長內容脈絡的離群值扭轉了整體成本結果。輸出的節省並不保證支出較低。[^jetbrains] |
+
+不同的對照組、工作負載與技能版本，回答的是不同的問題。請勿將這些結果取平均，或將任何一項轉換成通用的節省比率。對於舊有「預設冗長回覆」的亮眼宣稱，上游並未發布經過審查的彙總結果。[^honest]
+
+### 比較預設、簡潔與 Caveman
+
+改編自上游的三組對照設計。[^evals]
+
+| 組別 | 額外的回應風格指示 |
+|---|---|
+| A：預設 | 無 |
+| B：簡潔 | `Answer concisely.` |
+| C：Caveman | 相同的簡潔指示，加上固定版本的 Caveman 技能 |
+
+請使用相同的任務、儲存庫修訂版本、模型、推理強度、工具、權限與預算。請隔離風格指示，避免預先載入的 Caveman 規則污染對照組。請保持任務語言不變。
+
+請在每一組中重複每項任務、交錯執行順序，並回報執行次數與離散程度。請將純文字問答與大量使用工具的實作分開。請保留原始輸出與供應商的用量紀錄。
+
+針對每次執行，請記錄：
+
+- 驗收檢查、測試結果，以及缺漏的事實或條件
+- 輸入、輸出、快取讀取／快取寫入，以及（有提供時的）推理 token
+- 計費成本、經過時間、重試次數與工具呼叫次數
+
+將 C 與 B 比較，以隔離 Caveman 的額外價值；將 B 與 A 比較，以量測一般性簡潔的效果。請回報每項任務的配對差異與總計費成本，並包含失敗的執行與離群值。離線分詞器的計數只能估計文字長度，無法代表供應商的收費。
+
+當結果仍然有用，且量測到的取捨適合該工作負載時，才使用 Caveman。若單純的簡潔指示同樣有效，請優先採用。本指南尚未自行執行付費的三組對照基準測試。
+
+## 來源
+
+[^honest]: Caveman，[Honest Numbers](https://github.com/JuliusBrussee/caveman/blob/9b68f7ed12b05e7efaff18e65c5a3fc2849fd0a4/docs/HONEST-NUMBERS.md)。
+[^evals]: Caveman，[評估設計與快照限制](https://github.com/JuliusBrussee/caveman/blob/9b68f7ed12b05e7efaff18e65c5a3fc2849fd0a4/evals/README.md)。
+[^jetbrains]: Denis Shiryaev，JetBrains，[Does Speaking to Agents Like Cavemen Really Save 65% of Tokens? We Test](https://blog.jetbrains.com/ai/2026/07/speak-to-ai-agents-like-cavemen-tosave-tokens/)。
 
 ---
 
-## 2.4.1 請求「僅代碼 (Code-Only)」回應
-
-LLM 非常喜歡解釋。一個簡單的代碼生成請求可能會返回 50 行代碼，外加你並未要求的 200 個 Token 的解釋。
-
-**在你的提示詞或 `copilot-instructions.md` 中添加：**
-
-```text
-Code only, no explanation.
-```
-
-或者在你的提示詞中：
-
-```text
-Add input validation to processOrder(). Code only.
-```
-
-**節省：代碼生成任務中 40-70% 的輸出 Token。**
-
-**權衡：** 如果你正在學習或調試，你可能需要解釋。當你清楚自己在做什麼，只需要具體實現時，請使用 "code only"。
-
-## 2.4.2 約束回應格式
-
-明確告訴模型使用什麼格式：
-
-| 指令 | 效果 | 輸出節省 |
-|-------------|--------|----------------|
-| "Answer in one sentence" (用一句話回答) | 限制贅字 | ~60-80% |
-| "3 bullet points max" (最多 3 個列點) | 強制限制項目數量 | ~50-70% |
-| "Reply as JSON" (以 JSON 回覆) | 結構化，無散文 | ~30-60% |
-| "Table format" (表格格式) | 緊湊的對比方式 | ~40-60% |
-| "Yes or no, then one line why" (是或否，然後一行解釋) | 極簡回應 | ~70-90% |
-
-## 2.4.3 系統級精簡輸出
-
-通過 `copilot-instructions.md` 將精簡輸出設置為專案預設值：
-
-```text
-Be concise. No explanations unless asked.
-Code only for generation tasks.
-Bullets over paragraphs.
-```
-
-這會自動套用於每次互動。你不必每次都記得輸入 "code only"。
-
-**節省：每次互動 30-60% 的輸出 Token。**
-
-**何時覆蓋：** 當你需要解釋時，只需明確詢問："Explain why this approach is better than X." 模型在被明確要求時仍會展開解釋，即使在精簡指令下也是如此。
-
----
-
-**下一頁：** [工作流優化 →](06-workflow-optimization.md)
+**下一章：**[工作流程最佳化 →](06-workflow-optimization.md)
