@@ -1,0 +1,6 @@
+inventory:
+- source: DirectOwners
+  items:
+  - id: marcoolivo@microsoft.com
+  - id: jbonnin@microsoft.com
+  isProduction: false

@@ -1,0 +1,28 @@
+{
+  "name": "customer-success-microsoft",
+  "owner": {
+    "name": "Customer Success Microsoft",
+    "url": "https://github.com/customer-success-microsoft"
+  },
+  "metadata": {
+    "description": "Plugins from Microsoft Customer Success — practical Copilot tooling built from real customer engagements.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "copilot-token-optimization",
+      "description": "Guide and an agent for cutting GitHub Copilot token usage: prompt compression, context scoping, output control, and MCP tool budgeting.",
+      "version": "0.1.0",
+      "source": ".",
+      "author": {
+        "name": "Customer Success Microsoft",
+        "url": "https://github.com/customer-success-microsoft"
+      },
+      "homepage": "https://github.com/customer-success-microsoft/github-copilot-token-optimization",
+      "repository": "https://github.com/customer-success-microsoft/github-copilot-token-optimization",
+      "license": "MIT",
+      "keywords": ["copilot", "tokens", "cost", "optimization", "prompt", "context", "mcp"],
+      "category": "productivity"
+    }
+  ]
+}

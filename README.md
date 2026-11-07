@@ -15,7 +15,7 @@
 
 ## 選擇適用的機制
 
-| 需要處理的問題 | 對應章節 |
+| 浪費來源 | 章節 |
 |---|---|
 | 回答過長或選用 Caveman 風格 | [輸出控制](docs/05-output-control.md) |
 | 不清楚或冗長的請求 | [提示詞壓縮](docs/02-prompt-compression.md) |
@@ -31,7 +31,7 @@
 
 ## Caveman：選用，而非預設
 
-請先從一般的簡潔指示開始。[證據審查](docs/05-output-control.md#caveman-optional-output-style)會將輸出長度的變化與整體任務成本區分開來，並說明為何較早期的亮眼宣稱並不足以證明你的工作負載也能節省成本。
+[證據檢視](docs/05-output-control.md#caveman-optional-output-style)說明 Caveman 減少輸出所能（及不能）證明的總體任務成本影響。
 
 請使用[預設／簡潔／Caveman 通訊協定](docs/05-output-control.md#compare-default-concise-and-caveman)，測試在 `Answer concisely.` 之外是否還有額外價值。本指南尚未自行執行付費的三組對照基準測試。
 

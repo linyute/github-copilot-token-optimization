@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Copilot Token 最佳化 - 實務工作者簡報</title>
+    <title>GitHub Copilot Token 最佳化 - 實務人員簡報</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reset.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/theme/black.css">
@@ -37,163 +37,163 @@
     <div class="reveal">
       <div class="slides">
         <section>
-          <p class="kicker">實務工作者簡報</p>
+          <p class="kicker">實務人員簡報</p>
           <h1>GitHub Copilot Token 最佳化</h1>
-          <p>減少 token 支出、避免重工，並驗證交付的內容。</p>
+          <p>減少 Token 支出、避免重工，並驗證交付內容。</p>
           <p class="small muted">需要完整訓練嗎？<a href="index.html">開啟 8 小時工作坊</a>。</p>
         </section>
 
         <section>
-          <h2>成果：每個 token 的有用工作</h2>
+          <h2>成果：每個 Token 的有效產出</h2>
           <div class="grid-3">
-            <div class="card"><h3>花得更少</h3><p>減少不必要的輸入、輸出與工具額外負擔。</p></div>
-            <div class="card"><h3>動作更快</h3><p>讓內容脈絡保持聚焦。避免昂貴的重工迴圈。</p></div>
-            <div class="card"><h3>驗證結果</h3><p>規劃、測試，並針對任務使用正確的代理程式模式。</p></div>
+            <div class="card"><h3>花得更少</h3><p>減少不必要的輸入、輸出與工具負擔。</p></div>
+            <div class="card"><h3>動作更快</h3><p>讓上下文保持聚焦，避免昂貴的重工迴圈。</p></div>
+            <div class="card"><h3>驗證結果</h3><p>規劃、測試，並為任務選用合適的 Agent 模式。</p></div>
           </div>
-          <p class="small muted">本內容為社群指引，並非 GitHub 或 Microsoft 的官方政策。</p>
+          <p class="small muted">社群指引，並非 GitHub 或 Microsoft 的官方政策。</p>
         </section>
 
         <section>
           <h2>了解你在為什麼付費</h2>
           <div class="grid">
-            <div class="card"><h3>輸入</h3><p>系統提示詞、指示、檔案、歷程記錄、工具結構描述，以及你的提示詞。</p></div>
-            <div class="card"><h3>輸出</h3><p>回應、推理與工具呼叫。通常是成本最高的 token 類型。</p></div>
-            <div class="card"><h3>快取輸入</h3><p>穩定的請求前綴可以以較低的有效成本重複使用。</p></div>
-            <div class="card"><h3>代理程式迴圈</h3><p>每一次讀取、命令、重試與重工步驟，都會讓成本不斷累積。</p></div>
+            <div class="card"><h3>輸入</h3><p>系統提示、指示、檔案、歷史紀錄、工具結構描述，以及你的提示。</p></div>
+            <div class="card"><h3>輸出</h3><p>回應、推理與工具呼叫。通常是成本最高的 Token 類型。</p></div>
+            <div class="card"><h3>快取輸入</h3><p>穩定的請求前綴可以用較低的實際成本重複使用。</p></div>
+            <div class="card"><h3>Agent 迴圈</h3><p>每一次讀取、命令、重試與重工步驟都會讓成本不斷累加。</p></div>
           </div>
         </section>
 
         <section>
           <h2>從哪裡開始</h2>
           <ol>
-            <li><strong class="accent">限制輸出。</strong>不再為不需要的文字付費。</li>
-            <li><strong class="accent">縮小內容脈絡。</strong>讓常駐的指示與檔案保持聚焦。</li>
-            <li><strong class="accent">減少工具額外負擔。</strong>只載入所需的 MCP 工具，並壓縮命令輸出。</li>
-            <li><strong class="accent">避免重工。</strong>選擇模式與模型，就計畫達成共識，然後驗證。</li>
+            <li><strong class="accent">限制輸出。</strong>別再為不需要的文字付費。</li>
+            <li><strong class="accent">縮減上下文。</strong>讓常駐指示與檔案保持聚焦。</li>
+            <li><strong class="accent">降低工具負擔。</strong>只載入需要的 MCP 工具，並壓縮命令輸出。</li>
+            <li><strong class="accent">避免重工。</strong>選好模式與模型、先對齊計畫，再進行驗證。</li>
           </ol>
         </section>
 
         <section>
-          <h2>1. 從簡潔的輸出開始</h2>
-          <div class="quote">簡潔回答。保留採取行動所需的證據。</div>
-          <p>依任務選擇格式。Caveman 是選用的，並不保證能降低成本。</p>
-          <p class="small muted">請就總成本與正確性，比較預設、簡潔與 Caveman。<a href="../05-output-control/#caveman-optional-output-style">證據與通訊協定</a>。</p>
+          <h2>1. 從精簡輸出開始</h2>
+          <div class="quote">回答要精簡。保留足以採取行動的證據。</div>
+          <p>依任務選擇格式。Caveman 為選用，不保證降低成本。</p>
+          <p class="small muted">比較預設、精簡與 Caveman 的總成本與正確性。<a href="../05-output-control/#caveman-optional-output-style">證據與協定</a>。</p>
         </section>
 
         <section>
           <h2>2. 壓縮常駐指示</h2>
           <div class="grid">
             <div class="card"><h3>保留</h3><p>專案陷阱、必要命令、命名、架構規則、輸出限制。</p></div>
-            <div class="card"><h3>移除</h3><p>樣板內容、程式碼中可見的事實、重複的規則、偶爾才用到的檢查清單。</p></div>
+            <div class="card"><h3>移除</h3><p>樣板文字、程式碼中已可見的事實、重複的規則、偶爾才用到的檢查清單。</p></div>
           </div>
-          <p><code>.github/copilot-instructions.md</code> 中的每個 token 都會被重複付費。請將少用的指引放在限定範圍或隨需載入的檔案中。</p>
+          <p>載入的指示會在後續每一輪增加輸入。將特定路徑的規則放入限定範圍的檔案，偶爾才需要的指引則改為按需載入。</p>
         </section>
 
         <section>
-          <h2>3. 刻意鎖定內容脈絡</h2>
+          <h2>3. 有意識地鎖定上下文</h2>
           <ul>
-            <li>關閉不相關的編輯器索引標籤，避免附加範圍過廣的檔案。</li>
-            <li>針對特定路徑的規則，使用 <code>applyTo</code> 指示檔案。</li>
-            <li>在進行 AI 工作之前，先將富格式輸入轉換為 Markdown。</li>
-            <li>傳送相關的計畫與檔案，而不是整個專案的歷程記錄。</li>
+            <li>關閉不相關的編輯器分頁，避免附加範圍過廣的檔案。</li>
+            <li>使用 <code>applyTo</code> 指示檔案來設定特定路徑的規則。</li>
+            <li>在進行 AI 工作前，先將豐富格式的輸入轉換為 Markdown。</li>
+            <li>傳送相關的計畫與檔案，而不是整個專案歷史。</li>
           </ul>
         </section>
 
         <section>
-          <h2>4. 保護快取的前綴</h2>
-          <p>在一項長時間的任務中，請保持下列項目穩定：</p>
-          <div class="quote">{ 模型、推理強度、已載入的技能、MCP/工具集、代理程式/設定檔 }</div>
-          <p>變更這些設定可能會失去快取節省的效益。需要變更時，請以簡短的交接開啟新的聊天。</p>
+          <h2>4. 保護快取前綴</h2>
+          <p>執行單一長任務時，請保持下列項目穩定：</p>
+          <div class="quote">{ 模型, 推理強度, 已載入的技能, MCP/工具集, Agent/設定檔 }</div>
+          <p>變更這些設定可能會失去快取節省的效益。需要變更時，請以簡短的交接內容開啟新的對話。</p>
         </section>
 
         <section>
-          <h2>5. 使用最小且足以勝任的模式</h2>
+          <h2>5. 使用夠用的最小模式</h2>
           <div class="grid-3">
             <div class="card"><h3>Ask</h3><p>問題、說明、決策。不需要工具。</p></div>
-            <div class="card"><h3>Edit</h3><p>檔案與意圖都已知、範圍明確的變更。</p></div>
+            <div class="card"><h3>Edit</h3><p>檔案與意圖都已明確的有限變更。</p></div>
             <div class="card"><h3>Agent</h3><p>需要探索、命令與驗證的多檔案工作。</p></div>
           </div>
-          <p class="small">Ask 模式就能回答的問題，不要使用 Agent 模式。</p>
+          <p class="small">Ask 模式能回答的問題，不要使用 Agent 模式。</p>
         </section>
 
         <section>
-          <h2>6. 依任務安排模型路由</h2>
+          <h2>6. 依任務分配模型</h2>
           <ul>
-            <li>日常工作<strong>優先使用 Auto</strong>。</li>
-            <li>查詢、語法與小型機械性編輯使用<strong>輕量模型</strong>。</li>
-            <li>規劃、架構與困難的偵錯使用<strong>強推理模型</strong>。</li>
-            <li>當計畫已涵蓋困難的決策後，使用<strong>較便宜的執行模型</strong>。</li>
+            <li>日常工作<strong>先用 Auto</strong>。</li>
+            <li>查詢、語法與小型機械式編輯使用<strong>輕量模型</strong>。</li>
+            <li>規劃、架構與困難除錯使用<strong>強推理模型</strong>。</li>
+            <li>計畫涵蓋困難決策之後，改用<strong>較便宜的執行模型</strong>。</li>
           </ul>
-          <p>請在長時間工作之前選好推理強度。如果任務有所變化，請以簡潔的交接重新評估。</p>
+          <p>在長時間工作前先選好推理強度。若任務改變，請以簡潔的交接內容重新評估。</p>
         </section>
 
         <section>
-          <h2>7. 先規劃，再以全新工作階段執行</h2>
+          <h2>7. 先規劃，再以全新對話執行</h2>
           <img class="diagram" src="../../source/docs/assets/diagrams/plan-execute-cheaply.svg" alt="先規劃，再以低成本執行">
-          <p class="small">記錄驗收條件、可能涉及的檔案、風險與驗證方式。只帶著該份交接開始執行。</p>
+          <p class="small">記錄驗收條件、可能涉及的檔案、風險與驗證方式。只帶著該交接內容開始執行。</p>
         </section>
 
         <section>
-          <h2>8. 讓 MCP 基準線保持精簡</h2>
+          <h2>8. 讓 MCP 基準維持精簡</h2>
           <ul>
-            <li>已載入的工具定義會增加內容脈絡；主機可能會延後載入未使用的結構描述。</li>
+            <li>載入的工具定義會增加上下文；主機可能會延遲載入未使用的結構描述。</li>
             <li>停用此儲存庫或任務不需要的伺服器與擴充功能。</li>
-            <li>對重複的工作流程，使用乾淨的設定檔或專注的代理程式。</li>
-            <li>在 Copilot CLI 中執行 <code>/context</code>，查看載入了什麼。</li>
+            <li>針對重複性的工作流程，使用乾淨的設定檔或聚焦的 Agent。</li>
+            <li>在 Copilot CLI 中執行 <code>/context</code>，查看載入了哪些內容。</li>
           </ul>
         </section>
 
         <section>
-          <h2>9. 只壓縮一次 shell 輸出</h2>
+          <h2>9. 一次性壓縮 Shell 輸出</h2>
           <div class="grid">
-            <div class="card"><h3>RTK</h3><p>針對常見開發人員命令輸出的編譯預設值。</p></div>
-            <div class="card"><h3>snip</h3><p>YAML 管線與本機節省追蹤。</p></div>
+            <div class="card"><h3>RTK</h3><p>針對常見開發人員命令輸出的編譯式預設值。</p></div>
+            <div class="card"><h3>snip</h3><p>YAML 管線與本機節省量追蹤。</p></div>
           </div>
-          <p>每個命令路徑只選擇一個篩選層。預設情況下不要同時堆疊兩者。</p>
+          <p>每個命令路徑只選擇一層篩選器。預設不要同時疊加兩者。</p>
         </section>
 
         <section>
           <h2>10. 重複使用程式碼庫地圖</h2>
-          <p><a href="https://github.com/Graphify-Labs/graphify">Graphify</a> 只需對大型儲存庫建立一次地圖，之後代理程式便查詢結構，而不是反覆讀取範圍廣泛的檔案集。</p>
-          <pre><code>graphify query "where is auth middleware?"
+          <p><a href="https://github.com/Graphify-Labs/graphify">Graphify</a> 會建立可重複使用的儲存庫地圖，供結構化查詢使用。重構後請更新它。</p>
+          <pre><code>graphify query "驗證中介軟體在哪裡？"
 graphify path "Router" "Database"</code></pre>
-          <p class="small">最適合大型儲存庫與重複的代理程式工作階段。對於小型的一次性變更，請略過它。</p>
+          <p class="small">最適合大型儲存庫與重複的 Agent 工作階段。小型的一次性變更則不必使用。</p>
         </section>
 
         <section>
-          <h2>11. 讓 token 用量可見</h2>
+          <h2>11. 讓 Token 用量可見</h2>
           <div class="grid">
-            <div class="card"><h3>工作階段內</h3><p>使用 <code>/context</code> 檢查 Copilot CLI 的內容脈絡壓力與已載入的工具。</p></div>
-            <div class="card"><h3>跨工作階段</h3><p><a href="https://github.com/tokentopapp/tokentop">Tokentop</a> 會顯示本機即時的 token、成本、燃燒速率與預算警示。</p></div>
+            <div class="card"><h3>工作階段內</h3><p>使用 <code>/context</code> 檢查 Copilot CLI 的上下文壓力與已載入的工具。</p></div>
+            <div class="card"><h3>跨工作階段</h3><p><a href="https://github.com/tokentopapp/tokentop">Tokentop</a> 會顯示本機即時的 Token、成本、燃燒速率與預算警示。</p></div>
           </div>
-          <p>請用這些工具找出浪費；兩者都不會壓縮內容脈絡。</p>
+          <p>用這些工具找出浪費；兩者都不會壓縮上下文。</p>
         </section>
 
         <section>
-          <h2>12. 設定穩定的工作階段執行框架</h2>
-          <div class="quote">模型 + 推理強度 + 模式 + 代理程式 + 技能 + MCP 工具 + 輸出篩選器 + 儲存庫指示</div>
-          <p>請在長時間工作之前選好這些設定。如果需要變更，請帶著相關的內容脈絡開啟新的工作階段。</p>
+          <h2>12. 設定穩定的工作階段配置</h2>
+          <div class="quote">模型 + 強度 + 模式 + Agent + 技能 + MCP 工具 + 輸出篩選器 + 儲存庫指示</div>
+          <p>在長時間工作前先選好這些設定。若需要變更，請以相關上下文開啟新的工作階段。</p>
         </section>
 
         <section>
           <h2>13. 完成前先驗證</h2>
           <ol>
-            <li>指明驗收條件。</li>
+            <li>明確列出驗收條件。</li>
             <li>執行目標測試、建構或檢查。</li>
-            <li>回報證據，而不是籠統的「完成」。</li>
+            <li>回報證據，而不是籠統的「完成了」。</li>
           </ol>
-          <p>請在審查發現遺漏的工作之前，先檢查結果。</p>
+          <p>在審查發現遺漏之前，先自行檢查結果。</p>
         </section>
 
         <section>
           <h2>14. 採用並持續落實</h2>
           <div class="grid">
-            <div class="card"><h3>第 1 週</h3><p>限制輸出。精簡儲存庫指示。</p></div>
-            <div class="card"><h3>第 2 週</h3><p>刻意安排 Ask、Edit 與 Agent 的使用。</p></div>
-            <div class="card"><h3>第 3 週</h3><p>稽核 MCP 工具與命令輸出。</p></div>
-            <div class="card"><h3>第 4 週</h3><p>先規劃的工作流程、快取穩定性與用量檢視。</p></div>
+            <div class="card"><h3>冗長的回應</h3><p>設定精簡輸出的偏好。</p></div>
+            <div class="card"><h3>龐大的上下文</h3><p>精簡已載入的指示、檔案與工具。</p></div>
+            <div class="card"><h3>雜訊多的命令</h3><p>嘗試一種輸出篩選器；保留診斷資訊。</p></div>
+            <div class="card"><h3>反覆重工</h3><p>釐清任務、模型選擇與驗證方式。</p></div>
           </div>
-          <p class="small">每項任務：限制輸出、鎖定內容脈絡、選擇執行框架、規劃並驗證。</p>
+          <p class="small">針對觀察到的浪費選擇改變項目。比較被接受的成果與總成本。</p>
           <p class="small"><a href="../">閱讀指南</a> · <a href="index.html">開啟完整工作坊</a></p>
         </section>
       </div>

@@ -29,21 +29,24 @@ markdown_extensions:
 extra_css:
   - stylesheets/extra.css
 nav:
-  - 首頁: index.md
-  - 第 1 部分:
-      - 為什麼 Token 很重要: 01-why-tokens-matter.md
-  - 第 2 部分:
-      - 提示詞壓縮: 02-prompt-compression.md
-      - 自然語言選擇: 03-language-comparison.md
-      - 上下文管理: 04-context-management.md
+    - 首頁: index.md
+    - 從這裡開始:
+      - 實用設定: 10-practical-setup.md
+      - Token 為何重要: 01-why-tokens-matter.md
+    - 請求與回應:
       - 輸出控制: 05-output-control.md
-      - 工作流優化: 06-workflow-optimization.md
-      - 始終開啟的上下文問題: 07-agents-md-problem.md
-      - MCP 和工具成本: 08-mcp-tool-costs.md
-  - 第 3 部分:
-      - 對比與數據: 09-comparisons-data.md
-  - 第 4 部分:
-      - 實踐設置: 10-practical-setup.md
+      - 提示詞壓縮: 02-prompt-compression.md
+      - 語言比較: 03-language-comparison.md
+    - 已載入的上下文:
+      - 上下文管理: 04-context-management.md
+      - 常駐上下文問題: 07-agents-md-problem.md
+    - 工具:
+      - MCP 與工具成本: 08-mcp-tool-costs.md
+    - 工作流程與返工:
+      - 工作流程最佳化: 06-workflow-optimization.md
+      - 每個 Token 的成果: 13-outcome-per-token.md
+    - 費用控管:
       - 模型選擇與定價: 11-models-and-pricing.md
       - 企業治理: 12-enterprise-governance.md
-      - 每個 Token 的產出: 13-outcome-per-token.md
+    - 實證資料:
+      - 比較與數據: 09-comparisons-data.md
