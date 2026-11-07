@@ -12,7 +12,7 @@
 
 提示詞壓縮仍然重要，但它是使用效率的調節手段，而不是管理員的計費控制項。
 
-![企業治理控制平面：預算、使用者層級預算與模型存取權限，供應使用情況報告、群組與審查迴圈。](../../source/docs/assets/diagrams/enterprise-governance-control-plane.svg)
+![企業治理控制平面：預算、使用者層級預算與模型存取權限，供應使用情況報告、群組與審查迴圈。](assets/diagrams/enterprise-governance-control-plane.svg)
 
 對於 2026 年 6 月 1 日計費切換後的 Business 與 Enterprise 方案，請管理 AI 點數的用量，而非進階請求的數量。
 

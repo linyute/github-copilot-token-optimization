@@ -49,7 +49,7 @@ Token 用量會影響成本、限制、容量與速度：
 
 Copilot 的輸入包含：
 
-![Token 成本剖析：輸入 token 包含隱藏的上下文，輸出 token 是可見的答案，而穩定的快取 token 會更便宜。](../../source/docs/assets/diagrams/token-cost-anatomy.svg)
+![Token 成本剖析：輸入 token 包含隱藏的上下文，輸出 token 是可見的答案，而穩定的快取 token 會更便宜。](assets/diagrams/token-cost-anatomy.svg)
 
 - **系統提示詞：** Copilot 自己的指示（你無法控制）
 - **`copilot-instructions.md`：** 你的專案層級指示，在**每次**互動時都會載入

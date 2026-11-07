@@ -59,7 +59,7 @@ L42: 🔴 bug: user 此處可能為 null。存取 .email 前加上 null 防護�
 
 **Ask 模式**適合可由所提供的內容直接回答、不需要實作迴圈的問題。
 
-![Copilot 模式決策樹：問題使用 Ask，單一檔案變更使用 Edit，明確的多檔案工作使用 Agent，模糊的工作則先釐清再執行。](../../source/docs/assets/diagrams/mode-decision-tree.svg)
+![Copilot 模式決策樹：問題使用 Ask，單一檔案變更使用 Edit，明確的多檔案工作使用 Agent，模糊的工作則先釐清再執行。](assets/diagrams/mode-decision-tree.svg)
 
 | 任務 | 適合的模式 | 原因 |
 |------|-----------|-----|
@@ -261,7 +261,7 @@ code --install-extension ai-engineer-coach-*.vsix
 
 Copilot CLI 與 VS Code Copilot 已經最佳化了代理程式迴圈的部分環節。在加入外部工具之前，請先將這些視為基準：
 
-![MCP 與工具堆疊：限定 MCP 結構描述範圍、對長工具鏈使用 CodeAct、以 RTK 或 snip 過濾命令輸出，並以 Graphify 處理重複的定向作業。](../../source/docs/assets/diagrams/mcp-tooling-stack.svg)
+![MCP 與工具堆疊：限定 MCP 結構描述範圍、對長工具鏈使用 CodeAct、以 RTK 或 snip 過濾命令輸出，並以 Graphify 處理重複的定向作業。](assets/diagrams/mcp-tooling-stack.svg)
 
 - **提示詞／快取層：** 保持 `{model, active MCP set, active agent/profile}` 穩定，讓快取的前綴得以持續重複使用。
 - **工具結構描述層：** 優先使用內建工具與限定範圍的 MCP；Copilot 可以延後或路由部分工具定義，但額外的伺服器與擴充功能仍會增加受攻擊面與負擔。

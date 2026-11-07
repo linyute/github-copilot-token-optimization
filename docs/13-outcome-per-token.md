@@ -36,7 +36,7 @@ Microsoft/Stanford 的論文〈How Do AI Agents Spend Your Money?〉回報了代
 
 使用這些習慣來減少浪費的工作：
 
-![每個 token 的成果迴圈：挑選任務型態、先規劃再寫程式碼、為模型選擇路由、鎖定內容、驗證證據，並乾淨地收尾。](../../source/docs/assets/diagrams/outcome-per-token-loop.svg)
+![每個 token 的成果迴圈：挑選任務型態、先規劃再寫程式碼、為模型選擇路由、鎖定內容、驗證證據，並乾淨地收尾。](assets/diagrams/outcome-per-token-loop.svg)
 
 1. 挑選正確的任務型態
 2. 實作之前先規劃
@@ -231,7 +231,7 @@ Matt Pocock 的技能涵蓋 TDD、錯誤診斷、程式碼審查、領域建模�
 
 對於有具體交接內容的複雜工作，請將規劃與執行分開：
 
-![先規劃，再以低成本執行：以強大的推理模型規劃、儲存驗收條件、在全新且較便宜的工作階段中執行，然後驗證或修訂計畫。](../../source/docs/assets/diagrams/plan-execute-cheaply.svg)
+![先規劃，再以低成本執行：以強大的推理模型規劃、儲存驗收條件、在全新且較便宜的工作階段中執行，然後驗證或修訂計畫。](assets/diagrams/plan-execute-cheaply.svg)
 
 GitHub 的[最佳化 AI 使用](https://docs.github.com/en/copilot/tutorials/optimize-ai-usage)指引也提出相同的觀點：預設使用最強大的模型可能會增加 token 用量卻沒有改善成果，而在以執行為主的任務中過度使用推理模型，可能會讓模型想太多或引入不必要的變更，進而降低品質。[^optimize-ai] 同一頁面也給出了實用的規則：以強大的推理模型規劃，然後以較便宜的模型實作。
 

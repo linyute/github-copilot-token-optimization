@@ -19,7 +19,7 @@
 
 ## 2.1.2 選用的簡寫
 
-![提示詞壓縮階梯：越短的形式越需要檢查技術術語與限制條件是否仍然保留。](../../source/docs/assets/diagrams/prompt-compression-ladder.svg)
+![提示詞壓縮階梯：越短的形式越需要檢查技術術語與限制條件是否仍然保留。](assets/diagrams/prompt-compression-ladder.svg)
 
 | 風格 | 適用時機 | 注意事項 |
 |---|---|---|

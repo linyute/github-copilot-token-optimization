@@ -48,7 +48,7 @@ Copilot 可能納入開啟的檔案、匯入項目與鄰近的程式碼。請讓
 
 當任務需要的是文字而非版面配置時，請在傳送給模型之前，先將豐富格式的文件轉換成乾淨的 Markdown。請確認擷取過程保留了任務所需的資訊。
 
-![格式稅管線：豐富格式會產生版面雜訊，MarkItDown 將它們正規化為乾淨的 Markdown，而豐富的交付格式只在最後才產生。](../../source/docs/assets/diagrams/format-tax-pipeline.svg)
+![格式稅管線：豐富格式會產生版面雜訊，MarkItDown 將它們正規化為乾淨的 Markdown，而豐富的交付格式只在最後才產生。](assets/diagrams/format-tax-pipeline.svg)
 
 Marc Bara 在 [Your .docx Is Wasting 33% of Your AI Budget](https://medium.com/@marc.bara.iniesta/your-docx-is-wasting-33-of-your-ai-budget-86a3d229d042) 中將此稱為**格式稅（format tax）**。豐富格式帶有字型資料、XML、頁面位置、內嵌物件與標記，這些內容模型很少需要。在該文章的範例中，一份 10 頁的 PDF 報告約使用 12,400 個 token；乾淨的 Markdown 約使用 8,350 個，在資訊相同的情況下減少 33%。HTML 匯出檔還可能在內容周圍加入更多版面標記。
 
@@ -79,7 +79,7 @@ pip install 'markitdown[pdf,docx,pptx,xlsx]'
 
 請將特定路徑的規則排除在常駐上下文之外。React 元件的任務不需要資料庫移轉的指南。請以條件方式載入這些規則。
 
-![上下文載入邊界：讓常駐的核心保持極小，將特定路徑的指引移到限定範圍的指示，並按需載入技能。](../../source/docs/assets/diagrams/context-loading-boundaries.svg)
+![上下文載入邊界：讓常駐的核心保持極小，將特定路徑的指引移到限定範圍的指示，並按需載入技能。](assets/diagrams/context-loading-boundaries.svg)
 
 ### 在自訂指示中使用 `applyTo:` 路徑
 
@@ -123,7 +123,7 @@ Copilot 可以快取穩定的上下文，包括系統提示詞、指示檔案與
 
 保留可重複使用上下文的三種方式：
 
-![快取穩定性：穩定的執行緒會重複使用相同的模型、MCP 集合與代理程式設定檔；快取失效的執行緒則在工作階段中途切換控制項，應改用全新的交接。](../../source/docs/assets/diagrams/cache-stability.svg)
+![快取穩定性：穩定的執行緒會重複使用相同的模型、MCP 集合與代理程式設定檔；快取失效的執行緒則在工作階段中途切換控制項，應改用全新的交接。](assets/diagrams/cache-stability.svg)
 
 **1. 避免不必要的指示變更。** 前置詞快取取決於請求內容是否相符。請讓可重複使用的指引保持穩定；不要僅為了維持快取而保留不相關的檔案。
 

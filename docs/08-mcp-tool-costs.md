@@ -8,7 +8,7 @@
 
 在變更 MCP 伺服器或指示檔案之前，先測量內容視窗中實際載入了哪些內容。
 
-![MCP 與工具堆疊：各別的修正方式可降低結構描述成本、回合數、shell 輸出、重複的環境探查讀取，以及可視性缺口。](../../source/docs/assets/diagrams/mcp-tooling-stack.svg)
+![MCP 與工具堆疊：各別的修正方式可降低結構描述成本、回合數、shell 輸出、重複的環境探查讀取，以及可視性缺口。](assets/diagrams/mcp-tooling-stack.svg)
 
 **Copilot CLI：** 在工作階段進行中執行 `/context`，即可取得實際的明細：
 
@@ -365,7 +365,7 @@ Dina Berry 設定的**實測結果**：
 
 新的代理程式工作階段常常需要重新讀取檔案，才能了解匯入關係、呼叫路徑與元件配置。[Graphify](https://github.com/Graphify-Labs/graphify) 使用 tree-sitter AST 剖析儲存庫，並寫入一份持久的圖形，供結構化查詢使用。
 
-![持久的圖形導覽：建構一張地圖，然後查詢結構，而不是重複進行大範圍的檔案讀取。](../../source/docs/assets/diagrams/graphify-navigation.svg)
+![持久的圖形導覽：建構一張地圖，然後查詢結構，而不是重複進行大範圍的檔案讀取。](assets/diagrams/graphify-navigation.svg)
 
 ```bash
 uv tool install graphifyy
